@@ -62,7 +62,7 @@ module.exports = function(grunt) {
             email: 'manos@iamemmanouil.com'
           },
           repo: 'https://' + process.env.GH_TOKEN + '@github.com/ekonstantinidis/ui-color.git',
-          message: 'publish gh-pages (auto)' + getDeployMessage(),
+          message: 'Publish UIColor to Github Page (auto)' + getDeployMessage(),
           silent: true
         },
         src: ['**/*']
