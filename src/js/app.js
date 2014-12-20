@@ -1,9 +1,6 @@
-var app = angular.module('projectName', [
+var app = angular.module('uicolor', [
     'ngRoute',
     'ui.bootstrap',
-    'controllers',
-    'directives',
-    'services',
 ]);
 
 app.config(['$routeProvider',
@@ -14,13 +11,15 @@ app.config(['$routeProvider',
         templateUrl: 'templates/home.html',
         controller: 'HomeCtrl',
     })
-    .when('/about', {
-        templateUrl: 'templates/about.html',
-        controller: 'AboutCtrl',
-    })
 
     .otherwise({
         redirectTo: '/home'
     });
 
 }]);
+
+app.controller("HomeCtrl", function($scope) {
+
+    $scope.title = "Homepage";
+
+});
