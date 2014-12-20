@@ -20,7 +20,7 @@ app.config(['$routeProvider',
 
 app.controller("HomeCtrl", function($scope) {
 
-    $scope.title = "Homepage";
+    $scope.title = "HEX to UIColor Converter";
 
     // Roll Tide
     $scope.hexValid = true;
@@ -33,6 +33,9 @@ app.controller("HomeCtrl", function($scope) {
         console.log(hex);
 
         if (!isNaN(r) && !isNaN(g) && !isNaN(b)) {
+            var tempHex = "#" + hex;
+            $scope.style =  { bgColor: tempHex };
+
             $scope.hexValid = true;
             $scope.uiColor = {
                 "r": r,
@@ -43,6 +46,7 @@ app.controller("HomeCtrl", function($scope) {
             console.log(g);
             console.log(b);
         } else {
+            $scope.hexBgColor = {'background-color':'#FFF'};
             $scope.hexValid = false;
             console.log("Invalid.");
         }
@@ -51,7 +55,6 @@ app.controller("HomeCtrl", function($scope) {
     }
 
     $scope.hexToRgb = function(hex) {
-        console.log(hex.length);
         if ($scope.hex.length == 3) {
             var tempHex = hex + hex.charAt(2) + hex.charAt(1) + hex.charAt(0);
             convertHexToRgb(tempHex);
