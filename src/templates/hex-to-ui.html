@@ -11,6 +11,8 @@
                     class="form-control input-lg"
                     type="text"
                     placeholder="HEX"
+                    tooltip="HEX is like this 123123"
+                    maxlength="6"
                     ng-class="{false:'has-warning'}[hexValid]"
                     ng-model="hex"
                     ng-change="hexToRgb(hex)">
@@ -25,6 +27,7 @@
                 class="form-control input-lg"
                 type="text"
                 placeholder="1.0"
+                maxlength="3"
                 ng-class="{false:'has-warning'}[alphaValid]"
                 ng-model="alpha">
             </div>

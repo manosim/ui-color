@@ -7,18 +7,18 @@ app.config(['$routeProvider',
     function($routeProvider) {
 
     $routeProvider
-    .when('/home', {
-        templateUrl: 'templates/home.html',
-        controller: 'HomeCtrl',
+    .when('/hex-to-ui', {
+        templateUrl: 'templates/hex-to-ui.html',
+        controller: 'HexToUICtrl',
     })
 
     .otherwise({
-        redirectTo: '/home'
+        redirectTo: '/hex-to-ui'
     });
 
 }]);
 
-app.controller("HomeCtrl", function($scope) {
+app.controller("HexToUICtrl", function($scope) {
 
     $scope.title = "HEX to UIColor Converter";
 
