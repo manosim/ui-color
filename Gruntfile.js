@@ -2,9 +2,13 @@ module.exports = function(grunt) {
 
   grunt.initConfig({
 
+    clean: {
+        files: ['build/']
+    },
+
     watch: {
       files: 'src/**/*.*',
-      tasks: ['jshint', 'less', 'copy']
+      tasks: ['clean', 'jshint', 'less', 'copy']
     },
 
     jshint: {
@@ -100,6 +104,7 @@ module.exports = function(grunt) {
     }
   });
 
+  grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-less');
@@ -108,7 +113,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-gh-pages');
 
   grunt.registerTask('default', ['build']);
-  grunt.registerTask('build', ['jshint', 'less', 'copy']);
+  grunt.registerTask('build', ['clean', 'jshint', 'less', 'copy']);
   grunt.registerTask('serve', ['build', 'connect:server']);
 
   grunt.registerTask('deploy', 'Publish from Travis', [
