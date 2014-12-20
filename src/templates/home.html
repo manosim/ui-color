@@ -3,7 +3,7 @@
 <div class="row">
     <div class="col-xs-12 col-sm-12 col-lg-offset-2 col-lg-8">
 
-        <div class="col-xs-8 form-group" ng-class="{false:'has-warning'}[hexValid]">
+        <div class="col-sm-12 col-xs-12 col-md-8 form-group" ng-class="{false:'has-warning'}[hexValid]">
             <label for="hex" ng-class="{false:'has-warning'}[hexValid]">HEX Color</label>
             <input
                 id="hex"
@@ -15,7 +15,7 @@
                 ng-change="hexToRgb(hex)">
         </div>
 
-        <div class="col-xs-2 form-group" ng-class="{false:'has-warning'}[alphaValid]">
+        <div class="col-sm-12 col-xs-12 col-md-2 form-group" ng-class="{false:'has-warning'}[alphaValid]">
             <label for="alpha" ng-class="{false:'has-warning'}[alphaValid]">Alpha</label>
             <input
                 id="alpha"
@@ -26,12 +26,11 @@
                 ng-model="alpha">
         </div>
 
-        <div class="col-xs-2 form-group">
-            <div class="color-demo" ng-style="{'background-color': style.bgColor}"></div>
+        <div class="col-sm-12 col-xs-12 col-md-2 form-group" ng-show="hexValid && hex.length">
+            <label>Color</label>
 
-
-            <svg width="100%" height="50" alignment-baseline >
-                <rect width="100%" height="50" style="stroke-width:0;" ng-style="{'fill': style.bgColor}" />
+            <svg width="100%" height="45" preserveAspectRatio="xMaxYMin meet">
+                <rect width="100%" height="100%" rx="5" ry="5" style="stroke-width:0;" ng-style="{'fill': style.bgColor}" />
             </svg>
 
         </div>
