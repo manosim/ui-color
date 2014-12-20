@@ -48,8 +48,56 @@ module.exports = function(grunt) {
           useAvailablePort: true,
         }
       }
+    },
+
+    'gh-pages': {
+      options: {
+        branch: 'gh-pages',
+        base: 'build'
+      },
+      deploy: {
+        options: {
+          user: {
+            name: 'Emmanouil Konstantinidis',
+            email: 'manos@iamemmanouil.com'
+          },
+          repo: 'https://' + process.env.GH_TOKEN + '@github.com/ekonstantinidis/ui-color.git',
+          message: 'publish gh-pages (auto)' + getDeployMessage(),
+          silent: true
+        },
+        src: ['**/*']
+      }
     }
 
+  });
+
+  function getDeployMessage() {
+    var ret = '\n\n';
+    if (process.env.TRAVIS !== 'true') {
+      ret += 'missing env vars for travis-ci';
+      return ret;
+    }
+    ret += 'branch:       ' + process.env.TRAVIS_BRANCH + '\n';
+    ret += 'SHA:          ' + process.env.TRAVIS_COMMIT + '\n';
+    ret += 'range SHA:    ' + process.env.TRAVIS_COMMIT_RANGE + '\n';
+    ret += 'build id:     ' + process.env.TRAVIS_BUILD_ID  + '\n';
+    ret += 'build number: ' + process.env.TRAVIS_BUILD_NUMBER + '\n';
+    return ret;
+  }
+
+  grunt.registerTask('check-deploy', function() {
+    // need this
+    this.requires(['build']);
+
+    // only deploy under these conditions
+    if (process.env.TRAVIS === 'true' && process.env.TRAVIS_SECURE_ENV_VARS === 'true' && process.env.TRAVIS_PULL_REQUEST === 'false') {
+      grunt.log.writeln('executing deployment');
+      // queue deploy
+      grunt.task.run('gh-pages:deploy');
+    }
+    else {
+      grunt.log.writeln('skipped deployment');
+    }
   });
 
   grunt.loadNpmTasks('grunt-contrib-watch');
@@ -57,8 +105,14 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-less');
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-connect');
+  grunt.loadNpmTasks('grunt-gh-pages');
 
   grunt.registerTask('default', ['build']);
   grunt.registerTask('build', ['jshint', 'less', 'copy']);
   grunt.registerTask('serve', ['build', 'connect:server']);
+
+  grunt.registerTask('deploy', 'Publish from Travis', [
+    'build',
+    'check-deploy'
+  ]);
 };
