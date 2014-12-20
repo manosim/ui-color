@@ -1,24 +1,11 @@
-var app = angular.module('uicolor', [
-    'ngRoute',
-    'ui.bootstrap',
-]);
-
-app.config(['$routeProvider',
-    function($routeProvider) {
-
-    $routeProvider
-    .when('/hex-to-ui', {
-        templateUrl: 'templates/hex-to-ui.html',
-        controller: 'HexToUICtrl',
-    })
-
-    .otherwise({
-        redirectTo: '/hex-to-ui'
-    });
-
-}]);
+var app = angular.module('controllers.hextoui', ['ngRoute', 'ui.bootstrap']);
 
 app.controller("HexToUICtrl", function($scope) {
+
+    $scope.isActive = function (viewLocation) {
+        var active = (viewLocation === $location.path());
+        return active;
+    };
 
     $scope.title = "HEX to UIColor Converter";
 

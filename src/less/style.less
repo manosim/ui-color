@@ -1,5 +1,20 @@
 @import "../lib/bootstrap/less/bootstrap.less";
 
+@ThemePrimary: #0072bc;
+
+@LightGray: #a6a6a6;
+
+// Border Radius (Same Corners)
+.border-radius (@radius: 5px) {
+    -webkit-border-radius: @radius;
+    -moz-border-radius:    @radius;
+    border-radius:         @radius;
+
+    -moz-background-clip:    padding;
+    -webkit-background-clip: padding-box;
+    background-clip:         padding-box;
+}
+
 body {
 
 }
@@ -16,11 +31,65 @@ a:hover {
     text-decoration: none;
 }
 
+.navbar {
+    padding: 20px 0;
+
+    .navbar-brand {
+        padding: 0;
+
+        .logo {
+            max-height: 90px;
+
+            -webkit-transition-duration: 0.8s;
+            -moz-transition-duration: 0.8s;
+            -o-transition-duration: 0.8s;
+            transition-duration: 0.8s;
+
+            -webkit-transition-property: -webkit-transform;
+            -moz-transition-property: -moz-transform;
+            -o-transition-property: -o-transform;
+            transition-property: transform;
+
+            overflow:hidden;
+
+            &:hover {
+                -webkit-transform:rotate(360deg);
+                -moz-transform:rotate(360deg);
+                -o-transform:rotate(360deg);
+            }
+        }
+    }
+
+    .nav > li {
+        margin: 20px 15px;
+
+        a {
+            border: 1px solid @LightGray;
+            .border-radius (5px);
+
+            &:hover,
+            &:focus {
+                background: none;
+                border-color: @ThemePrimary;
+                .border-radius (0);
+            }
+
+            &.active {
+                border-color: @ThemePrimary;
+            }
+
+        }
+
+    }
+
+}
+
 /*
 *  HEX to UIColor Page
 */
 
 .hex-to-uicolor {
+    min-height: 340px;
     margin: 30px 0;
 
     .color-demo {
