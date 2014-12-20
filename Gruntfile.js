@@ -3,7 +3,7 @@ module.exports = function(grunt) {
   grunt.initConfig({
 
     clean: {
-        files: ['build/']
+      files: ['build/*', '!build/lib']
     },
 
     watch: {
@@ -67,7 +67,7 @@ module.exports = function(grunt) {
             email: 'manos@iamemmanouil.com'
           },
           repo: 'https://' + process.env.GH_TOKEN + '@github.com/ekonstantinidis/ui-color.git',
-          message: 'Publish UIColor to Github Page (auto)' + getDeployMessage(),
+          message: 'Publish UIColor to Github Pages (Auto)' + getDeployMessage(),
           silent: true
         },
         src: ['**/*']
