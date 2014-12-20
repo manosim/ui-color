@@ -85,6 +85,21 @@ module.exports = function(grunt) {
     return ret;
   }
 
+  grunt.registerTask('check-deploy', function() {
+    // need this
+    this.requires(['build']);
+
+    // only deploy under these conditions
+    if (process.env.TRAVIS === 'true' && process.env.TRAVIS_SECURE_ENV_VARS === 'true' && process.env.TRAVIS_PULL_REQUEST === 'false') {
+      grunt.log.writeln('executing deployment');
+      // queue deploy
+      grunt.task.run('gh-pages:deploy');
+    }
+    else {
+      grunt.log.writeln('skipped deployment');
+    }
+  });
+
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-less');
@@ -95,4 +110,9 @@ module.exports = function(grunt) {
   grunt.registerTask('default', ['build']);
   grunt.registerTask('build', ['jshint', 'less', 'copy']);
   grunt.registerTask('serve', ['build', 'connect:server']);
+
+  grunt.registerTask('deploy', 'Publish from Travis', [
+    'build',
+    'check-deploy'
+  ]);
 };
