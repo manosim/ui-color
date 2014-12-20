@@ -1,0 +1,48 @@
+@import "../lib/bootstrap/less/bootstrap.less";
+
+body {
+
+}
+
+/* Text Selection */
+::selection {
+    text-shadow: none;
+    color: #FFFFFF;
+    /*background: ;*/
+}
+
+::-moz-selection {
+    text-shadow: none;
+    color: #FFFFFF;
+    /*background: ;*/
+}
+
+a {
+    /*color: ;*/
+    -webkit-transition:all .8s;
+    -moz-transition:all .8s;
+    transition:all .8s;
+}
+
+a:hover {
+    /*color: ;*/
+    text-decoration: none;
+}
+
+/* Custom page footer */
+.footer {
+    padding: 25px 0;
+}
+
+/* Smartphones (portrait and landscape) */
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+
+    body {
+        padding: 0;
+    }
+
+    .footer {
+        padding: 10px 0;
+    }
+
+}
