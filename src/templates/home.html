@@ -3,7 +3,7 @@
 <div class="row">
     <div class="col-xs-12 col-sm-12 col-lg-offset-2 col-lg-8">
 
-        <div class="col-sm-12 col-xs-12 col-md-8 form-group" ng-class="{false:'has-warning'}[hexValid]">
+        <div class="col-sm-12 col-xs-12 col-md-9 form-group" ng-class="{false:'has-warning'}[hexValid]">
             <label for="hex" ng-class="{false:'has-warning'}[hexValid]">HEX Color</label>
             <input
                 id="hex"
@@ -15,7 +15,7 @@
                 ng-change="hexToRgb(hex)">
         </div>
 
-        <div class="col-sm-12 col-xs-12 col-md-2 form-group" ng-class="{false:'has-warning'}[alphaValid]">
+        <div class="col-sm-12 col-xs-12 col-md-3 form-group" ng-class="{false:'has-warning'}[alphaValid]">
             <label for="alpha" ng-class="{false:'has-warning'}[alphaValid]">Alpha</label>
             <input
                 id="alpha"
@@ -26,16 +26,11 @@
                 ng-model="alpha">
         </div>
 
-        <div class="col-sm-12 col-xs-12 col-md-2 form-group" ng-show="hexValid && hex.length">
-            <label>Color</label>
-
+        <div class="col-md-12 form-group" ng-show="hexValid && hex.length">
             <svg width="100%" height="45" preserveAspectRatio="xMaxYMin meet">
                 <rect width="100%" height="100%" rx="5" ry="5" style="stroke-width:0;" ng-style="{'fill': style.bgColor}" />
             </svg>
-
         </div>
-
-        <hr ng-if="hex.length">
 
         <div class="col-xs-12" ng-show="hex.length">
             <h3 ng-show="hex.length">Objective-C</h3>
