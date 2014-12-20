@@ -1,8 +1,29 @@
 <h3>{{ title }}</h3>
 
-<form role="form">
-    <div class="form-group">
-        <label for="hex">HEX Color</label>
-        <input id="hex" class="form-control input-lg" type="text" placeholder=".input-lg">
+<div class="row">
+    <div class="col-xs-12 col-sm-12 col-lg-offset-2 col-lg-8">
+
+        <div class="form-group" ng-class="{false:'has-warning'}[hexValid]">
+            <label for="hex" ng-class="{false:'has-warning'}[hexValid]">HEX Color</label>
+            <input
+                id="hex"
+                class="form-control input-lg"
+                type="text"
+                placeholder="HEX"
+                ng-class="{false:'has-warning'}[hexValid]"
+                ng-model="hex"
+                ng-change="hexToRgb(hex)">
+        </div>
+
+        <hr />
+
+        <h3>Objective-C</h3>
+        <h4 ng-show="hexValid && hex.length">[UIColor colorWithRed:{{uiColor.r}} green:{{uiColor.g}} blue:{{uiColor.b}} alpha:1.0];</h4>
+        <div ng-show="!hexValid && !hex.length" class="alert alert-warning" role="alert">HEX not valid</div>
+
+        <h3>Swift</h3>
+        <h4 ng-show="hexValid && hex.length">UIColor(red:{{uiColor.r}}, green:{{uiColor.g}}, blue:{{uiColor.b}}, alpha:1.0)</h4>
+        <div ng-show="!hexValid && !hex.length" class="alert alert-warning" role="alert">HEX not valid</div>
+
     </div>
-</form>
+</div>
