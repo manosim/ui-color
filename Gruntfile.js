@@ -20,10 +20,11 @@ module.exports = function(grunt) {
     copy: {
       main: {
         files: [
-          {expand: true, cwd: "src/templates/", src: '**', dest: 'build/templates/'},
+          {expand: true, cwd: "deploy/", src: 'CNAME', dest: 'build/'},
           {expand: true, cwd: "src/", src: 'index.html', dest: 'build/'},
           {expand: true, cwd: "src/js/", src: '**', dest: 'build/js/'},
           {expand: true, cwd: "src/images/", src: '**', dest: 'build/images/'},
+          {expand: true, cwd: "src/templates/", src: '**', dest: 'build/templates/'},
           {expand: true, cwd: "src/lib/font-awesome/css/", src: '**', dest: 'build/css/'},
           {expand: true, cwd: "src/lib/font-awesome/fonts/", src: '**', dest: 'build/fonts/'},
           {expand: true, cwd: "src/lib/bootstrap/fonts/", src: '**', dest: 'build/fonts/'},
