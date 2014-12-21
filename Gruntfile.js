@@ -25,6 +25,10 @@ module.exports = function(grunt) {
           {expand: true, cwd: "src/js/", src: '**', dest: 'build/js/'},
           {expand: true, cwd: "src/images/", src: '**', dest: 'build/images/'},
           {expand: true, cwd: "src/templates/", src: '**', dest: 'build/templates/'},
+
+          {expand: true, cwd: "src/lib/ng-clip/", src: '*.min.js', dest: 'build/lib/'},
+          {expand: true, cwd: "src/lib/ng-clip/", src: '*.swf', dest: 'build/images/'},
+
           {expand: true, cwd: "src/lib/angular-bootstrap-colorpicker/img/", src: '**', dest: 'build/images/colorpicker/'},
           {expand: true, cwd: "src/lib/angular-bootstrap-colorpicker/js/", src: '**', dest: 'build/lib/'},
           {expand: true, cwd: "src/lib/font-awesome/css/", src: '**', dest: 'build/css/'},
