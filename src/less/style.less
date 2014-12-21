@@ -79,6 +79,7 @@ a:hover {
 .colorpicker {
     .dropdown-menu {
         background-color: lighten(@LightGray, 20%);
+        padding: 8px;
 
         &::before,
         &::after {
@@ -89,11 +90,11 @@ a:hover {
     colorpicker-saturation,
     colorpicker-hue {
         .border-radius ();
+        border: 1px solid lighten(@LightGray, 0%);
     }
 
     colorpicker-preview {
-        .border-radius ();
-        height: 15px;
+        height: 0;
     }
 
     .close {
