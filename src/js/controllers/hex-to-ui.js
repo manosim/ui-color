@@ -1,6 +1,6 @@
 var app = angular.module('controllers.hextoui', ['ngRoute', 'ui.bootstrap', 'colorpicker.module']);
 
-app.controller("HexToUICtrl", function($scope, $filter) {
+app.controller("HexToUICtrl", function(appConfig, $scope, $filter, $rootScope) {
 
     $scope.isActive = function (viewLocation) {
         var active = (viewLocation === $location.path());
@@ -27,17 +27,17 @@ app.controller("HexToUICtrl", function($scope, $filter) {
             var tempHex = "#" + hex;
             $scope.style =  { bgColor: tempHex };
 
+            $rootScope.$broadcast('ColorChanged', tempHex);
+
             $scope.hexValid = true;
             $scope.uiColor = {
                 "r": r,
                 "g": g,
                 "b": b,
             };
-            console.log(r);
-            console.log(g);
-            console.log(b);
+            console.log(r + " " + g + " " + b);
         } else {
-            $scope.hexBgColor = {'background-color':'#FFF'};
+            $rootScope.$broadcast('ColorChanged', appConfig.themePrimary);
             $scope.hexValid = false;
             console.log("Invalid.");
         }
@@ -54,6 +54,7 @@ app.controller("HexToUICtrl", function($scope, $filter) {
             convertHexToRgb(hex);
         } else {
             $scope.hexValid = false;
+            $rootScope.$broadcast('ColorChanged', appConfig.themePrimary);
         }
     };
 
@@ -87,9 +88,10 @@ app.controller("HexToUICtrl", function($scope, $filter) {
 
     $scope.$watch('hex', function(hex, oldval){
         if (hex) {
-            console.log("---------");
             $scope.hexToRgb(hex);
             updateCopyText();
+        } else {
+            $rootScope.$broadcast('ColorChanged', appConfig.themePrimary);
         }
     }, true);
 

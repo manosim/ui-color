@@ -100,55 +100,36 @@ a:hover {
     }
 }
 
-.navbar {
+.header {
     padding: 20px 0;
 
-    .navbar-logo {
-        padding: 0;
+    .logo {
+        border-radius: 50%;
 
-        .logo {
-            max-height: 90px;
+        width: 150px;
+        height: 150px;
 
-            -webkit-transition-duration: 0.8s;
-            -moz-transition-duration: 0.8s;
-            -o-transition-duration: 0.8s;
-            transition-duration: 0.8s;
+        display: block;
+        margin: 0 auto;
+        padding: 2px;
 
-            -webkit-transition-property: -webkit-transform;
-            -moz-transition-property: -moz-transform;
-            -o-transition-property: -o-transform;
-            transition-property: transform;
+        -webkit-transition-duration: 0.8s;
+        -moz-transition-duration: 0.8s;
+        -o-transition-duration: 0.8s;
+        transition-duration: 0.8s;
 
-            overflow:hidden;
+        -webkit-transition-property: -webkit-transform;
+        -moz-transition-property: -moz-transform;
+        -o-transition-property: -o-transform;
+        transition-property: transform;
 
-            &:hover {
-                -webkit-transform:rotate(360deg);
-                -moz-transform:rotate(360deg);
-                -o-transform:rotate(360deg);
-            }
+        overflow:hidden;
+
+        &:hover {
+            -webkit-transform:rotate(360deg);
+            -moz-transform:rotate(360deg);
+            -o-transform:rotate(360deg);
         }
-    }
-
-    .nav > li {
-        margin: 20px 15px;
-
-        a {
-            border: 1px solid @LightGray;
-            .border-radius (10px);
-
-            &:hover,
-            &:focus {
-                background: none;
-                border-color: @ThemePrimary;
-                .border-radius (0);
-            }
-
-            &.active {
-                border-color: @ThemePrimary;
-            }
-
-        }
-
     }
 
 }

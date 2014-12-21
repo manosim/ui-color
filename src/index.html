@@ -25,17 +25,9 @@
 
             <!-- Header -->
             <div class="row">
-                <div class="col-xs-12 col-sm-12 col-md-offset-3 col-md-6 navbar" ng-controller="HeaderCtrl">
+                <div class="col-xs-12 col-sm-12 col-md-offset-3 col-md-6 header" ng-controller="HeaderCtrl">
 
-                    <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-                        <a class="navbar-logo" href="#/hex-to-ui"><img src="../images/logo.png" class="logo img-responsive" alt="UIColor"></a>
-                    </div>
-
-                    <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
-                        <ul class="nav navbar-nav navbar-right">
-                            <li><a ng-class="{ active: isActive('/hex-to-ui') }" href="#/hex-to-ui">HEX to UIColor</a></li>
-                        </ul>
-                    </div>
+                    <div ng-include="'../images/logo.svg'"></div>
 
                 </div>
             </div>

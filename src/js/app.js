@@ -6,6 +6,15 @@ var app = angular.module('uicolor', [
     'controllers',
 ]);
 
+
+app.constant('appConfig', {
+
+  // Productions
+  themePrimary: "#0072bc",
+
+});
+
+
 app.run(function($rootScope, $route, $location) {
 
     $rootScope.$on('$locationChangeSuccess', function() {
