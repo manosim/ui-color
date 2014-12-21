@@ -7,4 +7,14 @@ app.controller("HeaderCtrl", function($scope, $location) {
         return active;
     };
 
+    $scope.selectedColor = "#0072bc";
+
+    $scope.$on('ColorChanged', function(event, args) {
+        if (args != "#ffffff") {
+            $scope.selectedColor = args;
+        } else {
+            $scope.selectedColor = "#0072bc";
+        }
+    });
+
 });
