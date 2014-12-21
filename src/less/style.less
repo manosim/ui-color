@@ -40,6 +40,14 @@
     background-clip:         padding-box;
 }
 
+// Opacity
+.opacity (@opacity: 0.5) {
+    -webkit-opacity:    @opacity;
+    -moz-opacity:       @opacity;
+    opacity:        @opacity;
+}
+
+
 body {
 
 }
@@ -66,6 +74,38 @@ a:hover {
     color: @White;
     background-color: @ThemePrimary;
     border-color: @ThemePrimary;
+}
+
+.colorpicker {
+    .dropdown-menu {
+        background-color: lighten(@LightGray, 20%);
+
+        &::before,
+        &::after {
+            border-bottom: 6px solid lighten(@LightGray, 20%);
+        }
+    }
+
+    colorpicker-saturation,
+    colorpicker-hue {
+        .border-radius ();
+    }
+
+    colorpicker-preview {
+        .border-radius ();
+        height: 15px;
+    }
+
+    .close {
+        .opacity (1);
+        color: darken(@LightGray, 20%);
+    }
+
+    ::before,
+    .colorpicker-position-bottom .dropdown-menu::after {
+        border-bottom: 6px solid lighten(@LightGray, 20%);
+    }
+
 }
 
 .code-block {
