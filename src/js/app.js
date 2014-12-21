@@ -4,6 +4,16 @@ var app = angular.module('uicolor', [
     'controllers',
 ]);
 
+app.run(function($rootScope, $route, $location) {
+
+    $rootScope.$on('$locationChangeSuccess', function() {
+        if (typeof ga !== 'undefined' && $route.current.$$route){
+            ga('send', 'event', 'page', 'view', $route.current.$$route.controller);
+        }
+    });
+
+});
+
 app.config(['$routeProvider',
     function($routeProvider) {
 
