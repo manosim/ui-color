@@ -12,6 +12,7 @@ app.controller("HexToUICtrl", function($scope, $filter) {
     // Roll Tide
     $scope.hexValid = true;
     $scope.alphaValid = true;
+    $scope.alphaInput = "1.0";
     $scope.alpha = "1.0";
 
 
@@ -57,20 +58,30 @@ app.controller("HexToUICtrl", function($scope, $filter) {
     };
 
     $scope.alphaChanged = function(alpha) {
-        // alpha = $filter('number')(alpha, 1);
+
         if (!isNaN(alpha)) {
             if ((alpha >=0) && (alpha <=1)) {
                 console.log("Yes");
                 $scope.alphaValid = true;
-                $scope.alpha = alpha;
+
+                if ((alpha == "1") || (alpha == "0")) {
+                    $scope.alpha = alpha + ".0";
+                } else {
+                    $scope.alpha = alpha;
+                }
             } else {
                 console.log("ERROR");
                 $scope.alpha = "1.0";
                 $scope.alphaValid = false;
             }
         } else {
+            console.log("ERROR");
             $scope.alpha = "1.0";
             $scope.alphaValid = false;
+        }
+
+        if (!alpha.length) {
+            $scope.alpha = "1.0";
         }
 
 
