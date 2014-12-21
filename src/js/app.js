@@ -1,6 +1,7 @@
 var app = angular.module('uicolor', [
     'ngRoute',
     'ui.bootstrap',
+    'ngClipboard',
     'colorpicker.module',
     'controllers',
 ]);
@@ -28,4 +29,8 @@ app.config(['$routeProvider',
         redirectTo: '/hex-to-ui'
     });
 
+}]);
+
+app.config(['ngClipProvider', function(ngClipProvider) {
+    ngClipProvider.setPath("../images/ZeroClipboard.swf");
 }]);

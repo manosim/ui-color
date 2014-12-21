@@ -82,13 +82,21 @@ app.controller("HexToUICtrl", function($scope, $filter) {
         if (!alpha.length) {
             $scope.alpha = "1.0";
         }
+        updateCopyText();
     };
 
     $scope.$watch('hex', function(hex, oldval){
         if (hex) {
             console.log("---------");
             $scope.hexToRgb(hex);
+            updateCopyText();
         }
     }, true);
+
+    function updateCopyText() {
+        $scope.copyObjectiveC = "[UIColor colorWithRed:" + $scope.uiColor.r + " green:" + $scope.uiColor.g + " blue:" + $scope.uiColor.b + " alpha:" + $scope.alpha + "];";
+        $scope.copySwift = "UIColor(red:" + $scope.uiColor.r + ", green:" + $scope.uiColor.g + ", blue:" + $scope.uiColor.b + ", alpha:" + $scope.alpha + ")";
+    }
+
 
 });

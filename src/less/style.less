@@ -2,6 +2,7 @@
 @import "../lib/angular-bootstrap-colorpicker/less/colorpicker.less";
 
 @ThemePrimary: #0072bc;
+@CodeBg: #f7f7f9;
 
 @White: #FFF;
 @LightGray: #a6a6a6;
@@ -11,6 +12,28 @@
     -webkit-border-radius: @radius;
     -moz-border-radius:    @radius;
     border-radius:         @radius;
+
+    -moz-background-clip:    padding;
+    -webkit-background-clip: padding-box;
+    background-clip:         padding-box;
+}
+
+// Border Radius (Different Corners)
+.border-radiuses (@topright: 0, @bottomright: 0, @bottomleft: 0, @topleft: 0) {
+    -webkit-border-top-right-radius:    @topright;
+    -webkit-border-bottom-right-radius: @bottomright;
+    -webkit-border-bottom-left-radius:  @bottomleft;
+    -webkit-border-top-left-radius:     @topleft;
+
+    -moz-border-radius-topright:        @topright;
+    -moz-border-radius-bottomright:     @bottomright;
+    -moz-border-radius-bottomleft:      @bottomleft;
+    -moz-border-radius-topleft:         @topleft;
+
+    border-top-right-radius:            @topright;
+    border-bottom-right-radius:         @bottomright;
+    border-bottom-left-radius:          @bottomleft;
+    border-top-left-radius:             @topleft;
 
     -moz-background-clip:    padding;
     -webkit-background-clip: padding-box;
@@ -43,6 +66,38 @@ a:hover {
     color: @White;
     background-color: @ThemePrimary;
     border-color: @ThemePrimary;
+}
+
+.code-block {
+    font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+    background-color: @CodeBg;
+    .border-radius ();
+    margin: 20px 0;
+    position: relative;
+
+    span {
+        display: block;
+        padding: 20px 50px 20px 20px;
+        font-size: 15px;
+        font-weight: bold;
+    }
+
+    button {
+        .border-radiuses (5px, 0, 0, 0);
+        border: 0;
+        background-color: darken(@LightGray, 10%);
+        color: @White;
+        position: absolute;
+        top: 0;
+        right: 0;
+
+        &:hover,
+        &:active,
+        &:focus {
+            background-color: darken(@LightGray, 20%);
+            color: @White;
+        }
+    }
 }
 
 .navbar {
