@@ -17,7 +17,6 @@ app.controller("HexToUICtrl", function($scope, $filter) {
 
 
     function convertHexToRgb(hex) {
-        hex = hex.replace('#','');
         var r = (parseInt(hex.substring(0,2), 16)/255).toFixed(2);
         var g = (parseInt(hex.substring(2,4), 16)/255).toFixed(2);
         var b = (parseInt(hex.substring(4,6), 16)/255).toFixed(2);
@@ -47,11 +46,12 @@ app.controller("HexToUICtrl", function($scope, $filter) {
     }
 
     $scope.hexToRgb = function(hex) {
-        if ($scope.hex.length == 3) {
+        hex = hex.replace('#','');
+        if (hex.length == 3) {
             var tempHex = hex + hex.charAt(2) + hex.charAt(1) + hex.charAt(0);
             convertHexToRgb(tempHex);
-        } else if ($scope.hex.length == 6) {
-            convertHexToRgb($scope.hex);
+        } else if (hex.length == 6) {
+            convertHexToRgb(hex);
         } else {
             $scope.hexValid = false;
         }

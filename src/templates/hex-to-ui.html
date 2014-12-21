@@ -5,12 +5,12 @@
 
         <div class="col-sm-12 col-xs-12 col-md-8 form-group" ng-class="{false:'has-warning'}[hexValid]">
             <div class="input-group">
-                <div class="input-group-addon">HEX</div>
+                <div class="input-group-addon">HEX #</div>
                 <input
                     class="form-control input-lg"
                     type="text"
-                    placeholder="HEX"
-                    maxlength="6"
+                    placeholder="eg. 0072BC"
+                    maxlength="7"
                     ng-class="{false:'has-warning'}[hexValid]"
                     ng-model="hex"
                     ng-change="hexToRgb(hex)">
