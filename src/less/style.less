@@ -31,6 +31,12 @@ a:hover {
     text-decoration: none;
 }
 
+.title {
+    color: @ThemePrimary;
+    text-align: center;
+    font-weight: 300;
+}
+
 .navbar {
     padding: 20px 0;
 
@@ -103,13 +109,23 @@ a:hover {
 
 }
 
-/* Custom page footer */
+/*
+*  Footer
+*/
+
 .footer {
     padding: 25px 0;
+
+    .social {
+        padding: 10px 0;
+
+        .fa {
+            margin: 0 5px;
+            font-size: 26px;
+        }
+    }
 }
 
 /* @group Import Responsive LESS */
-
 @import "responsive.less";
-
 /* @end Import Responsive LESS */
