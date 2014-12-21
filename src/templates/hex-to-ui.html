@@ -44,7 +44,7 @@
             <h3 ng-show="hex.length">Objective-C</h3>
 
             <div ng-show="hexValid" class="code-block">
-                [UIColor colorWithRed:{{uiColor.r}} green:{{uiColor.g}} blue:{{uiColor.b}} alpha:{{alpha}}]; <button type="button" class="btn btn-0default" clip-copy="copyObjectiveC"><i class="fa fa-files-o"></i></button>
+                <span>[UIColor colorWithRed:{{uiColor.r}} green:{{uiColor.g}} blue:{{uiColor.b}} alpha:{{alpha}}];</span><button type="button" class="btn btn-0default" clip-copy="copyObjectiveC"><i class="fa fa-files-o"></i></button>
             </div>
 
             <div ng-show="!hexValid" class="alert alert-warning" role="alert">HEX not valid</div>

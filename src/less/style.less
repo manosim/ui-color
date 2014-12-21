@@ -72,29 +72,32 @@ a:hover {
     font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
     background-color: @CodeBg;
     .border-radius ();
+    margin: 20px 0;
+    position: relative;
 
-        margin: 20px 20px;
+    span {
+        display: block;
+        padding: 20px 50px 20px 20px;
         font-size: 15px;
         font-weight: bold;
-        position: relative;
+    }
 
+    button {
+        .border-radiuses (5px, 0, 0, 0);
+        border: 0;
+        background-color: darken(@LightGray, 10%);
+        color: @White;
+        position: absolute;
+        top: 0;
+        right: 0;
 
-        button {
-            .border-radiuses (5px, 0, 0, 0);
-            border: 0;
-            background-color: darken(@LightGray, 10%);
+        &:hover,
+        &:active,
+        &:focus {
+            background-color: darken(@LightGray, 20%);
             color: @White;
-            position: absolute;
-            top: 0;
-            right: 0;
-
-            &:hover,
-            &:active,
-            &:focus {
-                background-color: darken(@LightGray, 20%);
-                color: @White;
-            }
         }
+    }
 }
 
 .navbar {
