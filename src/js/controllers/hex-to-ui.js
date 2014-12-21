@@ -1,6 +1,6 @@
 var app = angular.module('controllers.hextoui', ['ngRoute', 'ui.bootstrap']);
 
-app.controller("HexToUICtrl", function($scope) {
+app.controller("HexToUICtrl", function($scope, $filter) {
 
     $scope.isActive = function (viewLocation) {
         var active = (viewLocation === $location.path());
@@ -11,6 +11,11 @@ app.controller("HexToUICtrl", function($scope) {
 
     // Roll Tide
     $scope.hexValid = true;
+    $scope.alphaValid = true;
+    $scope.alphaInput = "1.0";
+    $scope.alpha = "1.0";
+
+
     function convertHexToRgb(hex) {
         hex = hex.replace('#','');
         var r = (parseInt(hex.substring(0,2), 16)/255).toFixed(2);
@@ -50,6 +55,36 @@ app.controller("HexToUICtrl", function($scope) {
         } else {
             $scope.hexValid = false;
         }
+    };
+
+    $scope.alphaChanged = function(alpha) {
+
+        if (!isNaN(alpha)) {
+            if ((alpha >=0) && (alpha <=1)) {
+                console.log("Yes");
+                $scope.alphaValid = true;
+
+                if ((alpha == "1") || (alpha == "0")) {
+                    $scope.alpha = alpha + ".0";
+                } else {
+                    $scope.alpha = alpha;
+                }
+            } else {
+                console.log("ERROR");
+                $scope.alpha = "1.0";
+                $scope.alphaValid = false;
+            }
+        } else {
+            console.log("ERROR");
+            $scope.alpha = "1.0";
+            $scope.alphaValid = false;
+        }
+
+        if (!alpha.length) {
+            $scope.alpha = "1.0";
+        }
+
+
     };
 
 });

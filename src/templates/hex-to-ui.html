@@ -7,7 +7,6 @@
             <div class="input-group">
                 <div class="input-group-addon">HEX</div>
                 <input
-                    id="hex"
                     class="form-control input-lg"
                     type="text"
                     placeholder="HEX"
@@ -18,17 +17,17 @@
             </div>
         </div>
 
-        <div class="col-sm-12 col-xs-12 col-md-4 form-group" ng-class="{false:'has-warning'}[alphaValid]">
+        <div class="col-sm-12 col-xs-12 col-md-4 form-group" ng-class="{false:'has-error'}[alphaValid]">
             <div class="input-group">
                 <div class="input-group-addon">Alpha</div>
                 <input
-                    id="alpha"
                     class="form-control input-lg"
                     type="text"
                     placeholder="1.0"
                     maxlength="3"
                     ng-class="{false:'has-warning'}[alphaValid]"
-                    ng-model="alpha">
+                    ng-model="alphaInput"
+                    ng-change="alphaChanged(alphaInput)">
             </div>
         </div>
 
@@ -40,11 +39,11 @@
 
         <div class="col-xs-12" ng-show="hex.length">
             <h3 ng-show="hex.length">Objective-C</h3>
-            <h4 ng-show="hexValid">[UIColor colorWithRed:{{uiColor.r}} green:{{uiColor.g}} blue:{{uiColor.b}} alpha:1.0];</h4>
+            <h4 ng-show="hexValid">[UIColor colorWithRed:{{uiColor.r}} green:{{uiColor.g}} blue:{{uiColor.b}} alpha:{{alpha}}];</h4>
             <div ng-show="!hexValid" class="alert alert-warning" role="alert">HEX not valid</div>
 
             <h3 ng-show="hex.length">Swift</h3>
-            <h4 ng-show="hexValid">UIColor(red:{{uiColor.r}}, green:{{uiColor.g}}, blue:{{uiColor.b}}, alpha:1.0)</h4>
+            <h4 ng-show="hexValid">UIColor(red:{{uiColor.r}}, green:{{uiColor.g}}, blue:{{uiColor.b}}, alpha:{{alpha}})</h4>
             <div ng-show="!hexValid" class="alert alert-warning" role="alert">HEX not valid</div>
         </div>
 
