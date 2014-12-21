@@ -3,7 +3,7 @@
 <div class="row hex-to-uicolor">
     <div class="col-xs-12 col-sm-12 col-md-offset-1 col-md-10">
 
-        <div class="col-sm-12 col-xs-12 col-md-8 form-group" ng-class="{false:'has-warning'}[hexValid]">
+        <div class="col-sm-12 col-xs-12 col-md-6 form-group" ng-class="{false:'has-warning'}[hexValid]">
             <div class="input-group">
                 <div class="input-group-addon">HEX #</div>
                 <input
@@ -12,9 +12,12 @@
                     placeholder="eg. 0072BC"
                     maxlength="7"
                     ng-class="{false:'has-warning'}[hexValid]"
-                    ng-model="hex"
-                    ng-change="hexToRgb(hex)">
+                    ng-model="hex">
             </div>
+        </div>
+
+        <div class="col-sm-12 col-xs-12 col-md-2 form-group" ng-class="{false:'has-warning'}[hexValid]">
+            <button class="btn btn-primary btn-lg" colorpicker="hex" type="button" colorpicker-position="bottom" ng-model="hex"><i class="fa fa-eyedropper"></i></button>
         </div>
 
         <div class="col-sm-12 col-xs-12 col-md-4 form-group" ng-class="{false:'has-error'}[alphaValid]">

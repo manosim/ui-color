@@ -1,6 +1,7 @@
 var app = angular.module('uicolor', [
     'ngRoute',
     'ui.bootstrap',
+    'colorpicker.module',
     'controllers',
 ]);
 

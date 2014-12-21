@@ -1,4 +1,4 @@
-var app = angular.module('controllers.hextoui', ['ngRoute', 'ui.bootstrap']);
+var app = angular.module('controllers.hextoui', ['ngRoute', 'ui.bootstrap', 'colorpicker.module']);
 
 app.controller("HexToUICtrl", function($scope, $filter) {
 
@@ -58,7 +58,6 @@ app.controller("HexToUICtrl", function($scope, $filter) {
     };
 
     $scope.alphaChanged = function(alpha) {
-
         if (!isNaN(alpha)) {
             if ((alpha >=0) && (alpha <=1)) {
                 console.log("Yes");
@@ -83,8 +82,13 @@ app.controller("HexToUICtrl", function($scope, $filter) {
         if (!alpha.length) {
             $scope.alpha = "1.0";
         }
-
-
     };
+
+    $scope.$watch('hex', function(hex, oldval){
+        if (hex) {
+            console.log("---------");
+            $scope.hexToRgb(hex);
+        }
+    }, true);
 
 });
