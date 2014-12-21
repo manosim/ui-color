@@ -1,7 +1,9 @@
 @import "../lib/bootstrap/less/bootstrap.less";
+@import "../lib/angular-bootstrap-colorpicker/less/colorpicker.less";
 
 @ThemePrimary: #0072bc;
 
+@White: #FFF;
 @LightGray: #a6a6a6;
 
 // Border Radius (Same Corners)
@@ -35,6 +37,12 @@ a:hover {
     color: @ThemePrimary;
     text-align: center;
     font-weight: 300;
+}
+
+.input-group-addon {
+    color: @White;
+    background-color: @ThemePrimary;
+    border-color: @ThemePrimary;
 }
 
 .navbar {

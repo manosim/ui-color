@@ -3,7 +3,7 @@
 <div class="row hex-to-uicolor">
     <div class="col-xs-12 col-sm-12 col-md-offset-1 col-md-10">
 
-        <div class="col-sm-12 col-xs-12 col-md-8 form-group" ng-class="{false:'has-warning'}[hexValid]">
+        <div class="col-sm-12 col-xs-12 col-md-7 form-group" ng-class="{false:'has-warning'}[hexValid]">
             <div class="input-group">
                 <div class="input-group-addon">HEX #</div>
                 <input
@@ -12,12 +12,11 @@
                     placeholder="eg. 0072BC"
                     maxlength="7"
                     ng-class="{false:'has-warning'}[hexValid]"
-                    ng-model="hex"
-                    ng-change="hexToRgb(hex)">
+                    ng-model="hex">
             </div>
         </div>
 
-        <div class="col-sm-12 col-xs-12 col-md-4 form-group" ng-class="{false:'has-error'}[alphaValid]">
+        <div class="col-xs-12 col-sm-12 col-md-4 form-group" ng-class="{false:'has-error'}[alphaValid]">
             <div class="input-group">
                 <div class="input-group-addon">Alpha</div>
                 <input
@@ -31,7 +30,11 @@
             </div>
         </div>
 
-        <div class="col-md-12 form-group color-demo" ng-show="hexValid && hex.length">
+        <div class="hidden-xs hidden-sm col-md-1 form-group text-right">
+            <button class="btn btn-primary btn-lg" colorpicker="hex" type="button" colorpicker-position="bottom" ng-model="hex"><i class="fa fa-eyedropper"></i></button>
+        </div>
+
+        <div class="col-md-12 col-lg-12 form-group color-demo" ng-show="hexValid && hex.length">
             <svg width="100%" height="45" preserveAspectRatio="xMaxYMin meet">
                 <rect width="100%" height="100%" rx="5" ry="5" style="stroke-width:0;" ng-style="{'fill': style.bgColor}" />
             </svg>
