@@ -41,22 +41,21 @@
         </div>
 
         <div class="col-xs-12" ng-show="hex.length">
-            <h3 ng-show="hex.length">Objective-C</h3>
+            <div ng-show="!hexValid" class="alert alert-warning" role="alert">HEX not valid</div>
 
             <!-- Objective C -->
             <div ng-show="hexValid" class="code-block">
                 <span>[UIColor colorWithRed:{{uiColor.r}} green:{{uiColor.g}} blue:{{uiColor.b}} alpha:{{alpha}}];</span>
                 <button type="button" class="btn btn-default hidden-xs hidden-sm" clip-copy="copyObjectiveC"><i class="fa fa-files-o"></i></button>
+                <h3 class="language">Objective-C</h3>
             </div>
-            <div ng-show="!hexValid" class="alert alert-warning" role="alert">HEX not valid</div>
 
             <!-- Swift -->
-            <h3 ng-show="hex.length">Swift</h3>
             <div ng-show="hexValid" class="code-block">
-                <span>UIColor(red:{{uiColor.r}}, green:{{uiColor.g}}, blue:{{uiColor.b}}, alpha:{{alpha}})
+                <span>UIColor(red:{{uiColor.r}}, green:{{uiColor.g}}, blue:{{uiColor.b}}, alpha:{{alpha}})</span>
                 <button type="button" class="btn btn-default hidden-xs hidden-sm" clip-copy="copySwift"><i class="fa fa-files-o"></i></button>
+                <h3 class="language">Swift</h3>
             </div>
-            <div ng-show="!hexValid" class="alert alert-warning" role="alert">HEX not valid</div>
 
         </div>
 
