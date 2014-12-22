@@ -53,6 +53,7 @@ module.exports = function(grunt) {
             'src/js/controllers.js',
             'src/js/controllers/header.js',
             'src/js/controllers/hex-to-ui.js',
+            'src/js/controllers/rgb-to-ui.js',
           ]
         }
       }
