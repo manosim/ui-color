@@ -8,7 +8,7 @@ module.exports = function(grunt) {
 
     watch: {
       files: 'src/**/*.*',
-      tasks: ['clean', 'jshint', 'copy', 'less']
+      tasks: ['clean', 'jshint', 'uglify', 'copy', 'less']
     },
 
     jshint: {
@@ -22,7 +22,6 @@ module.exports = function(grunt) {
         files: [
           {expand: true, cwd: "deploy/", src: 'CNAME', dest: 'build/'},
           {expand: true, cwd: "src/", src: 'index.html', dest: 'build/'},
-          {expand: true, cwd: "src/js/", src: '**', dest: 'build/js/'},
           {expand: true, cwd: "src/images/", src: '**', dest: 'build/images/'},
           {expand: true, cwd: "src/templates/", src: '**', dest: 'build/templates/'},
 
@@ -37,6 +36,25 @@ module.exports = function(grunt) {
           {expand: true, cwd: "src/lib/angular/", src: '**', dest: 'build/lib/'},
           {expand: true, cwd: "src/lib/ui-bootstrap/", src: '**', dest: 'build/lib/'},
         ]
+      }
+    },
+
+    uglify: {
+      options: {
+        compress: {
+          drop_console: true
+        },
+        mangle: false
+      },
+      main: {
+        files: {
+          'build/js/main.min.js': [
+            'src/js/app.js',
+            'src/js/controllers.js',
+            'src/js/controllers/header.js',
+            'src/js/controllers/hex-to-ui.js',
+          ]
+        }
       }
     },
 
@@ -115,12 +133,13 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-less');
+  grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-connect');
   grunt.loadNpmTasks('grunt-gh-pages');
 
   grunt.registerTask('default', ['build']);
-  grunt.registerTask('build', ['clean', 'jshint', 'less', 'copy']);
+  grunt.registerTask('build', ['clean', 'jshint', 'uglify', 'less', 'copy']);
   grunt.registerTask('serve', ['build', 'connect:server']);
 
   grunt.registerTask('deploy', 'Publish from Travis', [
