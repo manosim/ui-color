@@ -2,11 +2,6 @@ var app = angular.module('controllers.hextoui', ['ngRoute', 'ui.bootstrap', 'col
 
 app.controller("HexToUICtrl", function(appConfig, $scope, $filter, $rootScope) {
 
-    $scope.isActive = function (viewLocation) {
-        var active = (viewLocation === $location.path());
-        return active;
-    };
-
     $scope.title = "HEX to UIColor Converter";
 
     // Roll Tide
