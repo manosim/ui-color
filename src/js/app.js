@@ -33,6 +33,10 @@ app.config(['$routeProvider',
         templateUrl: 'templates/hex-to-ui.html',
         controller: 'HexToUICtrl',
     })
+    .when('/rgb-to-ui', {
+        templateUrl: 'templates/rgb-to-ui.html',
+        controller: 'RgbToUICtrl',
+    })
 
     .otherwise({
         redirectTo: '/hex-to-ui'

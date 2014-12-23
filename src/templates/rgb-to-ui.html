@@ -1,0 +1,75 @@
+<h2 class="title">{{ title }}</h2>
+
+<div class="row converter rgb-to-uicolor">
+    <div class="col-xs-12 col-sm-12 col-md-offset-1 col-md-10">
+
+        <div class="col-sm-12 col-xs-12 col-md-3 form-group" ng-class="{false:'has-warning'}[rgbValid]">
+            <div class="input-group">
+                <div class="input-group-addon">R</div>
+                <input
+                    class="form-control input-lg"
+                    type="text"
+                    placeholder="125"
+                    maxlength="3"
+                    ng-class="{false:'has-warning'}[rgbValid]"
+                    ng-model="color.r">
+            </div>
+        </div>
+
+        <div class="col-sm-12 col-xs-12 col-md-3 form-group" ng-class="{false:'has-warning'}[rgbValid]">
+            <div class="input-group">
+                <div class="input-group-addon">G</div>
+                <input
+                    class="form-control input-lg"
+                    type="text"
+                    placeholder="125"
+                    maxlength="3"
+                    ng-class="{false:'has-warning'}[rgbValid]"
+                    ng-model="color.g">
+            </div>
+        </div>
+
+        <div class="col-sm-12 col-xs-12 col-md-3 form-group" ng-class="{false:'has-warning'}[rgbValid]">
+            <div class="input-group">
+                <div class="input-group-addon">B</div>
+                <input
+                    class="form-control input-lg"
+                    type="text"
+                    placeholder="125"
+                    maxlength="3"
+                    ng-class="{false:'has-warning'}[rgbValid]"
+                    ng-model="color.b">
+            </div>
+        </div>
+
+        <div class="hidden-xs hidden-sm col-md-3 form-group text-right">
+            <button class="btn btn-block btn-lg btn-primary" colorpicker="rgb" type="button" colorpicker-position="bottom" ng-model="rgb"><i class="fa fa-eyedropper"></i></button>
+        </div>
+
+        <div class="col-md-12 col-lg-12 form-group color-demo" ng-show="rgbValid && color.r && color.g && color.b">
+            <svg width="100%" height="45" preserveAspectRatio="xMaxYMin meet">
+                <rect width="100%" height="100%" rx="5" ry="5" style="stroke-width:0;" ng-style="{'fill': color.rgb}" />
+            </svg>
+        </div>
+
+        <div class="col-xs-12" ng-show="color.r && color.g && color.b">
+            <div ng-show="!rgbValid" class="alert alert-warning" role="alert">RGB not valid</div>
+
+            <!-- Objective C -->
+            <div ng-show="rgbValid" class="code-block">
+                <h3 class="language">Objective-C</h3>
+                <span>[UIColor colorWithRed:{{uiColor.r}} green:{{uiColor.g}} blue:{{uiColor.b}} alpha:{{alpha}}];</span>
+                <button type="button" class="btn btn-default hidden-xs hidden-sm" clip-copy="copyObjectiveC"><i class="fa fa-files-o"></i></button>
+            </div>
+
+            <!-- Swift -->
+            <div ng-show="rgbValid" class="code-block">
+                <h3 class="language">Swift</h3>
+                <span>UIColor(red:{{uiColor.r}}, green:{{uiColor.g}}, blue:{{uiColor.b}}, alpha:{{alpha}})</span>
+                <button type="button" class="btn btn-default hidden-xs hidden-sm" clip-copy="copySwift"><i class="fa fa-files-o"></i></button>
+            </div>
+
+        </div>
+
+    </div>
+</div>

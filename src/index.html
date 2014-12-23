@@ -31,6 +31,11 @@
 
                     <div ng-include="'../images/logo.svg'"></div>
 
+                    <div class="btn-group toggle-nav">
+                        <a class="btn btn-success" href="#/hex-to-ui" ng-class="{ active: isActive('/hex-to-ui') }">HEX</a>
+                        <a class="btn btn-success" href="#/rgb-to-ui" ng-class="{ active: isActive('/rgb-to-ui') }">RGB</a>
+                    </div>
+
                 </div>
             </div>
 
@@ -41,16 +46,14 @@
                     <ng-view></ng-view>
 
                     <!-- Footer -->
-                    <div class="footer">
-                        <div class="col-md-12 text-center">
-                            <div class="social">
-                                <a href="http://www.iamemmanouil.com/" target="_blank"><i class="fa fa-external-link"></i></a>
-                                <a href="http://www.github.com/ekonstantinidis" target="_blank"><i class="fa fa-github"></i></a>
-                                <a href="http://www.twitter.com/iamemmanouil" target="_blank"><i class="fa fa-twitter"></i></a>
-                            </div>
-                            Proudly hosted on <a href="http://pages.github.com" target="_blank">Github Pages</a>. <br />
-                            Copyright 2014 Emmanouil Konstantinidis &copy;
+                    <div class="col-md-12 footer text-center">
+                        <div class="social">
+                            <a href="http://www.iamemmanouil.com/" target="_blank"><i class="fa fa-external-link"></i></a>
+                            <a href="http://www.github.com/ekonstantinidis" target="_blank"><i class="fa fa-github"></i></a>
+                            <a href="http://www.twitter.com/iamemmanouil" target="_blank"><i class="fa fa-twitter"></i></a>
                         </div>
+                        Proudly hosted on <a href="http://pages.github.com" target="_blank">Github Pages</a>. <br />
+                        Copyright Emmanouil Konstantinidis &copy; 2014.
                     </div>
 
                 </div>
