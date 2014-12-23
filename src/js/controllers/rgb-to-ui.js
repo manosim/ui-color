@@ -17,7 +17,6 @@ app.controller("RgbToUICtrl", function(appConfig, $scope, $filter, $rootScope) {
     };
 
     function convertRgbToUi(color) {
-
         $scope.color.rgb = color;
         $scope.color.r = color.replace(/^rgba?\(|\s+|\)$/g,'').split(',')[0];
         $scope.color.g = color.replace(/^rgba?\(|\s+|\)$/g,'').split(',')[1];
@@ -30,55 +29,30 @@ app.controller("RgbToUICtrl", function(appConfig, $scope, $filter, $rootScope) {
         };
 
         console.log($scope.color);
-
+        updateCopyText();
         $rootScope.$broadcast('ColorChanged', $scope.color);
-
     }
 
-
-
-
-
     $scope.$watch('color', function(newVal, oldval){
-
         if (newVal.r && newVal.g && newVal.b) {
 
             if (!isNaN(newVal.r) && !isNaN(newVal.g) && !isNaN(newVal.b)) {
                 $scope.color.rgb = "rgb(" + $scope.color.r + "," + $scope.color.g + "," + $scope.color.b + ")";
-                $rootScope.$broadcast('ColorChanged', $scope.color.rgb);
-
-                $scope.rgbValid = true;
-                $scope.uiColor = {
-                    "r": newVal.r,
-                    "g": newVal.g,
-                    "b": newVal.b,
-                };
-                console.log("------");
+                convertRgbToUi($scope.color.rgb);
             } else {
                 $rootScope.$broadcast('ColorChanged', appConfig.themePrimary);
                 $scope.rgbValid = false;
-                console.log("Invalid.");
+                console.log("Invalid RGB.");
             }
 
         } else {
             $rootScope.$broadcast('ColorChanged', appConfig.themePrimary);
         }
-
     }, true);
-
-
-
-
-
-
-
-
-
 
     $scope.$watch('rgb', function(newVal, oldval){
         if (newVal) {
             convertRgbToUi(newVal);
-            updateCopyText();
         } else {
             $rootScope.$broadcast('ColorChanged', appConfig.themePrimary);
         }
@@ -88,6 +62,5 @@ app.controller("RgbToUICtrl", function(appConfig, $scope, $filter, $rootScope) {
         $scope.copyObjectiveC = "[UIColor colorWithRed:" + $scope.uiColor.r + " green:" + $scope.uiColor.g + " blue:" + $scope.uiColor.b + " alpha:" + $scope.alpha + "];";
         $scope.copySwift = "UIColor(red:" + $scope.uiColor.r + ", green:" + $scope.uiColor.g + ", blue:" + $scope.uiColor.b + ", alpha:" + $scope.alpha + ")";
     }
-
 
 });
