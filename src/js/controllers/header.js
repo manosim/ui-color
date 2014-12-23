@@ -10,7 +10,11 @@ app.controller("HeaderCtrl", function(appConfig, $scope, $location) {
     $scope.selectedColor = appConfig.themePrimary;
 
     $scope.$on('ColorChanged', function(event, args) {
-        $scope.selectedColor = args;
+        if (args.rgb) {
+            $scope.selectedColor = "rgb(" +  args.r + "," + args.g + "," + args.b + ")";
+        } else {
+            $scope.selectedColor = args;
+        }
     });
 
 });

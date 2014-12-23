@@ -10,6 +10,7 @@ app.controller("RgbToUICtrl", function(appConfig, $scope, $filter, $rootScope) {
     $scope.alpha = "1.0";
 
     $scope.color = {
+        "rgb": "",
         "r": "",
         "g": "",
         "b": "",
@@ -17,11 +18,21 @@ app.controller("RgbToUICtrl", function(appConfig, $scope, $filter, $rootScope) {
 
     function convertRgbToUi(color) {
 
+        $scope.color.rgb = color;
         $scope.color.r = color.replace(/^rgba?\(|\s+|\)$/g,'').split(',')[0];
         $scope.color.g = color.replace(/^rgba?\(|\s+|\)$/g,'').split(',')[1];
         $scope.color.b = color.replace(/^rgba?\(|\s+|\)$/g,'').split(',')[2];
 
+        $scope.uiColor = {
+            "r": ($scope.color.r / 255).toFixed(2),
+            "g": ($scope.color.g / 255).toFixed(2),
+            "b": ($scope.color.b / 255).toFixed(2),
+        };
+
         console.log($scope.color);
+
+        $rootScope.$broadcast('ColorChanged', $scope.color);
+
     }
 
     $scope.$watch('rgb', function(newVal, oldval){
@@ -34,8 +45,8 @@ app.controller("RgbToUICtrl", function(appConfig, $scope, $filter, $rootScope) {
     }, true);
 
     function updateCopyText() {
-        $scope.copyObjectiveC = "[UIColor colorWithRed:" + $scope.color.r + " green:" + $scope.color.g + " blue:" + $scope.color.b + " alpha:" + $scope.alpha + "];";
-        $scope.copySwift = "UIColor(red:" + $scope.color.r + ", green:" + $scope.color.g + ", blue:" + $scope.color.b + ", alpha:" + $scope.alpha + ")";
+        $scope.copyObjectiveC = "[UIColor colorWithRed:" + $scope.uiColor.r + " green:" + $scope.uiColor.g + " blue:" + $scope.uiColor.b + " alpha:" + $scope.alpha + "];";
+        $scope.copySwift = "UIColor(red:" + $scope.uiColor.r + ", green:" + $scope.uiColor.g + ", blue:" + $scope.uiColor.b + ", alpha:" + $scope.alpha + ")";
     }
 
 
