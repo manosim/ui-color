@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" href="images/favicon.png">
 
-    <meta name="description" content="Converting HEX to UI Colors and backwards for both Objective C & Swift.">
+    <meta name="description" content="UIColor is a website used to convert HEX & RGB colors to UIColor for both Objective-C and Swift featuring a colorpicker and copy to clipboard functionality making things easier.">
 	<meta name="keywords" content="uicolor,ui,color,colour,convert,converter,hex,rgb,rgba,swift,objective-c,objective,c,apple,ios">
 
     <title>UI Color</title>
@@ -31,7 +31,13 @@
 
                     <div ng-include="'../images/logo.svg'"></div>
 
-                    <div class="btn-group toggle-nav">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-offset-2 col-md-8 about">
+                            <h4 class="text-center">UIColor is a website used to convert HEX & RGB colors to UIColor for both Objective-C and Swift featuring a colorpicker and copy to clipboard functionality making things easier.</h4>
+                        </div>
+                    </div>
+
+                    <div class="btn-group">
                         <a class="btn btn-success" href="#/hex-to-ui" ng-class="{ active: isActive('/hex-to-ui') }">HEX</a>
                         <a class="btn btn-success" href="#/rgb-to-ui" ng-class="{ active: isActive('/rgb-to-ui') }">RGB</a>
                     </div>

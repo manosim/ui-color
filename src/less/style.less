@@ -1,6 +1,9 @@
 @import "../lib/bootstrap/less/bootstrap.less";
 @import "../lib/angular-bootstrap-colorpicker/less/colorpicker.less";
 
+// Web Font
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300,600);
+
 @ThemePrimary: #0072bc;
 @CodeBg: #f7f7f9;
 
@@ -47,9 +50,27 @@
     opacity:        @opacity;
 }
 
+// Web Font: Open Sans
+
+
+.RegularFont() {
+    font-family: 'Open Sans', "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 400;
+}
+
+.LightFont() {
+    font-family: 'Open Sans', "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 300;
+}
+
+.SemiBoldFont() {
+    font-family: 'Open Sans', "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 600;
+}
+
 
 body {
-
+    .RegularFont();
 }
 
 a {
@@ -70,6 +91,15 @@ a:hover {
     right: 0;
     border: 0;
     z-index: 100;
+}
+
+.about {
+    padding: 10px 40px 20px 40px;
+
+    h3 {
+        text-align: center;
+        text-decoration: underline;
+    }
 }
 
 .title {
@@ -188,10 +218,6 @@ a:hover {
             -moz-transform:rotate(360deg);
             -o-transform:rotate(360deg);
         }
-    }
-
-    .toggle-nav {
-        margin: 40px 0 20px 0;
     }
 
 }
