@@ -9,12 +9,15 @@
     "watch-less": "watch 'npm run build-less' src/less/",
     "build-javascript": "browserify -t reactify src/js/app.js -o build/js/app.js",
     "watch-javascript": "watchify -t reactify src/js/app.js -o build/js/app.js -v",
+    "build-index": "cp -r src/index.html build/index.html",
+    "watch-index": "watch 'npm run build-index' src/",
     "build-font-awesome": "cp -r node_modules/font-awesome/fonts build",
     "build-bootstrap-fonts": "cp -r node_modules/bootstrap/fonts build",
     "build-fonts": "mkdir -p build/fonts && npm run build-bootstrap-fonts && npm run build-font-awesome",
     "build-images": "mkdir -p build/images && cp -r src/images/ build/images/",
-    "build": "npm run create-build-dirs && npm install && npm run build-images && npm run build-fonts && npm run build-javascript && npm run build-less",
-    "watch": "npm run watch-javascript & npm run watch-less",
+    "build": "npm run create-build-dirs && npm install && npm run build-index && npm run build-images && npm run build-fonts && npm run build-javascript && npm run build-less",
+    "watch": "npm run watch-index & npm run watch-javascript & npm run watch-less",
+    "serve": "http-server 'build/'",
     "test": "npm run build && jsxhint 'src/js/*.js'"
   },
   "repository": {
