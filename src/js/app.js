@@ -12,13 +12,13 @@ var Switches = React.createClass({
 
     },
 
-    handleClick: function (value) {
+    handleClick: function () {
         var newType;
 
         if (this.state.type == "hex") {
-            newType = "rgb"
+            newType = "rgb";
         } else {
-            newType = "hex"
+            newType = "hex";
         }
 
         this.setState({type: newType});

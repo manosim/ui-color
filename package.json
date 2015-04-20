@@ -18,7 +18,15 @@
     "build": "npm run create-build-dirs && npm install && npm run build-index && npm run build-images && npm run build-fonts && npm run build-javascript && npm run build-less",
     "watch": "npm run watch-index & npm run watch-javascript & npm run watch-less",
     "serve": "http-server 'build/'",
-    "test": "npm run build && jsxhint 'src/js/*.js'"
+    "test": "jsxhint 'src/js/*.js'"
+  },
+  "jshintConfig": {
+    "browserify": true,
+    "unused": true,
+    "undef": true,
+    "globals": {
+      "console": false
+    }
   },
   "repository": {
     "type": "git",
