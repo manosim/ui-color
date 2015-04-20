@@ -13,22 +13,15 @@ var Switches = React.createClass({
     },
 
     handleClick: function (value) {
-        console.log(this.setState.type);
-        console.log(value);
+        var newType;
 
-        this.setState({
-          type : "rgb"
-        });
+        if (this.state.type == "hex") {
+            newType = "rgb"
+        } else {
+            newType = "hex"
+        }
 
-        // if (this.setState.type == "hex") {
-        //     this.replaceState({
-        //       type : "rgb"
-        //     });
-        // } else {
-        //     this.replaceState({
-        //       type : "hex"
-        //     });
-        // }
+        this.setState({type: newType});
     },
 
     render: function () {
