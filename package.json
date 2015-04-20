@@ -4,7 +4,6 @@
   "description": "UIColor is a website used to convert HEX & RGB colors to UIColor for both Objective-C and Swift.",
   "main": "build/js/app.js",
   "scripts": {
-    "test": "jsxhint 'src/js/*.js'",
     "create-build-dirs": "mkdir -p build/js build/css",
     "build-less": "lessc --silent src/less/style.less build/css/style.css",
     "watch-less": "watch 'npm run build-less' src/less/",
@@ -15,7 +14,8 @@
     "build-fonts": "mkdir -p build/fonts && npm run build-bootstrap-fonts && npm run build-font-awesome",
     "build-images": "mkdir -p build/images && cp -r src/images/ build/images/",
     "build": "npm run create-build-dirs && npm install && npm run build-images && npm run build-fonts && npm run build-javascript && npm run build-less",
-    "watch": "npm run watch-javascript & npm run watch-less"
+    "watch": "npm run watch-javascript & npm run watch-less",
+    "test": "npm run build && jsxhint 'src/js/*.js'"
   },
   "repository": {
     "type": "git",
