@@ -79,11 +79,16 @@ a {
     -webkit-transition:all .8s;
     -moz-transition:all .8s;
     transition:all .8s;
+
+    &:hover {
+        /*color: ;*/
+        text-decoration: none;
+    }
 }
 
-a:hover {
-    /*color: ;*/
-    text-decoration: none;
+.btn:focus,
+.btn:active {
+   outline: none !important;
 }
 
 .github-ribbon {

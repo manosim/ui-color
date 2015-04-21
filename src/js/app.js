@@ -17,20 +17,32 @@ var SwiftColor = React.createClass({
 });
 
 var HexInput = React.createClass({
+  getInitialState: function () {
+      return {hex: this.props.hex};
+  },
+
+  handleChange: function (evt) {
+    var newHex = evt.target.value;
+    this.setState({
+      hex: newHex
+    });
+    this.props.update(newHex);
+  },
+
   render: function () {
     return (
       <div>
         <h1>HEX to UIColor Converter</h1>
         <ReactBootstrap.Input
-          ref='inp'
+          ref='hex'
           type='text'
-          value={this.props.hex}
+          value={this.state.hex}
           placeholder='eg. 0072BC'
           help='Enter a valid HEX without the hashtag #.'
           groupClassName='group-class'
           wrapperClassName='wrapper-class'
           labelClassName='label-class'
-          onChange={this.props.handleHexChange} />
+          onChange={this.handleChange} />
       </div>
     );
   }
@@ -79,13 +91,11 @@ var App = React.createClass({
     };
   },
 
-  handleHexChange: function() {
-    console.log("hex..........");
-    var hex = this.refs.hex.refs.inp.getDOMNode().value;
-    console.log(hex);
-    var rgb = hexToRgb.convert(hex);
+  handleHexChange: function(newHex) {
+    console.log("Converting: " + newHex);
+    var rgb = hexToRgb.convert(newHex);
     this.setState({
-      hex: hex,
+      hex: newHex,
       r: rgb.r,
       g: rgb.g,
       b: rgb.b
@@ -98,7 +108,7 @@ var App = React.createClass({
           <ReactBootstrap.Row className='converter hex-to-uicolor'>
             <ReactBootstrap.Col xs={12} mdOffset={3} md={6}>
               <Switches />
-              <HexInput ref="hex" update={this.handleHexChange} color={this.state.hex} />
+              <HexInput update={this.handleHexChange} color={this.state.hex} />
               <SwiftColor r={this.state.r} g={this.state.g} b={this.state.b} />
             </ReactBootstrap.Col>
           </ReactBootstrap.Row>
