@@ -3,30 +3,8 @@
 var React = require('react');
 var ReactBootstrap  = require('react-bootstrap');
 var hexToRgb = require('./utils/hextorgb');
-
-var SwiftColor = React.createClass({
-  render: function() {
-    return (
-      <div className="code-block">
-          <h3 className="language">Swift</h3>
-          <span className="code">UIColor(red:{this.props.r}, green:{this.props.g}, blue:{this.props.b}, alpha:1.0)</span>
-          <button type="button" className="btn btn-default hidden-xs hidden-sm"><i className="fa fa-files-o"></i></button>
-      </div>
-    );
-  }
-});
-
-var ObjectiveCColor = React.createClass({
-  render: function() {
-    return (
-      <div className="code-block">
-          <h3 className="language">Objective-C</h3>
-          <span className="code">[UIColor colorWithRed: {this.props.r} green:{this.props.g} blue:{this.props.b}, alpha:1]</span>
-          <button type="button" className="btn btn-default hidden-xs hidden-sm"><i className="fa fa-files-o"></i></button>
-      </div>
-    );
-  }
-});
+var SwiftColor = require('./components/swift.js');
+var ObjectiveCColor = require('./components/objectivec.js');
 
 var HexInput = React.createClass({
   getInitialState: function () {
