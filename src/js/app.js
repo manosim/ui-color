@@ -2,8 +2,9 @@
 
 var React = require('react');
 var ReactBootstrap  = require('react-bootstrap');
+var hexToRgb = require('./utils/hextorgb');
 
-const SwiftColor = React.createClass({
+var SwiftColor = React.createClass({
   getInitialState() {
     return {
       swiftValue: ""
@@ -15,13 +16,13 @@ const SwiftColor = React.createClass({
       <div className="code-block">
           <h3 className="language">Swift</h3>
           <span>UIColor(red:0.42, green:0.00, blue:0.00, alpha:1.0)</span>
-          <button type="button" className="btn btn-default hidden-xs hidden-sm"><i class="fa fa-files-o"></i></button>
+          <button type="button" className="btn btn-default hidden-xs hidden-sm"><i className="fa fa-files-o"></i></button>
       </div>
     );
   }
 });
 
-const HexInput = React.createClass({
+var HexInput = React.createClass({
   getInitialState() {
     return {
       hexValue: ""
@@ -30,7 +31,11 @@ const HexInput = React.createClass({
 
   validationState() {
     let length = this.state.hexValue.length;
-    if (length < 3 || length > 7) { return 'error'; }
+    if (length < 3 || length > 7) {
+      return 'error';
+    } else {
+      hexToRgb.convert(this.state.hexValue);
+    }
   },
 
   handleChange() {
