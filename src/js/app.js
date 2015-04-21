@@ -5,38 +5,7 @@ var ReactBootstrap  = require('react-bootstrap');
 var hexToRgb = require('./utils/hextorgb');
 var SwiftColor = require('./components/swift.js');
 var ObjectiveCColor = require('./components/objectivec.js');
-
-var HexInput = React.createClass({
-  getInitialState: function () {
-      return {hex: this.props.hex};
-  },
-
-  handleChange: function (evt) {
-    var newHex = evt.target.value;
-    this.setState({
-      hex: newHex
-    });
-    this.props.update(newHex);
-  },
-
-  render: function () {
-    return (
-      <div>
-        <h1>HEX to UIColor Converter</h1>
-        <ReactBootstrap.Input
-          ref='hex'
-          type='text'
-          value={this.state.hex}
-          placeholder='eg. 0072BC'
-          help='Enter a valid HEX without the hashtag #.'
-          groupClassName='group-class'
-          wrapperClassName='wrapper-class'
-          labelClassName='label-class'
-          onChange={this.handleChange} />
-      </div>
-    );
-  }
-});
+var HexInput = require('./components/hex.js');
 
 var Switches = React.createClass({
     getInitialState: function () {
