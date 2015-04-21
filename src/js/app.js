@@ -3,10 +3,28 @@
 var React = require('react');
 var ReactBootstrap  = require('react-bootstrap');
 
+const SwiftColor = React.createClass({
+  getInitialState() {
+    return {
+      swiftValue: ""
+    };
+  },
+
+  render() {
+    return (
+      <div className="code-block">
+          <h3 className="language">Swift</h3>
+          <span>UIColor(red:0.42, green:0.00, blue:0.00, alpha:1.0)</span>
+          <button type="button" className="btn btn-default hidden-xs hidden-sm"><i class="fa fa-files-o"></i></button>
+      </div>
+    );
+  }
+});
+
 const HexInput = React.createClass({
   getInitialState() {
     return {
-      hexValue: "#0072bc"
+      hexValue: ""
     };
   },
 
@@ -25,24 +43,18 @@ const HexInput = React.createClass({
 
   render() {
     return (
-      <ReactBootstrap.Grid>
-          <ReactBootstrap.Row className='converter hex-to-uicolor'>
-            <ReactBootstrap.Col xs={12} mdOffset={3} md={6}>
-              <ReactBootstrap.Input
-                type='text'
-                value={this.state.hexValue}
-                placeholder='eg. 0072BC'
-                help='Enter a valid HEX without the hashtag #.'
-                bsStyle={this.validationState()}
-                hasFeedback
-                ref='input'
-                groupClassName='group-class'
-                wrapperClassName='wrapper-class'
-                labelClassName='label-class'
-                onChange={this.handleChange} />
-            </ReactBootstrap.Col>
-          </ReactBootstrap.Row>
-      </ReactBootstrap.Grid>
+      <ReactBootstrap.Input
+        type='text'
+        value={this.state.hexValue}
+        placeholder='eg. 0072BC'
+        help='Enter a valid HEX without the hashtag #.'
+        bsStyle={this.validationState()}
+        hasFeedback
+        ref='input'
+        groupClassName='group-class'
+        wrapperClassName='wrapper-class'
+        labelClassName='label-class'
+        onChange={this.handleChange} />
     );
   }
 });
@@ -83,10 +95,15 @@ var Switches = React.createClass({
 var App = React.createClass({
   render: function () {
     return (
-      <div className="app">
-        <Switches />
-        <HexInput />
-      </div>
+      <ReactBootstrap.Grid className="app">
+          <ReactBootstrap.Row className='converter hex-to-uicolor'>
+            <ReactBootstrap.Col xs={12} mdOffset={3} md={6}>
+              <Switches />
+              <HexInput />
+              <SwiftColor />
+            </ReactBootstrap.Col>
+          </ReactBootstrap.Row>
+      </ReactBootstrap.Grid>
     );
   }
 });
