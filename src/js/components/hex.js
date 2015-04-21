@@ -2,16 +2,16 @@ var React = require('react');
 var ReactBootstrap  = require('react-bootstrap');
 
 var HexInput = React.createClass({
-  getInitialState: function () {
-      return {hex: this.props.hex};
-  },
-
   handleChange: function (evt) {
-    var newHex = evt.target.value;
-    this.setState({
-      hex: newHex
-    });
-    this.props.update(newHex);
+    var hex = evt.target.value.replace('#','');;
+    if (hex.length == 3) {
+        var tempHex = hex + hex.charAt(2) + hex.charAt(1) + hex.charAt(0);
+        this.props.update(tempHex);
+    } else if (hex.length == 6) {
+        this.props.update(hex);
+    } else {
+        // Invalid HEX. Do nothing?
+    }
   },
 
   render: function () {
@@ -21,7 +21,7 @@ var HexInput = React.createClass({
         <ReactBootstrap.Input
           ref='hex'
           type='text'
-          value={this.state.hex}
+          value={this.props.hex}
           placeholder='eg. 0072BC'
           help='Enter a valid HEX without the hashtag #.'
           groupClassName='group-class'
