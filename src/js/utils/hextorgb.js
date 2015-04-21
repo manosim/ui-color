@@ -15,7 +15,11 @@ var hexToRgb = {
             };
         } else {
             console.log("Invalid HEX Color.");
-            return undefined;
+            return {
+                "r": r,
+                "g": g,
+                "b": b,
+            };
         }
 
     },

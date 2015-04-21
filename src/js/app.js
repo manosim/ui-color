@@ -7,15 +7,25 @@ var hexToRgb = require('./utils/hextorgb');
 var SwiftColor = React.createClass({
   getInitialState() {
     return {
-      swiftValue: ""
+      r: "",
+      g: "",
+      b: "",
     };
+  },
+
+  updateRgb: function(value) {
+      this.setState({
+        r: hexToRgb.convert(newHex).r,
+        g: hexToRgb.convert(newHex).g,
+        b: hexToRgb.convert(newHex).b
+      });
   },
 
   render() {
     return (
       <div className="code-block">
           <h3 className="language">Swift</h3>
-          <span>UIColor(red:0.42, green:0.00, blue:0.00, alpha:1.0)</span>
+          <span>UIColor(red:{this.state.r}, green:0.00, blue:0.00, alpha:1.0)</span>
           <button type="button" className="btn btn-default hidden-xs hidden-sm"><i className="fa fa-files-o"></i></button>
       </div>
     );
@@ -29,37 +39,34 @@ var HexInput = React.createClass({
     };
   },
 
-  validationState() {
-    let length = this.state.hexValue.length;
-    if (length < 3 || length > 7) {
-      return 'error';
-    } else {
-      hexToRgb.convert(this.state.hexValue);
-    }
-  },
-
-  handleChange() {
+  handleChange(hex) {
     // This could also be done using ReactLink:
     // http://facebook.github.io/react/docs/two-way-binding-helpers.html
-    this.setState({
-      hexValue: this.refs.input.getValue()
-    });
+    console.log(this.refs.hex.getValue());
+    var newHex = this.refs.hex.getValue();
+    if (length >= 3 || length <= 7) {
+      this.setState({
+        hexValue: newHex
+      });
+      SwiftColor.updateRgb(newHex);
+    }
   },
 
   render() {
     return (
-      <ReactBootstrap.Input
-        type='text'
-        value={this.state.hexValue}
-        placeholder='eg. 0072BC'
-        help='Enter a valid HEX without the hashtag #.'
-        bsStyle={this.validationState()}
-        hasFeedback
-        ref='input'
-        groupClassName='group-class'
-        wrapperClassName='wrapper-class'
-        labelClassName='label-class'
-        onChange={this.handleChange} />
+      <div>
+        <h1>HEX to UIColor Converter</h1>
+        <ReactBootstrap.Input
+          type='text'
+          value={this.state.hexValue}
+          placeholder='eg. 0072BC'
+          help='Enter a valid HEX without the hashtag #.'
+          ref='hex'
+          groupClassName='group-class'
+          wrapperClassName='wrapper-class'
+          labelClassName='label-class'
+          onChange={this.handleChange} />
+      </div>
     );
   }
 });
