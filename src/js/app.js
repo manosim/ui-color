@@ -16,6 +16,18 @@ var SwiftColor = React.createClass({
   }
 });
 
+var ObjectiveCColor = React.createClass({
+  render: function() {
+    return (
+      <div className="code-block">
+          <h3 className="language">Objective-C</h3>
+          <span className="code">[UIColor colorWithRed: {this.props.r} green:{this.props.g} blue:{this.props.b}, alpha:1]</span>
+          <button type="button" className="btn btn-default hidden-xs hidden-sm"><i className="fa fa-files-o"></i></button>
+      </div>
+    );
+  }
+});
+
 var HexInput = React.createClass({
   getInitialState: function () {
       return {hex: this.props.hex};
@@ -110,6 +122,7 @@ var App = React.createClass({
               <Switches />
               <HexInput update={this.handleHexChange} color={this.state.hex} />
               <SwiftColor r={this.state.r} g={this.state.g} b={this.state.b} />
+              <ObjectiveCColor r={this.state.r} g={this.state.g} b={this.state.b} />
             </ReactBootstrap.Col>
           </ReactBootstrap.Row>
       </ReactBootstrap.Grid>
