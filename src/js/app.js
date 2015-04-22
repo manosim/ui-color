@@ -6,6 +6,7 @@ var hexToRgb = require('./utils/hextorgb');
 var SwiftColor = require('./components/swift.js');
 var ObjectiveCColor = require('./components/objectivec.js');
 var HexInput = require('./components/hex.js');
+var PreviewColor = require('./components/preview.js');
 
 var Switches = React.createClass({
     getInitialState: function () {
@@ -68,6 +69,7 @@ var App = React.createClass({
             <ReactBootstrap.Col xs={12} mdOffset={3} md={6}>
               <Switches />
               <HexInput update={this.handleHexChange} color={this.state.hex} />
+              <PreviewColor color={this.state.hex} />
               <SwiftColor r={this.state.r} g={this.state.g} b={this.state.b} />
               <ObjectiveCColor r={this.state.r} g={this.state.g} b={this.state.b} />
             </ReactBootstrap.Col>
