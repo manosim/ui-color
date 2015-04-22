@@ -57,6 +57,7 @@
     "react": "=0.13.2",
     "react-bootstrap": "=0.20.3",
     "react-tools": "=0.13.2",
+    "react-zeroclipboard": "^1.0.0",
     "reactify": "=1.1.0"
   },
   "devDependencies": {
