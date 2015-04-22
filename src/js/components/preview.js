@@ -7,7 +7,7 @@ var PreviewColor = React.createClass({
 
   componentWillReceiveProps: function (nextProps) {
     this.setState({
-      color: nextProps.color
+      color: "#" + nextProps.color
     });
     console.log(this.state.color);
   },
