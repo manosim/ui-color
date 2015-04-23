@@ -10,7 +10,6 @@ var Route = Router.Route;
 var NotFoundRoute = Router.NotFoundRoute;
 var DefaultRoute = Router.DefaultRoute;
 var RouteHandler = Router.RouteHandler;
-var Link = Router.Link;
 
 var Switches = React.createClass({
     getInitialState: function () {
