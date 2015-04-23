@@ -11,6 +11,8 @@ var HexInput = React.createClass({
         this.props.update(hex);
     } else {
         // Invalid HEX. Do nothing?
+        hex = "";
+        this.props.update(hex);
     }
   },
 
