@@ -23,8 +23,12 @@ var ObjectiveCColor = React.createClass({
   },
 
   render: function() {
+    var codeClass = 'code-block';
+    if (!this.state.r && !this.state.g && !this.state.b) {
+      codeClass += ' disable';
+    }
     return (
-      <div className="code-block">
+      <div className={codeClass}>
           <h3 className="language">Objective-C</h3>
           <span className="code">[UIColor colorWithRed: {this.props.r} green:{this.props.g} blue:{this.props.b} alpha:1]</span>
           <ReactZeroClipboard getText={this.getCopyText}>

@@ -23,8 +23,12 @@ var SwiftColor = React.createClass({
   },
 
   render: function() {
+    var codeClass = 'code-block';
+    if (!this.state.r && !this.state.g && !this.state.b) {
+      codeClass += ' disable';
+    }
     return (
-      <div className="code-block">
+      <div className={codeClass}>
           <h3 className="language">Swift</h3>
           <span className="code">UIColor(red:{this.state.r}, green:{this.state.g}, blue:{this.state.b}, alpha:1.0)</span>
           <ReactZeroClipboard getText={this.getCopyText}>
