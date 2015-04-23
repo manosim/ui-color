@@ -3,6 +3,8 @@
 var React = require('react');
 var Router = require('react-router');
 var ReactBootstrap  = require('react-bootstrap');
+var ButtonLink = require('react-router-bootstrap').ButtonLink;
+
 var HexPage = require('./pages/hex-page.js');
 var RgbPage = require('./pages/rgb-page.js');
 
@@ -11,41 +13,13 @@ var NotFoundRoute = Router.NotFoundRoute;
 var DefaultRoute = Router.DefaultRoute;
 var RouteHandler = Router.RouteHandler;
 
-var Switches = React.createClass({
-    getInitialState: function () {
-        return {type: "hex"};
-    },
-
-    componentDidMount: function (){
-
-    },
-
-    contextTypes: {
-      router: React.PropTypes.func
-    },
-
-    handleClick: function () {
-        var newType;
-
-        if (this.state.type == "hex") {
-            newType = "rgb";
-            this.context.router.transitionTo('rgb');
-        } else {
-            newType = "hex";
-            this.context.router.transitionTo('hex');
-        }
-
-        this.setState({type: newType});
-    },
-
+var Navigation = React.createClass({
     render: function () {
-        var hexClassName = this.state.type === 'hex' ? 'btn btn-success active' : 'btn btn-success ';
-        var rgbClassName = this.state.type === 'rgb' ? 'btn btn-success active' : 'btn btn-success ';
         return (
-            <ReactBootstrap.ButtonGroup>
-                <ReactBootstrap.Button onClick={this.handleClick} className={hexClassName}>HEX</ReactBootstrap.Button>
-                <ReactBootstrap.Button onClick={this.handleClick} className={rgbClassName}>RGB</ReactBootstrap.Button>
-            </ReactBootstrap.ButtonGroup>
+          <ReactBootstrap.ButtonGroup>
+            <ButtonLink className='btn-success' to='hex'>HEX</ButtonLink>
+            <ButtonLink className='btn-success' to='rgb'>RGB</ButtonLink>
+          </ReactBootstrap.ButtonGroup>
         );
     }
 });
@@ -56,7 +30,7 @@ var App = React.createClass({
       <ReactBootstrap.Grid className="app">
           <ReactBootstrap.Row className='converter hex-to-uicolor'>
             <ReactBootstrap.Col xs={12} mdOffset={3} md={6}>
-              <Switches />
+              <Navigation />
               <RouteHandler />
             </ReactBootstrap.Col>
           </ReactBootstrap.Row>
