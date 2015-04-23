@@ -19,7 +19,7 @@ var HexInput = React.createClass({
   render: function () {
     return (
       <div>
-        <h1>HEX to UIColor Converter</h1>
+        <h1 className='title'>HEX to UIColor Converter</h1>
         <ReactBootstrap.Input
           ref='hex'
           type='text'
