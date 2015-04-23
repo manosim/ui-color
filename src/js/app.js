@@ -3,8 +3,8 @@
 var React = require('react');
 var Router = require('react-router');
 var ReactBootstrap  = require('react-bootstrap');
-var ButtonLink = require('react-router-bootstrap').ButtonLink;
 
+var Navigation = require('./components/navigation');
 var HexPage = require('./pages/hex-page.js');
 var RgbPage = require('./pages/rgb-page.js');
 
@@ -12,17 +12,6 @@ var Route = Router.Route;
 var NotFoundRoute = Router.NotFoundRoute;
 var DefaultRoute = Router.DefaultRoute;
 var RouteHandler = Router.RouteHandler;
-
-var Navigation = React.createClass({
-    render: function () {
-        return (
-          <ReactBootstrap.ButtonGroup>
-            <ButtonLink className='btn-success' to='hex'>HEX</ButtonLink>
-            <ButtonLink className='btn-success' to='rgb'>RGB</ButtonLink>
-          </ReactBootstrap.ButtonGroup>
-        );
-    }
-});
 
 var App = React.createClass({
   render: function () {
