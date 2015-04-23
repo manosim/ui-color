@@ -1,12 +1,16 @@
 'use strict';
 
 var React = require('react');
+var Router = require('react-router');
 var ReactBootstrap  = require('react-bootstrap');
-var hexToRgb = require('./utils/hextorgb');
-var SwiftColor = require('./components/swift.js');
-var ObjectiveCColor = require('./components/objectivec.js');
-var HexInput = require('./components/hex.js');
-var PreviewColor = require('./components/preview.js');
+var HexPage = require('./pages/hex-page.js');
+var RgbPage = require('./pages/rgb-page.js');
+
+var Route = Router.Route;
+var NotFoundRoute = Router.NotFoundRoute;
+var DefaultRoute = Router.DefaultRoute;
+var RouteHandler = Router.RouteHandler;
+var Link = Router.Link;
 
 var Switches = React.createClass({
     getInitialState: function () {
@@ -17,13 +21,19 @@ var Switches = React.createClass({
 
     },
 
+    contextTypes: {
+      router: React.PropTypes.func
+    },
+
     handleClick: function () {
         var newType;
 
         if (this.state.type == "hex") {
             newType = "rgb";
+            this.context.router.transitionTo('rgb');
         } else {
             newType = "hex";
+            this.context.router.transitionTo('hex');
         }
 
         this.setState({type: newType});
@@ -42,36 +52,13 @@ var Switches = React.createClass({
 });
 
 var App = React.createClass({
-  getInitialState: function() {
-    return {
-      hex: "",
-      r: "",
-      g: "",
-      b: ""
-    };
-  },
-
-  handleHexChange: function(newHex) {
-    console.log("Converting: " + newHex);
-    var rgb = hexToRgb.convert(newHex);
-    this.setState({
-      hex: newHex,
-      r: rgb.r,
-      g: rgb.g,
-      b: rgb.b
-    });
-  },
-
   render: function () {
     return (
       <ReactBootstrap.Grid className="app">
           <ReactBootstrap.Row className='converter hex-to-uicolor'>
             <ReactBootstrap.Col xs={12} mdOffset={3} md={6}>
               <Switches />
-              <HexInput update={this.handleHexChange} color={this.state.hex} />
-              <PreviewColor color={this.state.hex} />
-              <SwiftColor r={this.state.r} g={this.state.g} b={this.state.b} />
-              <ObjectiveCColor r={this.state.r} g={this.state.g} b={this.state.b} />
+              <RouteHandler />
             </ReactBootstrap.Col>
           </ReactBootstrap.Row>
       </ReactBootstrap.Grid>
@@ -79,7 +66,21 @@ var App = React.createClass({
   }
 });
 
-React.render(
-  <App />,
-  document.getElementById('app')
+var NotFound = React.createClass({
+  render: function () {
+    return <h2>Not found</h2>;
+  }
+});
+
+var routes = (
+  <Route handler={App}>
+    <DefaultRoute handler={HexPage}/>
+    <Route name="hex" path="hex" handler={HexPage}/>
+    <Route name="rgb" path="rgb" handler={RgbPage}/>
+    <NotFoundRoute handler={NotFound}/>
+  </Route>
 );
+
+Router.run(routes, function (Handler) {
+  React.render(<Handler/>, document.getElementById('app'));
+});
