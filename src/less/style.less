@@ -1,5 +1,5 @@
-@import "../lib/bootstrap/less/bootstrap.less";
-@import "../lib/angular-bootstrap-colorpicker/less/colorpicker.less";
+@import "node_modules/bootstrap/less/bootstrap";
+@import "node_modules/font-awesome/less/font-awesome.less";
 
 // Web Font
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300,600);
@@ -68,6 +68,7 @@
     font-weight: 600;
 }
 
+/* @group Misc */
 
 body {
     .RegularFont();
@@ -78,11 +79,16 @@ a {
     -webkit-transition:all .8s;
     -moz-transition:all .8s;
     transition:all .8s;
+
+    &:hover {
+        /*color: ;*/
+        text-decoration: none;
+    }
 }
 
-a:hover {
-    /*color: ;*/
-    text-decoration: none;
+.btn:focus,
+.btn:active {
+   outline: none !important;
 }
 
 .github-ribbon {
@@ -92,6 +98,17 @@ a:hover {
     border: 0;
     z-index: 100;
 }
+
+/* @end Misc */
+
+
+/* @group App */
+
+.app {
+    text-align: center;
+}
+
+/* @end App */
 
 .about {
     padding: 10px 40px 20px 40px;
@@ -152,11 +169,12 @@ a:hover {
     background-color: @CodeBg;
     .border-radius ();
     margin: 20px 0;
+    padding: 20px 0;
     position: relative;
 
-    span {
+    .code {
         display: block;
-        padding: 10px 50px 20px 20px;
+        padding: 20px 5px 10px;
         font-size: 15px;
         font-weight: bold;
     }
@@ -183,7 +201,8 @@ a:hover {
         font-style: italic;
         color: lighten(@LightGray, 0%);
         margin: 0 20px;
-        padding: 20px 20px 5px 0;
+        padding: 0 20px;
+        text-align: left;
     }
 }
 
@@ -233,10 +252,8 @@ a:hover {
     .color-demo {
         margin-top: 20px;
         margin-bottom: 15px;
-
-        svg {
-            margin: 10px 0 5px 0;
-        }
+        height: 45px;
+        .border-radius ();
     }
 
 }

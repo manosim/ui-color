@@ -1,49 +1,86 @@
-var app = angular.module('uicolor', [
-    'ngRoute',
-    'ui.bootstrap',
-    'ngClipboard',
-    'colorpicker.module',
-    'controllers',
-]);
+'use strict';
 
+var React = require('react');
+var Router = require('react-router');
+var ReactBootstrap  = require('react-bootstrap');
+var HexPage = require('./pages/hex-page.js');
+var RgbPage = require('./pages/rgb-page.js');
 
-app.constant('appConfig', {
+var Route = Router.Route;
+var NotFoundRoute = Router.NotFoundRoute;
+var DefaultRoute = Router.DefaultRoute;
+var RouteHandler = Router.RouteHandler;
+var Link = Router.Link;
 
-  // Productions
-  themePrimary: "#0072bc",
+var Switches = React.createClass({
+    getInitialState: function () {
+        return {type: "hex"};
+    },
 
-});
+    componentDidMount: function (){
 
+    },
 
-app.run(function($rootScope, $route, $location) {
+    contextTypes: {
+      router: React.PropTypes.func
+    },
 
-    $rootScope.$on('$locationChangeSuccess', function() {
-        if (typeof ga !== 'undefined' && $route.current.$$route){
-            ga('send', 'event', 'page', 'view', $route.current.$$route.controller);
+    handleClick: function () {
+        var newType;
+
+        if (this.state.type == "hex") {
+            newType = "rgb";
+            this.context.router.transitionTo('rgb');
+        } else {
+            newType = "hex";
+            this.context.router.transitionTo('hex');
         }
-    });
 
+        this.setState({type: newType});
+    },
+
+    render: function () {
+        var hexClassName = this.state.type === 'hex' ? 'btn btn-success active' : 'btn btn-success ';
+        var rgbClassName = this.state.type === 'rgb' ? 'btn btn-success active' : 'btn btn-success ';
+        return (
+            <ReactBootstrap.ButtonGroup>
+                <ReactBootstrap.Button onClick={this.handleClick} className={hexClassName}>HEX</ReactBootstrap.Button>
+                <ReactBootstrap.Button onClick={this.handleClick} className={rgbClassName}>RGB</ReactBootstrap.Button>
+            </ReactBootstrap.ButtonGroup>
+        );
+    }
 });
 
-app.config(['$routeProvider',
-    function($routeProvider) {
+var App = React.createClass({
+  render: function () {
+    return (
+      <ReactBootstrap.Grid className="app">
+          <ReactBootstrap.Row className='converter hex-to-uicolor'>
+            <ReactBootstrap.Col xs={12} mdOffset={3} md={6}>
+              <Switches />
+              <RouteHandler />
+            </ReactBootstrap.Col>
+          </ReactBootstrap.Row>
+      </ReactBootstrap.Grid>
+    );
+  }
+});
 
-    $routeProvider
-    .when('/hex-to-ui', {
-        templateUrl: 'templates/hex-to-ui.html',
-        controller: 'HexToUICtrl',
-    })
-    .when('/rgb-to-ui', {
-        templateUrl: 'templates/rgb-to-ui.html',
-        controller: 'RgbToUICtrl',
-    })
+var NotFound = React.createClass({
+  render: function () {
+    return <h2>Not found</h2>;
+  }
+});
 
-    .otherwise({
-        redirectTo: '/hex-to-ui'
-    });
+var routes = (
+  <Route handler={App}>
+    <DefaultRoute handler={HexPage}/>
+    <Route name="hex" path="hex" handler={HexPage}/>
+    <Route name="rgb" path="rgb" handler={RgbPage}/>
+    <NotFoundRoute handler={NotFound}/>
+  </Route>
+);
 
-}]);
-
-app.config(['ngClipProvider', function(ngClipProvider) {
-    ngClipProvider.setPath("../images/ZeroClipboard.swf");
-}]);
+Router.run(routes, function (Handler) {
+  React.render(<Handler/>, document.getElementById('app'));
+});
