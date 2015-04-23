@@ -1,4 +1,5 @@
 var React = require('react');
+var Button = require('react-bootstrap').Button;
 var ReactZeroClipboard = require('react-zeroclipboard');
 
 var ObjectiveCColor = React.createClass({
@@ -32,7 +33,7 @@ var ObjectiveCColor = React.createClass({
           <h3 className="language">Objective-C</h3>
           <span className="code">[UIColor colorWithRed: {this.props.r} green:{this.props.g} blue:{this.props.b} alpha:1]</span>
           <ReactZeroClipboard getText={this.getCopyText}>
-              <button type="button" className="btn btn-default hidden-xs hidden-sm"><i className="fa fa-files-o"></i></button>
+            <Button bsStyle='default' className='hidden-xs hidden-sm'><i className="fa fa-files-o"></i></Button>
           </ReactZeroClipboard>
       </div>
     );
