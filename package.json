@@ -4,8 +4,20 @@
   "description": "UIColor is a website used to convert HEX & RGB colors to UIColor for both Objective-C and Swift.",
   "main": "build/js/app.js",
   "scripts": {
+    "build-js": "browserify -t reactify src/js/app.js -o build/js/app.js",
+    "build": "npm install && mkdir -p build/js && npm run build-js",
+    "watch-js": "watchify -t reactify src/js/app.js -o build/js/app.js -v",
+    "watch": "npm run watch-js | grunt watch",
     "serve": "http-server 'build/'",
     "test": "jsxhint 'src/js/*.js'"
+  },
+  "jshintConfig": {
+    "browserify": true,
+    "unused": true,
+    "undef": true,
+    "globals": {
+      "console": false
+    }
   },
   "repository": {
     "type": "git",
@@ -30,22 +42,24 @@
   "homepage": "https://github.com/ekonstantinidis/ui-color",
   "dependencies": {
     "bootstrap": "=3.3.4",
+    "browserify": "^9.0.8",
     "font-awesome": "^4.3.0",
-    "react-bootstrap": "=0.20.3",
+    "react": "^0.13.2",
+    "react-bootstrap": "^0.21.0",
     "react-router": "^0.13.2",
     "react-router-bootstrap": "^0.13.0",
-    "react-tools": "=0.13.2",
-    "react-zeroclipboard": "^1.0.0"
+    "react-tools": "^0.13.2",
+    "react-zeroclipboard": "^1.0.0",
+    "reactify": "^1.1.0",
+    "watchify": "^3.1.2"
   },
   "devDependencies": {
     "grunt": "^0.4.5",
-    "grunt-browserify": "^3.7.0",
+    "grunt-contrib-clean": "^0.6.0",
     "grunt-contrib-copy": "^0.8.0",
     "grunt-contrib-less": "^1.0.1",
     "grunt-contrib-watch": "^0.6.1",
-    "grunt-react": "^0.12.2",
-    "grunt-contrib-clean": "^0.6.0",
-    "grunt-jsxhint": "^0.6.0",
+    "jsxhint": "=0.14.0",
     "less": "=2.5.0"
   }
 }

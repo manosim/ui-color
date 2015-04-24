@@ -1,15 +1,8 @@
+'use strict';
+
 module.exports = function(grunt) {
 
   grunt.initConfig({
-    browserify: {
-      "build": {
-        dest: "build/js/app.js",
-        src: ['src/js/app.js'],
-        options: {
-          transform:  [ require('grunt-react').browserify ]
-        },
-      },
-    },
 
     less: {
       options: {
@@ -34,7 +27,7 @@ module.exports = function(grunt) {
     },
 
     watch: {
-      files: 'src/**/*.*',
+      files: ['src/less/*', 'src/images/*'],
       tasks: 'build',
     },
 
@@ -49,12 +42,10 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-clean');
-  grunt.loadNpmTasks('grunt-jsxhint');
-  grunt.loadNpmTasks('grunt-browserify');
-  grunt.loadNpmTasks('grunt-react');
 
   // Default task(s).
   grunt.registerTask('default', ['build']);
-  grunt.registerTask('build', ['less', 'copy', 'browserify']);
+  grunt.registerTask('build', ['less', 'copy']);
+  grunt.registerTask('release', ['clean', 'build']);
 
 };
