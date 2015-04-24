@@ -1,13 +1,15 @@
+'use strict';
+
 var React = require('react');
 var ReactBootstrap  = require('react-bootstrap');
 
 var HexInput = React.createClass({
   handleChange: function (evt) {
     var hex = evt.target.value.replace('#','');
-    if (hex.length == 3) {
+    if (hex.length === 3) {
         var tempHex = hex + hex.charAt(2) + hex.charAt(1) + hex.charAt(0);
         this.props.update(tempHex);
-    } else if (hex.length == 6) {
+    } else if (hex.length === 6) {
         this.props.update(hex);
     } else {
         // Invalid HEX. Do nothing?

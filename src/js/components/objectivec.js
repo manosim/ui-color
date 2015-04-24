@@ -1,3 +1,5 @@
+'use strict';
+
 var React = require('react');
 var Button = require('react-bootstrap').Button;
 var ReactZeroClipboard = require('react-zeroclipboard');
