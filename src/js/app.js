@@ -12,6 +12,7 @@ var Route = Router.Route;
 var NotFoundRoute = Router.NotFoundRoute;
 var DefaultRoute = Router.DefaultRoute;
 var RouteHandler = Router.RouteHandler;
+var Redirect = Router.Redirect;
 
 var App = React.createClass({
   render: function () {
@@ -40,6 +41,7 @@ var routes = (
     <Route name="hex" path="hex" handler={HexPage}/>
     <Route name="rgb" path="rgb" handler={RgbPage}/>
     <NotFoundRoute handler={NotFound}/>
+    <Redirect from="/" to="hex" />
   </Route>
 );
 
