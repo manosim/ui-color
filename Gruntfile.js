@@ -2,10 +2,12 @@ module.exports = function(grunt) {
 
   grunt.initConfig({
     browserify: {
-      dest: "build/js/app.js",
-      src: ['src/js/app.js'],
-      options: {
-        transform:  [ require('grunt-react').browserify ]
+      "build": {
+        dest: "build/js/app.js",
+        src: ['src/js/app.js'],
+        options: {
+          transform:  [ require('grunt-react').browserify ]
+        },
       },
     },
 
@@ -25,6 +27,8 @@ module.exports = function(grunt) {
         files: [
           {expand: true, cwd: "src/", src: 'index.html', dest: 'build/'},
           {expand: true, cwd: "src/images/", src: '**', dest: 'build/images/'},
+          {expand: true, cwd: "node_modules/bootstrap/fonts/", src: '**', dest: 'build/fonts/'},
+          {expand: true, cwd: "node_modules/font-awesome/fonts/", src: '**', dest: 'build/fonts/'}
         ]
       }
     },
