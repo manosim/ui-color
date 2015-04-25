@@ -27,8 +27,14 @@ module.exports = function(grunt) {
     },
 
     watch: {
-      files: ['src/less/*', 'src/images/*'],
-      tasks: 'build',
+      less: {
+        files: 'src/less/*',
+        tasks: ['less'],
+      },
+      src: {
+        files: 'src/images/*',
+        tasks: ['copy'],
+      },
     },
 
     clean: {
