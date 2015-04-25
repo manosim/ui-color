@@ -7,7 +7,7 @@
     "build-js": "browserify -t reactify src/js/app.js -o build/js/app.js",
     "build": "npm install && mkdir -p build/js && npm run build-js",
     "watch-js": "watchify -t reactify src/js/app.js -o build/js/app.js -v",
-    "watch": "npm run watch-js | grunt watch",
+    "watch": "grunt build && npm build && npm run watch-js | grunt watch",
     "serve": "http-server 'build/'",
     "test": "jsxhint --reporter node_modules/jshint-stylish/stylish.js 'src/js/*.js'"
   },
