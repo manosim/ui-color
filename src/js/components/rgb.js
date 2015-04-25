@@ -6,7 +6,10 @@ var ReactBootstrap  = require('react-bootstrap');
 var RgbInput = React.createClass({
 
   handleChange: function (key, event) {
-    this.props.update(key, event.target.value);
+    var value = event.target.value;
+    if (value >= 0 && value <=255) {
+      this.props.update(key, value);
+    }
   },
 
   render: function () {
