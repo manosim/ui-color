@@ -9,39 +9,46 @@ var ObjectiveCColor = require('../components/objectivec.js');
 var RgbPage = React.createClass({
   getInitialState: function() {
     return {
-      hex: "",
       r: "",
       g: "",
-      b: ""
+      b: "",
+      rgb: "",
+      rFLoat: "",
+      gFLoat: "",
+      bFLoat: ""
     };
   },
 
-  componentToHex: function (c) {
-      var hex = c.toString(16);
-      return hex.length == 1 ? "0" + hex : hex;
-  },
+  setRgb: function () {
+    // Set Rgb for Preview
+    this.setState({
+      rgb: 'rgb(' + this.state.r + ',' + this.state.g + ',' + this.state.b + ')'
+    });
 
-  rgbToHex: function (r, g, b) {
-      var hex = this.componentToHex(r) + this.componentToHex(g) + this.componentToHex(b);
-      var newState = {};
-      newState.hex = hex;
-      this.setState(newState);
+    // Set r, g, b for Swift & Objective C
+    var newState = {};
+    newState.rFloat = (this.state.r / 255).toFixed(2);
+    newState.gFloat = (this.state.g / 255).toFixed(2);
+    newState.bFloat = (this.state.b / 255).toFixed(2);
+    this.setState(newState);
   },
 
   handleChange: function (key, value) {
+    // Set r, g, b
     var newState = {};
     newState[key] = value;
     this.setState(newState);
-    this.rgbToHex(this.state.r, this.state.g, this.state.b);
+
+    this.setRgb();
   },
 
   render: function () {
     return (
       <div>
         <RgbInput update={this.handleChange} />
-        <PreviewColor color={this.state.hex} />
-        <SwiftColor r={this.state.r} g={this.state.g} b={this.state.b} />
-        <ObjectiveCColor r={this.state.r} g={this.state.g} b={this.state.b} />
+        <PreviewColor rgb={this.state.rgb} />
+        <SwiftColor r={this.state.rFloat} g={this.state.gFloat} b={this.state.bFloat} />
+        <ObjectiveCColor r={this.state.rFloat} g={this.state.gFloat} b={this.state.bFloat} />
       </div>
     );
   }

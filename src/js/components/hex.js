@@ -30,10 +30,6 @@ var HexInput = React.createClass({
           bsSize='large'
           maxLength='7'
           placeholder='eg. 0072BC'
-          help='Enter a valid HEX without the hashtag #.'
-          groupClassName='group-class'
-          wrapperClassName='wrapper-class'
-          labelClassName='label-class'
           onChange={this.handleChange} />
       </div>
     );

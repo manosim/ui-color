@@ -9,16 +9,24 @@ var PreviewColor = React.createClass({
     };
   },
 
-  componentWillReceiveProps: function (nextProps) {
-    var newColor;
-    if (nextProps.color) {
-       newColor = nextProps.color;
-    } else {
-       newColor = 'f7f7f9';
-    }
+  handleHex: function (color) {
     this.setState({
-      color: "#" + newColor
+      color: "#" + color
     });
+  },
+
+  handleRgb: function (color) {
+    this.setState({
+      color: color
+    });
+  },
+
+  componentWillReceiveProps: function (nextProps) {
+    if (nextProps.color) {
+      this.handleHex(nextProps.color);
+    } else if (nextProps.rgb) {
+      this.handleRgb(nextProps.rgb);
+    }
   },
 
   render: function() {
