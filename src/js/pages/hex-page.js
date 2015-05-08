@@ -21,7 +21,7 @@ var HexPage = React.createClass({
     console.log("Converting: " + newHex);
     var rgb = hexToRgb.convert(newHex);
     this.setState({
-      hex: newHex,
+      hex: '#' + newHex,
       r: rgb.r,
       g: rgb.g,
       b: rgb.b

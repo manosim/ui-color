@@ -2,6 +2,7 @@
 
 var React = require('react');
 var ReactBootstrap  = require('react-bootstrap');
+var ColorPicker = require('react-color-picker');
 
 var HexInput = React.createClass({
   handleChange: function (evt) {
@@ -18,6 +19,10 @@ var HexInput = React.createClass({
     }
   },
 
+  onDrag: function (color) {
+    this.props.update(color.replace('#',''));
+  },
+
   render: function () {
     return (
       <div>
@@ -25,12 +30,13 @@ var HexInput = React.createClass({
         <ReactBootstrap.Input
           ref='hex'
           type='text'
-          value={this.props.hex}
+          value={this.props.color}
           addonBefore='HEX #'
           bsSize='large'
           maxLength='7'
           placeholder='eg. 0072BC'
           onChange={this.handleChange} />
+          <ColorPicker value={this.props.color} onDrag={this.onDrag} />
       </div>
     );
   }
