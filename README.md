@@ -2,13 +2,34 @@ UIColor.io [![Build Status](https://travis-ci.org/ekonstantinidis/ui-color.svg?b
 =======================
 Website: [http://www.uicolor.io/](http://www.uicolor.io/)
 
+UIColor is written in [React](http://www.reactjs.com/) and it allows you to convert HEX & RGB colors to **UIColor** for both **Objective-C** and **Swift**.
 
-UIColor is a website used to convert HEX & RGB colors to **UIColor** for both **Objective-C** and **Swift** featuring a **colorpicker** and **copy to clipboard** functionality making things easier.
+### Prerequisites
 
-### The technical bit
-The website itself is written in Javascript and it's based on Angular JS. It also uses several **Grunt** plugins and gets deployed using [Travis CI](http://www.travis-ci.org/). Feel free to fork it or whatever! Happy coding!
+ - ReactJS
+ - NPM
+ - Grunt
 
+### Installation
+You will need `http-server` installed globally to serve the website.
+
+    npm install -g http-server
+    npm install
+
+### Development
+
+    npm run watch
+    npm run serve
+
+### Release
+
+    npm run build
+    grunt release
+
+### Tests
+
+    npm test
 
 ### License
 
-UIColor is licensed under the MIT Open Source license. For more information, see the LICENSE file in this repository.
+UIColor is licensed under the MIT Open Source license. For more information, read the LICENSE file in this repository.
