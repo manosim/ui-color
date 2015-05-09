@@ -2,6 +2,7 @@
 
 var React = require('react');
 var ReactBootstrap  = require('react-bootstrap');
+var ColorPicker = require('react-colorpicker');
 
 var HexInput = React.createClass({
   handleChange: function (evt) {
@@ -18,6 +19,11 @@ var HexInput = React.createClass({
     }
   },
 
+  handleColorChange: function (color) {
+    var hex = color.toHex().replace('#','');
+    this.props.update(hex);
+  },
+
   render: function () {
     return (
       <div>
@@ -31,6 +37,7 @@ var HexInput = React.createClass({
           maxLength='7'
           placeholder='eg. 0072BC'
           onChange={this.handleChange} />
+        <ColorPicker color={this.props.hex} onChange={this.handleColorChange} />
       </div>
     );
   }
