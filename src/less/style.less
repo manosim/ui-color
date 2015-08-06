@@ -1,5 +1,5 @@
-@import "../lib/bootstrap/less/bootstrap.less";
-@import "../lib/angular-bootstrap-colorpicker/less/colorpicker.less";
+@import "node_modules/bootstrap/less/bootstrap";
+@import "node_modules/font-awesome/less/font-awesome.less";
 
 // Web Font
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300,600);
@@ -68,6 +68,7 @@
     font-weight: 600;
 }
 
+/* @group Misc */
 
 body {
     .RegularFont();
@@ -78,11 +79,16 @@ a {
     -webkit-transition:all .8s;
     -moz-transition:all .8s;
     transition:all .8s;
+
+    &:hover {
+        /*color: ;*/
+        text-decoration: none;
+    }
 }
 
-a:hover {
-    /*color: ;*/
-    text-decoration: none;
+.btn:focus,
+.btn:active {
+   outline: none !important;
 }
 
 .github-ribbon {
@@ -92,6 +98,17 @@ a:hover {
     border: 0;
     z-index: 100;
 }
+
+/* @end Misc */
+
+
+/* @group App */
+
+.app {
+    text-align: center;
+}
+
+/* @end App */
 
 .about {
     padding: 10px 40px 20px 40px;
@@ -106,6 +123,7 @@ a:hover {
     color: @ThemePrimary;
     text-align: center;
     font-weight: 300;
+    margin-bottom: 20px;
 }
 
 .input-group-addon {
@@ -114,49 +132,21 @@ a:hover {
     border-color: @ThemePrimary;
 }
 
-.colorpicker {
-    .dropdown-menu {
-        background-color: lighten(@LightGray, 20%);
-        padding: 8px;
-
-        &::before,
-        &::after {
-            border-bottom: 6px solid lighten(@LightGray, 20%);
-        }
-    }
-
-    colorpicker-saturation,
-    colorpicker-hue {
-        .border-radius ();
-        border: 1px solid lighten(@LightGray, 0%);
-    }
-
-    colorpicker-preview {
-        height: 0;
-    }
-
-    .close {
-        .opacity (1);
-        color: darken(@LightGray, 20%);
-    }
-
-    ::before,
-    .colorpicker-position-bottom .dropdown-menu::after {
-        border-bottom: 6px solid lighten(@LightGray, 20%);
-    }
-
-}
-
 .code-block {
     font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
     background-color: @CodeBg;
     .border-radius ();
     margin: 20px 0;
+    padding: 20px 0;
     position: relative;
 
-    span {
+    &.disable {
+        .opacity (0.5);
+    }
+
+    .code {
         display: block;
-        padding: 10px 50px 20px 20px;
+        padding: 20px 5px 10px;
         font-size: 15px;
         font-weight: bold;
     }
@@ -183,13 +173,13 @@ a:hover {
         font-style: italic;
         color: lighten(@LightGray, 0%);
         margin: 0 20px;
-        padding: 20px 20px 5px 0;
+        padding: 0 20px;
+        text-align: left;
     }
 }
 
 .header {
-    padding: 30px 0 15px 0;
-    text-align: center;
+    padding: 30px 20px 15px 20px;
 
     .logo {
         border-radius: 50%;
@@ -228,15 +218,13 @@ a:hover {
 
 .converter  {
     min-height: 200px;
-    margin: 30px 0 0 0;
+    margin: 20px 0 5px 0;
 
     .color-demo {
         margin-top: 20px;
         margin-bottom: 15px;
-
-        svg {
-            margin: 10px 0 5px 0;
-        }
+        height: 45px;
+        .border-radius ();
     }
 
 }
@@ -258,6 +246,186 @@ a:hover {
         }
     }
 }
+
+
+/* @group Color Picker */
+
+/**
+ * RECOMMENDED STYLES
+ */
+.colorpicker {
+  color: #fff;
+  background: #333;
+  display: block;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0; }
+  .colorpicker .map {
+    display: block;
+    position: absolute;
+    top: 25px;
+    bottom: 56px;
+    left: 56px;
+    right: 181px;
+    position: absolute;
+    -webkit-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
+    overflow: hidden; }
+    .colorpicker .map.active {
+      cursor: none; }
+    .colorpicker .map.dark .pointer {
+      border-color: #fff; }
+    .colorpicker .map.light .pointer {
+      border-color: #000; }
+    .colorpicker .map .pointer {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      margin-left: -5px;
+      margin-top: -5px;
+      border-radius: 100%;
+      border: 1px solid #000; }
+    .colorpicker .map .background {
+      top: 0;
+      left: 0;
+      position: absolute;
+      height: 100%;
+      width: 100%; }
+    .colorpicker .map .background:before, .colorpicker .map .background:after {
+      display: block;
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0; }
+    .colorpicker .map .background:after {
+      background: -webkit-linear-gradient(top, transparent 0%, #000000 100%);
+      background: linear-gradient(to bottom, transparent 0%, #000000 100%); }
+    .colorpicker .map .background:before {
+      background: -webkit-linear-gradient(left, #ffffff 0%, rgba(255, 255, 255, 0) 100%);
+      background: linear-gradient(to right, #ffffff 0%, rgba(255, 255, 255, 0) 100%); }
+  .colorpicker .slider {
+    position: absolute;
+    -webkit-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none; }
+    .colorpicker .slider.vertical {
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      width: 10px;
+      cursor: ns-resize; }
+      .colorpicker .slider.vertical .track {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 50%;
+        width: 6px;
+        margin-left: -3px; }
+    .colorpicker .slider.horizontal {
+      left: 0;
+      right: 0;
+      top: 50%;
+      height: 10px;
+      cursor: ew-resize; }
+      .colorpicker .slider.horizontal .track {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 50%;
+        height: 6px;
+        margin-top: -3px; }
+    .colorpicker .slider .track {
+      border-radius: 3px;
+      background: #888; }
+    .colorpicker .slider .pointer {
+      position: absolute;
+      bottom: 50%;
+      left: 50%;
+      width: 14px;
+      height: 14px;
+      background: #ddd;
+      margin-left: -7px;
+      margin-bottom: -7px;
+      border-radius: 14px; }
+  .colorpicker .sat-slider {
+    display: block;
+    position: absolute;
+    top: auto;
+    bottom: 33px;
+    left: 56px;
+    right: 181px; }
+  .colorpicker .light-slider {
+    display: block;
+    position: absolute;
+    top: 25px;
+    bottom: 56px;
+    left: 23px;
+    right: auto; }
+  .colorpicker .hue-slider {
+    display: block;
+    position: absolute;
+    top: 25px;
+    bottom: 56px;
+    left: auto;
+    right: 158px; }
+    .colorpicker .hue-slider .track {
+      background: -webkit-linear-gradient(top, #FF0000 0%, #FF0099 10%, #CD00FF 20%, #3200FF 30%, #0066FF 40%, #00FFFD 50%, #00FF66 60%, #35FF00 70%, #CDFF00 80%, #FF9900 90%, #FF0000 100%);
+      background: linear-gradient(to bottom, #FF0000 0%, #FF0099 10%, #CD00FF 20%, #3200FF 30%, #0066FF 40%, #00FFFD 50%, #00FF66 60%, #35FF00 70%, #CDFF00 80%, #FF9900 90%, #FF0000 100%); }
+  .colorpicker .sample {
+    display: block;
+    position: absolute;
+    top: 25px;
+    bottom: auto;
+    left: auto;
+    right: 25px;
+    width: 100px;
+    height: 100px; }
+    .colorpicker .sample .current {
+      height: 50%; }
+    .colorpicker .sample .origin {
+      height: 50%; }
+  .colorpicker .details {
+    display: block;
+    position: absolute;
+    top: 140px;
+    bottom: 0;
+    left: auto;
+    right: 25px;
+    width: 100px;
+    overflow: hidden; }
+    .colorpicker .details ul {
+      padding: 0;
+      margin: 0 0 20px 0; }
+      .colorpicker .details ul li {
+        list-style-type: none; }
+    .colorpicker .details label {
+      display: inline-block;
+      color: #888;
+      width: 15px;
+      margin-right: 5px;
+      text-align: right; }
+    .colorpicker .details input {
+      width: 74px;
+      text-transform: uppercase;
+      background: none;
+      border-radius: 3px;
+      border: none;
+      outline: none;
+      color: #ccc;
+      background: rgba(0, 0, 0, 0.1); }
+      .colorpicker .details input:focus {
+        color: #333;
+        background: rgba(255, 255, 255, 0.9); }
+
+/* @end Color Picker */
+
 
 /* @group Import Responsive LESS */
 @import "responsive.less";

@@ -1,17 +1,67 @@
 {
-  "name": "ProjectName",
-  "version": "0.0.1",
-  "private": "true",
-  "dependencies": {},
+  "name": "ui-color",
+  "version": "1.0.0",
+  "description": "UIColor is a website used to convert HEX & RGB colors to UIColor for both Objective-C and Swift.",
+  "main": "build/js/app.js",
+  "scripts": {
+    "build-js": "browserify -t reactify src/js/app.js -o build/js/app.js",
+    "build": "npm install && mkdir -p build/js && npm run build-js",
+    "watch-js": "watchify -t reactify src/js/app.js -o build/js/app.js -v",
+    "watch": "grunt build && npm build && npm run watch-js | grunt watch",
+    "serve": "http-server 'build/'",
+    "test": "jsxhint --reporter node_modules/jshint-stylish/stylish.js 'src/js/*.js'"
+  },
+  "jshintConfig": {
+    "browserify": true,
+    "unused": true,
+    "undef": true,
+    "globals": {
+      "console": false
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ekonstantinidis/ui-color.git"
+  },
+  "keywords": [
+    "uicolor",
+    "ui-color",
+    "rgb",
+    "rgba",
+    "hex",
+    "conver",
+    "converter",
+    "swift",
+    "objective-c"
+  ],
+  "author": "Emmanouil Konstantinidis",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ekonstantinidis/ui-color/issues"
+  },
+  "homepage": "https://github.com/ekonstantinidis/ui-color",
+  "dependencies": {
+    "bootstrap": "=3.3.4",
+    "browserify": "^9.0.8",
+    "font-awesome": "^4.3.0",
+    "react": "^0.13.2",
+    "react-bootstrap": "^0.21.0",
+    "react-colorpicker": "^0.3.13",
+    "react-router": "^0.13.2",
+    "react-router-bootstrap": "^0.13.0",
+    "react-tools": "^0.13.2",
+    "react-zeroclipboard": "^1.0.0",
+    "reactify": "^1.1.0",
+    "watchify": "^3.1.2"
+  },
   "devDependencies": {
     "grunt": "^0.4.5",
     "grunt-contrib-clean": "^0.6.0",
-    "grunt-contrib-connect": "^0.9.0",
-    "grunt-contrib-copy": "^0.7.0",
-    "grunt-contrib-jshint": "^0.10.0",
-    "grunt-contrib-less": "^0.12.0",
-    "grunt-contrib-uglify": "^0.6.0",
+    "grunt-contrib-copy": "^0.8.0",
+    "grunt-contrib-less": "^1.0.1",
     "grunt-contrib-watch": "^0.6.1",
-    "grunt-gh-pages": "^0.9.1"
+    "jshint-stylish": "^1.0.1",
+    "jsxhint": "=0.14.0",
+    "less": "=2.5.0"
   }
 }
