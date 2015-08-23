@@ -26,7 +26,16 @@
     "url": "https://github.com/ekonstantinidis/ui-color/issues"
   },
   "homepage": "http://www.uicolor.io/",
-  "dependencies": {},
+  "dependencies": {
+    "angular": "=1.4.4",
+    "angular-bootstrap-colorpicker": "=3.0.18",
+    "angular-route": "=1.4.4",
+    "angular-ui-bootstrap": "=0.13.3",
+    "bootstrap": "=3.3.5",
+    "font-awesome": "=4.4.0",
+    "ng-clip": "=0.2.6",
+    "zeroclipboard": "=2.2.0"
+  },
   "devDependencies": {
     "grunt": "=0.4.5",
     "grunt-contrib-clean": "=0.6.0",
@@ -37,6 +46,7 @@
     "grunt-contrib-uglify": "=0.9.1",
     "grunt-contrib-watch": "=0.6.1",
     "grunt-gh-pages": "=0.10.0",
+    "grunt-ng-annotate": "^1.0.1",
     "http-server": "=0.8.0"
   }
 }
