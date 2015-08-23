@@ -9,7 +9,7 @@ env:
 
 before_install:
   - npm install -g grunt-cli
-  - npn install
+  - npm install
 
 script:
   - npm run build
