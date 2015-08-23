@@ -5,9 +5,22 @@ Website: [http://www.uicolor.io/](http://www.uicolor.io/)
 
 UIColor is a website used to convert HEX & RGB colors to **UIColor** for both **Objective-C** and **Swift** featuring a **colorpicker** and **copy to clipboard** functionality making things easier.
 
-### The technical bit
-The website itself is written in Javascript and it's based on Angular JS. It also uses several **Grunt** plugins and gets deployed using [Travis CI](http://www.travis-ci.org/). Feel free to fork it or whatever! Happy coding!
+### Prerequisites
 
+ - AngularJS
+ - NPM
+ - Grunt
+ - Http-Server
+
+### Development
+You have to install **http-server** globally and then just watch and serve the files.
+
+    npm install
+    npm install http-server -g
+    npm start
+
+### Deployment
+[Travis CI](http://www.travis-ci.org/) does the job. For every commit on the `master` branch, Travis runs the builds and pushes to the `gh-pages` branch.
 
 ### License
 

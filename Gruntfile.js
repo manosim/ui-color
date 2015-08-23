@@ -69,17 +69,6 @@ module.exports = function(grunt) {
       }
     },
 
-    connect: {
-      server: {
-        options: {
-          open: true,
-          base: 'build',
-          keepalive: true,
-          useAvailablePort: true,
-        }
-      }
-    },
-
     'gh-pages': {
       options: {
         branch: 'gh-pages',
@@ -136,12 +125,10 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-less');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-jshint');
-  grunt.loadNpmTasks('grunt-contrib-connect');
   grunt.loadNpmTasks('grunt-gh-pages');
 
   grunt.registerTask('default', ['build']);
   grunt.registerTask('build', ['clean', 'jshint', 'uglify', 'less', 'copy']);
-  grunt.registerTask('serve', ['build', 'connect:server']);
 
   grunt.registerTask('deploy', 'Publish from Travis', [
     'build',
