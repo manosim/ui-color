@@ -8,7 +8,7 @@ module.exports = function(grunt) {
 
     watch: {
       files: 'src/**/*.*',
-      tasks: ['clean', 'jshint', 'uglify', 'copy', 'less']
+      tasks: ['build']
     },
 
     jshint: {
@@ -28,32 +28,30 @@ module.exports = function(grunt) {
           {expand: true, cwd: "src/lib/ng-clip/", src: '*.min.js', dest: 'build/lib/'},
           {expand: true, cwd: "src/lib/ng-clip/", src: '*.swf', dest: 'build/images/'},
 
-          {expand: true, cwd: "src/lib/angular-bootstrap-colorpicker/img/", src: '**', dest: 'build/images/colorpicker/'},
-          {expand: true, cwd: "src/lib/angular-bootstrap-colorpicker/js/", src: '**', dest: 'build/lib/'},
-          {expand: true, cwd: "src/lib/font-awesome/css/", src: '**', dest: 'build/css/'},
-          {expand: true, cwd: "src/lib/font-awesome/fonts/", src: '**', dest: 'build/fonts/'},
-          {expand: true, cwd: "src/lib/bootstrap/fonts/", src: '**', dest: 'build/fonts/'},
-          {expand: true, cwd: "src/lib/angular/", src: '**', dest: 'build/lib/'},
+          {expand: true, cwd: "node_modules/angular-bootstrap-colorpicker/img/", src: '**', dest: 'build/images/colorpicker/'},
+          {expand: true, cwd: "node_modules/font-awesome/css/", src: '**', dest: 'build/css/'},
+          {expand: true, cwd: "node_modules/font-awesome/fonts/", src: '**', dest: 'build/fonts/'},
+          {expand: true, cwd: "node_modules/bootstrap/fonts/", src: '**', dest: 'build/fonts/'},
           {expand: true, cwd: "src/lib/ui-bootstrap/", src: '**', dest: 'build/lib/'},
+
+          {expand: true, cwd: "node_modules/zeroclipboard/dist/", src: 'ZeroClipboard.swf', dest: 'build/images/'},
         ]
       }
     },
 
-    uglify: {
-      options: {
-        compress: {
-          drop_console: true
-        },
-        mangle: false
-      },
-      main: {
+    ngAnnotate: {
+      src: {
         files: {
-          'build/js/main.min.js': [
-            'src/js/app.js',
-            'src/js/controllers.js',
-            'src/js/controllers/header.js',
-            'src/js/controllers/hex-to-ui.js',
-            'src/js/controllers/rgb-to-ui.js',
+          'build/js/main.js': [
+            'node_modules/angular/angular.js',
+            'node_modules/angular-route/angular-route.js',
+            'node_modules/angular-bootstrap-colorpicker/js/bootstrap-colorpicker-module.js',
+            'node_modules/angular-ui-bootstrap/ui-bootstrap.js',
+            'node_modules/zeroclipboard/dist/ZeroClipboard.js',
+            'node_modules/ng-clip/dest/ng-clip.min.js',
+
+            'src/js/*.js',
+            'src/js/controllers/*.js',
           ]
         }
       }
@@ -125,10 +123,11 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-less');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-jshint');
+  grunt.loadNpmTasks('grunt-ng-annotate');
   grunt.loadNpmTasks('grunt-gh-pages');
 
   grunt.registerTask('default', ['build']);
-  grunt.registerTask('build', ['clean', 'jshint', 'uglify', 'less', 'copy']);
+  grunt.registerTask('build', ['jshint', 'ngAnnotate', 'less', 'copy']);
 
   grunt.registerTask('deploy', 'Publish from Travis', [
     'build',

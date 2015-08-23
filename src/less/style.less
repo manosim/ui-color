@@ -1,14 +1,20 @@
-@import "../lib/bootstrap/less/bootstrap.less";
-@import "../lib/angular-bootstrap-colorpicker/less/colorpicker.less";
+@import 'node_modules/bootstrap/less/bootstrap';
 
 // Web Font
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300,600);
+
+/* @group Colors */
 
 @ThemePrimary: #0072bc;
 @CodeBg: #f7f7f9;
 
 @White: #FFF;
 @LightGray: #a6a6a6;
+
+/* @end Colors */
+
+
+/* @group Mixins */
 
 // Border Radius (Same Corners)
 .border-radius (@radius: 5px) {
@@ -50,8 +56,10 @@
     opacity:        @opacity;
 }
 
-// Web Font: Open Sans
+/* @end Mixins */
 
+
+/* @group Web Fonts */
 
 .RegularFont() {
     font-family: 'Open Sans', "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -68,6 +76,7 @@
     font-weight: 600;
 }
 
+/* @end Web Fonts */
 
 body {
     .RegularFont();
@@ -222,9 +231,8 @@ a:hover {
 
 }
 
-/*
-*  Converter for both HEX & RGB
-*/
+
+/* @group Converter for both HEX & RGB */
 
 .converter  {
     min-height: 200px;
@@ -241,9 +249,10 @@ a:hover {
 
 }
 
-/*
-*  Footer
-*/
+/* @end Converter for both HEX & RGB */
+
+
+/* @group Footer */
 
 .footer {
     padding: 25px 0;
@@ -259,6 +268,11 @@ a:hover {
     }
 }
 
-/* @group Import Responsive LESS */
+/* @end Footer */
+
+/* @group Imports */
+
 @import "responsive.less";
-/* @end Import Responsive LESS */
+@import "colorpicker.less";
+
+/* @end Imports */
