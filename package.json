@@ -5,6 +5,8 @@
   "main": "src/js/app.js",
   "private": "true",
   "scripts": {
+    "build": "ulimit -n 512 && grunt build",
+    "serve": "npm run build && grunt watch",
     "test": "echo 'No Tests'"
   },
   "repository": {
