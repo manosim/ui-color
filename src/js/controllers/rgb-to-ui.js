@@ -59,14 +59,8 @@ app.controller("RgbToUICtrl", function(appConfig, $scope, $filter, $rootScope) {
     }, true);
 
     function updateCopyText() {
-        $scope.copyObjectiveC = "/// Returns a color object whose RGB values are " + $scope.uiColor.r + ", " + $scope.uiColor.g + " and " + $scope.uiColor.b + "and whose alpha value is " + $scope.alpha + "." + "\n"
-                            + "///" + "\n"
-                            + "/// @return The UIColor object." + "\n"
-                            + "[UIColor colorWithRed:" + $scope.uiColor.r + " green:" + $scope.uiColor.g + " blue:" + $scope.uiColor.b + " alpha:" + $scope.alpha + "];";
-        $scope.copySwift = "/// Returns a color object whose RGB values are " + $scope.uiColor.r + ", " + $scope.uiColor.g + " and " + $scope.uiColor.b + "and whose alpha value is " + $scope.alpha + "." + "\n"
-                            + "///" + "\n"
-                            + "/// - Returns: The UIColor object." + "\n"
-                            + "UIColor(red:" + $scope.uiColor.r + ", green:" + $scope.uiColor.g + ", blue:" + $scope.uiColor.b + ", alpha:" + $scope.alpha + ")";
+        $scope.copyObjectiveC = "/// Returns a color object whose RGB values are " + $scope.uiColor.r + ", " + $scope.uiColor.g + " and " + $scope.uiColor.b + "and whose alpha value is " + $scope.alpha + "." + "\n" + "///" + "\n" + "/// @return The UIColor object." + "\n" + "[UIColor colorWithRed:" + $scope.uiColor.r + " green:" + $scope.uiColor.g + " blue:" + $scope.uiColor.b + " alpha:" + $scope.alpha + "];";
+        $scope.copySwift = "/// Returns a color object whose RGB values are " + $scope.uiColor.r + ", " + $scope.uiColor.g + " and " + $scope.uiColor.b + "and whose alpha value is " + $scope.alpha + "." + "\n" + "///" + "\n" + "/// - Returns: The UIColor object." + "\n" + "UIColor(red:" + $scope.uiColor.r + ", green:" + $scope.uiColor.g + ", blue:" + $scope.uiColor.b + ", alpha:" + $scope.alpha + ")";
     }
 
 });
