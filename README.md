@@ -1,6 +1,6 @@
 UIColor.io [![Build Status](https://travis-ci.org/ekonstantinidis/ui-color.svg?branch=master)](https://travis-ci.org/ekonstantinidis/ui-color)
 =======================
-Website: [http://www.uicolor.io/](http://www.uicolor.io/)
+Website: [http://www.uicolor.xyz/](http://www.uicolor.xyz/)
 
 
 UIColor is a website used to convert HEX & RGB colors to **UIColor** for both **Objective-C** and **Swift** featuring a **colorpicker** and **copy to clipboard** functionality making things easier.
