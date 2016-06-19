@@ -61,6 +61,7 @@ app.controller("RgbToUICtrl", function(appConfig, $scope, $filter, $rootScope) {
     function updateCopyText() {
         $scope.copyObjectiveC = "[UIColor colorWithRed:" + $scope.uiColor.r + " green:" + $scope.uiColor.g + " blue:" + $scope.uiColor.b + " alpha:" + $scope.alpha + "];";
         $scope.copySwift = "UIColor(red:" + $scope.uiColor.r + ", green:" + $scope.uiColor.g + ", blue:" + $scope.uiColor.b + ", alpha:" + $scope.alpha + ")";
+        $scope.copyXamarin = "new UIColor(red:" + $scope.uiColor.r + "f, green:" + $scope.uiColor.g + "f, blue:" + $scope.uiColor.b + "f, alpha:" + $scope.alpha + "f)";
     }
 
 });
