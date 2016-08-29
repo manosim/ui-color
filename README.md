@@ -1,4 +1,4 @@
-UIColor.xyz [![Build Status](https://travis-ci.org/ekonstantinidis/ui-color.svg?branch=master)](https://travis-ci.org/ekonstantinidis/ui-color)
+UIColor.xyz [![Build Status](https://travis-ci.org/manosim/ui-color.svg?branch=master)](https://travis-ci.org/manosim/ui-color)
 =======================
 Website: [http://www.uicolor.xyz/](http://www.uicolor.xyz/)
 
