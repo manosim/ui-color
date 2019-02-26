@@ -1,11 +1,7 @@
 language: node_js
 
 node_js:
-  - "0.11"
-
-env:
-  global:
-    - secure: Si2/Fz6Ehzs0URoilU+rbNgMOf2GIJpMPAAL6U9Cv5MCboplUDkC29N/V0tQm6BQrCAE++qWiWiy0WMH8MumOR14ZVsrg0Cq1XGM3Eu3A79LG51vqtFl3a3pGPlIqwihJ553gH/UrQkxVcw0syYU/jkQ6oRIoxAF3muY354/9sk=
+  - "10.15.1"
 
 before_install:
   - npm install -g grunt-cli
@@ -13,7 +9,3 @@ before_install:
 
 script:
   - npm run build
-
-after_success:
-- npm run dist
-- bash scripts/deploy.bash
