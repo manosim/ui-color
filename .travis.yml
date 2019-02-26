@@ -1,7 +1,7 @@
 language: node_js
 
 node_js:
-  - "0.11"
+  - "10.15.1"
 
 env:
   global:
@@ -15,5 +15,4 @@ script:
   - npm run build
 
 after_success:
-- npm run dist
-- bash scripts/deploy.bash
+  - bash scripts/deploy.bash

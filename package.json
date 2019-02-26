@@ -3,10 +3,9 @@
   "version": "0.0.1",
   "description": "Convert HEX & RGB colors to UIColor for both Objective-C and Swift.",
   "main": "src/js/app.js",
-  "private": "true",
   "scripts": {
     "start": "npm run build && grunt watch & http-server build/ -o -c-1",
-    "build": "ulimit -n 512 && grunt build",
+    "build": "grunt build",
     "watch": "grunt watch",
     "test": "echo 'No Tests'"
   },

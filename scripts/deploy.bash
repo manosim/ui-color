@@ -1,15 +1,15 @@
 #!/usr/bin/env bash
 
 BRANCH=gh-pages
-TARGET_REPO=ekonstantinidis/ui-color.git
+TARGET_REPO=manosim/ui-color.git
 DIST_FOLDER=build
 
 if [ "$TRAVIS_PULL_REQUEST" == "false" ] && [ "$TRAVIS_BRANCH" == "master" ]; then
     echo -e "Starting deployment to Github Pages\n"
 
     if [ "$TRAVIS" == "true" ]; then
-        git config --global user.email "manos@iamemmanouil.com"
-        git config --global user.name "ekonstantinidis"
+        git config --global user.email "hello@manos.im"
+        git config --global user.name "manosim"
     fi
 
     # Using token clone gh-pages branch
