@@ -116,38 +116,6 @@ module.exports = function(grunt) {
     }
   });
 
-  function getDeployMessage() {
-    var ret = "\n\n";
-    if (process.env.TRAVIS !== "true") {
-      ret += "missing env vars for travis-ci";
-      return ret;
-    }
-    ret += "branch:       " + process.env.TRAVIS_BRANCH + "\n";
-    ret += "SHA:          " + process.env.TRAVIS_COMMIT + "\n";
-    ret += "range SHA:    " + process.env.TRAVIS_COMMIT_RANGE + "\n";
-    ret += "build id:     " + process.env.TRAVIS_BUILD_ID + "\n";
-    ret += "build number: " + process.env.TRAVIS_BUILD_NUMBER + "\n";
-    return ret;
-  }
-
-  grunt.registerTask("check-deploy", function() {
-    // need this
-    this.requires(["build"]);
-
-    // only deploy under these conditions
-    if (
-      process.env.TRAVIS === "true" &&
-      process.env.TRAVIS_SECURE_ENV_VARS === "true" &&
-      process.env.TRAVIS_PULL_REQUEST === "false"
-    ) {
-      grunt.log.writeln("executing deployment");
-      // queue deploy
-      grunt.task.run("gh-pages:deploy");
-    } else {
-      grunt.log.writeln("skipped deployment");
-    }
-  });
-
   grunt.loadNpmTasks("grunt-contrib-clean");
   grunt.loadNpmTasks("grunt-contrib-watch");
   grunt.loadNpmTasks("grunt-contrib-copy");
@@ -155,13 +123,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks("grunt-contrib-uglify");
   grunt.loadNpmTasks("grunt-contrib-jshint");
   grunt.loadNpmTasks("grunt-ng-annotate");
-  grunt.loadNpmTasks("grunt-gh-pages");
 
   grunt.registerTask("default", ["build"]);
   grunt.registerTask("build", ["jshint", "ngAnnotate", "less", "copy"]);
-
-  grunt.registerTask("deploy", "Publish from Travis", [
-    "build",
-    "check-deploy"
-  ]);
 };
