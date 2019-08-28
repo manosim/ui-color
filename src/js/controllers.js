@@ -4,5 +4,6 @@ angular.module('controllers', [
     'controllers.header',
     'controllers.hextoui',
     'controllers.rgbtoui',
+    'controllers.uitoall'
 
 ]);
