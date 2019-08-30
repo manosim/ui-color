@@ -1,59 +1,62 @@
 var app = angular.module('controllers.uitoall', ['ngRoute', 'ui.bootstrap', 'colorpicker.module']);
 
-app.controller("UiToAllCtrl", function(appConfig, $scope, $filter, $rootScope) {
+app.controller("UiToAllCtrl", function (appConfig, $scope, $filter, $rootScope) {
 
-    $scope.title = "UIColor to RGB / HEX Converter";
+    $scope.title = "UIColor to Hex & Rgb Converter";
 
     // Roll Tide
     $scope.uiColorValid = true;
     $scope.uiColorString = "";
 
-    function convertRgbToUi(color) {
-        $scope.color.rgb = color;
-        $scope.color.r = color.replace(/^rgba?\(|\s+|\)$/g,'').split(',')[0];
-        $scope.color.g = color.replace(/^rgba?\(|\s+|\)$/g,'').split(',')[1];
-        $scope.color.b = color.replace(/^rgba?\(|\s+|\)$/g,'').split(',')[2];
+    $scope.color = {
+        "r": "",
+        "g": "",
+        "b": "",
+        "hex": ""
+    };
 
-        $scope.uiColor = {
-            "r": ($scope.color.r / 255).toFixed(2),
-            "g": ($scope.color.g / 255).toFixed(2),
-            "b": ($scope.color.b / 255).toFixed(2),
-        };
+    function convertUiToRgbAndHex(r, g, b) {
+        $scope.color.r = Math.round(r * 255);
+        $scope.color.g = Math.round(g * 255);
+        $scope.color.b = Math.round(b * 255);
 
-        console.log($scope.color);
-        updateCopyText();
-        $rootScope.$broadcast('ColorChanged', $scope.color);
+        $scope.color.hex = $scope.color.r.toString(16) + $scope.color.g.toString(16) + $scope.color.b.toString(16);
     }
 
-    $scope.$watch('color', function(newVal, oldval){
-        if (newVal.r && newVal.g && newVal.b) {
+    $scope.$watch('uiColorString', function (newVal, oldval) {
+        if (newVal !== "") {
+            var parseRegex = /[rR]ed: ?([\d.]*?)f?,? green: ?([\d.]*?)f?,? blue: ?([\d.]*?)f?,? /;
+            var parsedGroups = parseRegex.exec(newVal);
 
-            if (!isNaN(newVal.r) && !isNaN(newVal.g) && !isNaN(newVal.b)) {
-                $scope.color.rgb = "rgb(" + $scope.color.r + "," + $scope.color.g + "," + $scope.color.b + ")";
-                convertRgbToUi($scope.color.rgb);
+            if (parsedGroups) {
+                var red = parseFloat(parsedGroups[1]);
+                var green = parseFloat(parsedGroups[2]);
+                var blue = parseFloat(parsedGroups[3]);
+
+                if (red <= 1 && green <= 1 && blue <= 1) {
+                    convertUiToRgbAndHex(red, green, blue);
+                    updateCopyText();
+                    $rootScope.$broadcast('ColorChanged', $scope.color.hex);
+                    $scope.uiColorValid = true;
+                } else {
+                    $rootScope.$broadcast('ColorChanged', appConfig.themePrimary);
+                    $scope.uiColorValid = false;
+                    console.log("Invalid UIColor.");
+                }
             } else {
                 $rootScope.$broadcast('ColorChanged', appConfig.themePrimary);
-                $scope.rgbValid = false;
-                console.log("Invalid RGB.");
+                $scope.uiColorValid = false;
+                console.log("Invalid UIColor.");
             }
-
         } else {
             $rootScope.$broadcast('ColorChanged', appConfig.themePrimary);
         }
-    }, true);
 
-    $scope.$watch('rgb', function(newVal, oldval){
-        if (newVal) {
-            convertRgbToUi(newVal);
-            // console.log(newVal);
-        } else {
-            $rootScope.$broadcast('ColorChanged', appConfig.themePrimary);
-        }
     }, true);
 
     function updateCopyText() {
-        $scope.copyRgb = "rgba(" + $scope.uiColor.r + ", " + $scope.uiColor.g + ", " + $scope.uiColor.b + ");";
-        $scope.copyHex = "";
+        $scope.copyRgb = "rgb(" + $scope.color.r + ", " + $scope.color.g + ", " + $scope.color.b + ")";
+        $scope.copyHex = "#" + $scope.color.hex;
     }
 
 });

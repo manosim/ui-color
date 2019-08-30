@@ -3,7 +3,7 @@
 <div class="row converter ui-to-all">
     <div class="col-xs-12 col-sm-12 col-md-offset-1 col-md-10">
 
-        <div class="col-sm-12 col-xs-12 col-md-9 form-group" ng-class="{false:'has-warning'}[uiColorValid]">
+        <div class="col-sm-12 col-xs-12 col-md-12 form-group" ng-class="{false:'has-warning'}[uiColorValid]">
             <div class="input-group">
                 <div class="input-group-addon">UIColor</div>
                 <input class="form-control input-lg" type="text"
@@ -12,25 +12,20 @@
             </div>
         </div>
 
-        <div class="hidden-xs hidden-sm col-md-3 form-group text-right">
-            <button class="btn btn-block btn-lg btn-primary" colorpicker="rgb" type="button"
-                colorpicker-position="bottom" ng-model="rgb"><i class="fa fa-eyedropper"></i></button>
-        </div>
-
-        <div class="col-md-12 col-lg-12 form-group color-demo" ng-show="uiColorValid && color.r && color.g && color.b">
+        <div class="col-md-12 col-lg-12 form-group color-demo" ng-show="uiColorValid && uiColorString !== ''">
             <svg width="100%" height="45" preserveAspectRatio="xMaxYMin meet">
-                <rect width="100%" height="100%" rx="5" ry="5" style="stroke-width:0;" ng-style="{'fill': rgb}" />
+                <rect width="100%" height="100%" rx="5" ry="5" style="stroke-width:0;" ng-style="{'fill': '#' + color.hex}" />
             </svg>
         </div>
 
-        <div class="col-xs-12" ng-show="color.r && color.g && color.b">
-            <div ng-show="!uiColorValid" class="alert alert-warning" role="alert">RGB not valid</div>
+        <div class="col-xs-12" ng-show="uiColorValid && uiColorString !== ''">
+            <div ng-show="!uiColorValid" class="alert alert-warning" role="alert">UIColor not valid</div>
 
             <!-- RGB -->
             <div ng-show="uiColorValid" class="code-block">
                 <h3 class="language">RGB</h3>
                 <span>{{ copyRgb }}</span>
-                <button type="button" class="btn btn-default hidden-xs hidden-sm" clip-copy="copyObjectiveC"><i
+                <button type="button" class="btn btn-default hidden-xs hidden-sm" clip-copy="copyRgb"><i
                         class="fa fa-files-o"></i></button>
             </div>
 
@@ -38,7 +33,7 @@
             <div ng-show="uiColorValid" class="code-block">
                 <h3 class="language">HEX</h3>
                 <span>{{ copyHex }}</span>
-                <button type="button" class="btn btn-default hidden-xs hidden-sm" clip-copy="copySwift"><i
+                <button type="button" class="btn btn-default hidden-xs hidden-sm" clip-copy="copyHex"><i
                         class="fa fa-files-o"></i></button>
             </div>
         </div>
