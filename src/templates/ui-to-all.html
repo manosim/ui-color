@@ -1,0 +1,42 @@
+<h2 class="title">{{ title }}</h2>
+
+<div class="row converter ui-to-all">
+    <div class="col-xs-12 col-sm-12 col-md-offset-1 col-md-10">
+
+        <div class="col-sm-12 col-xs-12 col-md-12 form-group" ng-class="{false:'has-warning'}[uiColorValid]">
+            <div class="input-group">
+                <div class="input-group-addon">UIColor</div>
+                <input class="form-control input-lg" type="text"
+                    placeholder="UIColor(red: 0, green: 0, blue: 0, alpha: 1.0)"
+                    ng-class="{false:'has-warning'}[uiColorValid]" ng-model="uiColorString">
+            </div>
+        </div>
+
+        <div class="col-md-12 col-lg-12 form-group color-demo" ng-show="uiColorValid && uiColorString !== ''">
+            <svg width="100%" height="45" preserveAspectRatio="xMaxYMin meet">
+                <rect width="100%" height="100%" rx="5" ry="5" style="stroke-width:0;" ng-style="{'fill': '#' + color.hex}" />
+            </svg>
+        </div>
+
+        <div class="col-xs-12" ng-show="uiColorValid && uiColorString !== ''">
+            <div ng-show="!uiColorValid" class="alert alert-warning" role="alert">UIColor not valid</div>
+
+            <!-- RGB -->
+            <div ng-show="uiColorValid" class="code-block">
+                <h3 class="language">RGB</h3>
+                <span>{{ copyRgb }}</span>
+                <button type="button" class="btn btn-default hidden-xs hidden-sm" clip-copy="copyRgb"><i
+                        class="fa fa-files-o"></i></button>
+            </div>
+
+            <!-- HEX -->
+            <div ng-show="uiColorValid" class="code-block">
+                <h3 class="language">HEX</h3>
+                <span>{{ copyHex }}</span>
+                <button type="button" class="btn btn-default hidden-xs hidden-sm" clip-copy="copyHex"><i
+                        class="fa fa-files-o"></i></button>
+            </div>
+        </div>
+
+    </div>
+</div>
