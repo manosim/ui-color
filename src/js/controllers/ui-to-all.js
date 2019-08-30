@@ -20,8 +20,13 @@ app.controller("UiToAllCtrl", function (appConfig, $scope, $filter, $rootScope) 
         $scope.color.g = Math.round(g * 255);
         $scope.color.b = Math.round(b * 255);
 
-        $scope.color.hex = $scope.color.r.toString(16) + $scope.color.g.toString(16) + $scope.color.b.toString(16);
+        $scope.color.hex = componentToHex($scope.color.r) + componentToHex($scope.color.g) + componentToHex($scope.color.b);
     }
+
+    function componentToHex(c) {
+        var hex = c.toString(16);
+        return hex.length == 1 ? "0" + hex : hex;
+      }
 
     $scope.$watch('uiColorString', function (newVal, oldval) {
         if (newVal !== "") {
