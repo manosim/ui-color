@@ -66,10 +66,10 @@ angular-ui-bootstrap@=0.13.3:
   resolved "https://registry.yarnpkg.com/angular-ui-bootstrap/-/angular-ui-bootstrap-0.13.3.tgz#d7620803c8744f38f95fd3e930777b2feff31505"
   integrity sha1-12IIA8h0Tzj5X9PpMHd7L+/zFQU=
 
-angular@=1.4.4:
-  version "1.4.4"
-  resolved "https://registry.yarnpkg.com/angular/-/angular-1.4.4.tgz#9ac24aa5d38802339af99fe63c64a7e9784958b8"
-  integrity sha1-msJKpdOIAjOa+Z/mPGSn6XhJWLg=
+angular@=1.7.9:
+  version "1.7.9"
+  resolved "https://registry.yarnpkg.com/angular/-/angular-1.7.9.tgz#e52616e8701c17724c3c238cfe4f9446fd570bc4"
+  integrity sha512-5se7ZpcOtu0MBFlzGv5dsM1quQDoDeUTwZrWjGtTNA7O88cD8TEk5IEKCTDa3uECV9XnvKREVUr7du1ACiWGFQ==
 
 ansi-regex@^0.2.0, ansi-regex@^0.2.1:
   version "0.2.1"
@@ -120,11 +120,6 @@ assert-plus@1.0.0, assert-plus@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/assert-plus/-/assert-plus-1.0.0.tgz#f12e0f3c5d77b0b1cdd9146942e4e96c1e4dd525"
   integrity sha1-8S4PPF13sLHN2RRpQuTpbB5N1SU=
-
-async@0.2.9:
-  version "0.2.9"
-  resolved "https://registry.yarnpkg.com/async/-/async-0.2.9.tgz#df63060fbf3d33286a76aaf6d55a2986d9ff8619"
-  integrity sha1-32MGD789Myhqdqr21Vophtn/hhk=
 
 async@0.9.0:
   version "0.9.0"
@@ -289,13 +284,6 @@ coffee-script@~1.3.3:
   version "1.3.3"
   resolved "https://registry.yarnpkg.com/coffee-script/-/coffee-script-1.3.3.tgz#150d6b4cb522894369efed6a2101c20bc7f4a4f4"
   integrity sha1-FQ1rTLUiiUNp7+1qIQHCC8f0pPQ=
-
-collections@~0.1.3:
-  version "0.1.24"
-  resolved "https://registry.yarnpkg.com/collections/-/collections-0.1.24.tgz#70f810c35784f3f3edfaa9cf262e64a50d9c908b"
-  integrity sha1-cPgQw1eE8/Pt+qnPJi5kpQ2ckIs=
-  dependencies:
-    weak-map "1.0.0"
 
 colors@1.0.3:
   version "1.0.3"
@@ -714,11 +702,6 @@ globule@~0.1.0:
     lodash "~1.0.1"
     minimatch "~0.2.11"
 
-graceful-fs@2.0.1:
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/graceful-fs/-/graceful-fs-2.0.1.tgz#7fd6e0a4837c35d0cc15330294d9584a3898cf84"
-  integrity sha1-f9bgpIN8NdDMFTMClNlYSjiYz4Q=
-
 graceful-fs@^3.0.5:
   version "3.0.11"
   resolved "https://registry.yarnpkg.com/graceful-fs/-/graceful-fs-3.0.11.tgz#7613c778a1afea62f25c630a086d7f3acbbdd818"
@@ -803,18 +786,6 @@ grunt-contrib-watch@=0.6.1:
     gaze "~0.5.1"
     lodash "~2.4.1"
     tiny-lr-fork "0.0.5"
-
-grunt-gh-pages@=0.10.0:
-  version "0.10.0"
-  resolved "https://registry.yarnpkg.com/grunt-gh-pages/-/grunt-gh-pages-0.10.0.tgz#69f1fa787f8021b715d20347c5d470a953501910"
-  integrity sha1-afH6eH+AIbcV0gNHxdRwqVNQGRA=
-  dependencies:
-    async "0.2.9"
-    graceful-fs "2.0.1"
-    q "0.9.3"
-    q-io "1.6.5"
-    url-safe "^1.0.0"
-    wrench "1.5.1"
 
 grunt-legacy-log-utils@~0.1.1:
   version "0.1.1"
@@ -1325,16 +1296,6 @@ mime@^1.2.11:
   resolved "https://registry.yarnpkg.com/mime/-/mime-1.6.0.tgz#32cd9e5c64553bd58d19a568af452acff04981b1"
   integrity sha512-x0Vn8spI+wuJ1O6S7gnbaQg8Pxh4NNHb7KSINmEWKiPE4RKOplvijn+NkmYmmRgP68mc70j2EbeTFRsrswaQeg==
 
-mime@~1.2:
-  version "1.2.11"
-  resolved "https://registry.yarnpkg.com/mime/-/mime-1.2.11.tgz#58203eed86e3a5ef17aed2b7d9ebd47f0a60dd10"
-  integrity sha1-WCA+7Ybjpe8XrtK32evUfwpg3RA=
-
-mimeparse@~0.1.4:
-  version "0.1.4"
-  resolved "https://registry.yarnpkg.com/mimeparse/-/mimeparse-0.1.4.tgz#dafb02752370fd226093ae3152c271af01ac254a"
-  integrity sha1-2vsCdSNw/SJgk64xUsJxrwGsJUo=
-
 minimatch@0.3:
   version "0.3.0"
   resolved "https://registry.yarnpkg.com/minimatch/-/minimatch-0.3.0.tgz#275d8edaac4f1bb3326472089e7949c8394699dd"
@@ -1648,33 +1609,6 @@ punycode@^2.1.0:
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/punycode/-/punycode-2.1.1.tgz#b58b010ac40c22c5657616c8d2c2c02c7bf479ec"
   integrity sha512-XRsRjdf+j5ml+y/6GKHPZbrF/8p2Yga0JPtdqTIY2Xe5ohJPD9saDJJLPvp9+NSBprVvevdXZybnj2cv8OEd0A==
-
-q-io@1.6.5:
-  version "1.6.5"
-  resolved "https://registry.yarnpkg.com/q-io/-/q-io-1.6.5.tgz#335bb9b93cf7fc9337c0ec15fa2d21a65860195a"
-  integrity sha1-M1u5uTz3/JM3wOwV+i0hplhgGVo=
-  dependencies:
-    collections "~0.1.3"
-    mime "~1.2"
-    mimeparse "~0.1.4"
-    q "~0.9.1"
-    qs "~0.1.0"
-    url2 "~0.0.0"
-
-q@0.9.3:
-  version "0.9.3"
-  resolved "https://registry.yarnpkg.com/q/-/q-0.9.3.tgz#404eabbad0d031ed35fcb53f7c5bc06283b4e74c"
-  integrity sha1-QE6rutDQMe01/LU/fFvAYoO050w=
-
-q@~0.9.1:
-  version "0.9.7"
-  resolved "https://registry.yarnpkg.com/q/-/q-0.9.7.tgz#4de2e6cb3b29088c9e4cbc03bf9d42fb96ce2f75"
-  integrity sha1-TeLmyzspCIyeTLwDv51C+5bOL3U=
-
-qs@~0.1.0:
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/qs/-/qs-0.1.0.tgz#9a0d2d70d01f63d3401ea4b050822601b462ee6b"
-  integrity sha1-mg0tcNAfY9NAHqSwUIImAbRi7ms=
 
 qs@~0.5.2:
   version "0.5.6"
@@ -2140,16 +2074,6 @@ url-join@0.0.1:
   resolved "https://registry.yarnpkg.com/url-join/-/url-join-0.0.1.tgz#1db48ad422d3402469a87f7d97bdebfe4fb1e3c8"
   integrity sha1-HbSK1CLTQCRpqH99l73r/k+x48g=
 
-url-safe@^1.0.0:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/url-safe/-/url-safe-1.0.1.tgz#2d251a4b4d3111dca94f36446e63a994b4d28786"
-  integrity sha1-LSUaS00xEdypTzZEbmOplLTSh4Y=
-
-url2@~0.0.0:
-  version "0.0.0"
-  resolved "https://registry.yarnpkg.com/url2/-/url2-0.0.0.tgz#4eaabd1d5c3ac90d62ab4485c998422865a04b1a"
-  integrity sha1-Tqq9HVw6yQ1iq0SFyZhCKGWgSxo=
-
 util-deprecate@~1.0.1:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/util-deprecate/-/util-deprecate-1.0.2.tgz#450d4dc9fa70de732762fbd2d4a28981419a0ccf"
@@ -2182,11 +2106,6 @@ verror@1.10.0:
     core-util-is "1.0.2"
     extsprintf "^1.2.0"
 
-weak-map@1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/weak-map/-/weak-map-1.0.0.tgz#b66e56a9df0bd25a76bbf1b514db129080614a37"
-  integrity sha1-tm5Wqd8L0lp2u/G1FNsSkIBhSjc=
-
 which@~1.0.5:
   version "1.0.9"
   resolved "https://registry.yarnpkg.com/which/-/which-1.0.9.tgz#460c1da0f810103d0321a9b633af9e575e64486f"
@@ -2211,11 +2130,6 @@ wrappy@1:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/wrappy/-/wrappy-1.0.2.tgz#b5243d8f3ec1aa35f1364605bc0d1036e30ab69f"
   integrity sha1-tSQ9jz7BqjXxNkYFvA0QNuMKtp8=
-
-wrench@1.5.1:
-  version "1.5.1"
-  resolved "https://registry.yarnpkg.com/wrench/-/wrench-1.5.1.tgz#3f7a519b0e409338723bb039b209a541176baa42"
-  integrity sha1-P3pRmw5AkzhyO7A5sgmlQRdrqkI=
 
 yargs@~3.10.0:
   version "3.10.0"

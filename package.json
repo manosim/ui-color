@@ -26,7 +26,7 @@
   },
   "homepage": "http://www.uicolor.io/",
   "dependencies": {
-    "angular": "=1.4.4",
+    "angular": "=1.7.9",
     "angular-bootstrap-colorpicker": "=3.0.18",
     "angular-route": "=1.4.4",
     "angular-ui-bootstrap": "=0.13.3",
