@@ -47,7 +47,6 @@ const Icon = styled(FontAwesomeIcon)`
 
 const Home = () => {
   const [color, setColor] = React.useState<Color | null>(null);
-  const reversedColor = null;
 
   const renderCodeBlocks = () => {
     if (!color) {
@@ -77,7 +76,7 @@ const Home = () => {
   };
 
   return (
-    <Container bgColor={color}>
+    <Container bgColor={color && color.hex()}>
       <Head>
         <title>UI Color | Convert HEX & RGB colors to UIColor</title>
         <link rel="icon" href="/favicon.ico" />
@@ -111,7 +110,7 @@ const Home = () => {
       <Main>
         <GitHubRibbon color={color && color.hex()} />
 
-        <Logo color={reversedColor} />
+        <Logo color={color && color.negate().hex()} />
 
         <Heading as="h3" textAlign="center">
           Convert HEX & RGB colors to UIColor
@@ -124,7 +123,7 @@ const Home = () => {
         </Text>
 
         <FormsWrapper width={[1, 1, 400]}>
-          <FormHEX value={color} onChange={setColor} />
+          <FormHEX value={color} onColorChange={setColor} />
           {/* <FormRGB value={color} onChange={setColor} /> */}
         </FormsWrapper>
 

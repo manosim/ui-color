@@ -17,14 +17,17 @@ const Container = styled.div`
 
 export interface IProps {
   value?: Color;
-  onChange: any;
+  onColorChange: any;
 }
 
 export const FormHEX: React.FC<IProps> = props => {
+  const [inputValue, setInputValue] = React.useState<string>('');
+
   const parseColor = value => {
+    setInputValue(value);
     try {
       const parsed = Color(value);
-      return props.onChange(parsed);
+      return props.onColorChange(parsed);
     } catch (_) {}
   };
 
@@ -33,7 +36,7 @@ export const FormHEX: React.FC<IProps> = props => {
       <Input
         placeholder="eg. #ABC123"
         label="HEX"
-        value={props.value && props.value.hex()}
+        value={inputValue}
         onChange={parseColor}
       />
     </Container>
