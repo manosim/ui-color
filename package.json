@@ -2,12 +2,11 @@
   "name": "ui-color",
   "version": "0.0.1",
   "description": "Convert HEX & RGB colors to UIColor for both Objective-C and Swift.",
-  "main": "src/js/app.js",
+  "private": true,
   "scripts": {
-    "start": "npm run build && grunt watch & http-server build/ -o -c-1",
-    "build": "grunt build",
-    "watch": "grunt watch",
-    "test": "echo 'No Tests'"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
   },
   "repository": {
     "type": "git",
@@ -26,25 +25,23 @@
   },
   "homepage": "http://www.uicolor.io/",
   "dependencies": {
-    "angular": "=1.4.4",
-    "angular-bootstrap-colorpicker": "=3.0.18",
-    "angular-route": "=1.4.4",
-    "angular-ui-bootstrap": "=0.13.3",
-    "bootstrap": "=3.3.5",
-    "font-awesome": "=4.4.0",
-    "ng-clip": "=0.2.6",
-    "zeroclipboard": "=2.2.0"
+    "@fortawesome/fontawesome-svg-core": "^1.2.27",
+    "@fortawesome/free-brands-svg-icons": "^5.12.1",
+    "@fortawesome/free-solid-svg-icons": "^5.12.1",
+    "@fortawesome/react-fontawesome": "^0.1.9",
+    "@rebass/forms": "^4.0.6",
+    "copy-to-clipboard": "^3.3.1",
+    "next": "9.3.0",
+    "react": "16.13.0",
+    "react-color": "^2.18.0",
+    "react-dom": "16.13.0",
+    "rebass": "^4.0.7",
+    "styled-components": "^5.0.1"
   },
   "devDependencies": {
-    "grunt": "=0.4.5",
-    "grunt-contrib-clean": "=0.6.0",
-    "grunt-contrib-connect": "=0.11.2",
-    "grunt-contrib-copy": "=0.8.1",
-    "grunt-contrib-jshint": "=0.11.2",
-    "grunt-contrib-less": "=1.0.1",
-    "grunt-contrib-uglify": "=0.9.1",
-    "grunt-contrib-watch": "=0.6.1",
-    "grunt-ng-annotate": "^1.0.1",
-    "http-server": "=0.8.0"
+    "@types/node": "^13.9.0",
+    "@types/react": "^16.9.23",
+    "prettier": "^1.19.1",
+    "typescript": "^3.8.3"
   }
 }

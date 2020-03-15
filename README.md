@@ -1,24 +1,26 @@
-# UIColor.xyz [![Build Status](https://travis-ci.org/manosim/ui-color.svg?branch=master)](https://travis-ci.org/manosim/ui-color)
+# UIColor.io [![Build Status](https://travis-ci.org/manosim/ui-color.svg?branch=master)](https://travis-ci.org/manosim/ui-color)
 
-Website: [http://www.uicolor.xyz/](http://www.uicolor.xyz/)
+> This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/zeit/next.js/tree/canary/packages/create-next-app).
 
-UIColor is a website used to convert HEX & RGB colors to **UIColor** for both **Objective-C** and **Swift** featuring a **colorpicker** and **copy to clipboard** functionality making things easier.
+## Getting Started
 
-### Prerequisites
+First, run the development server:
 
-- AngularJS
-- NPM
-- Grunt
-- Http-Server
+```bash
+npm run dev
+# or
+yarn dev
+```
 
-### Development
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You have to install **http-server** globally and then just watch and serve the files.
+You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
 
-    npm install
-    npm install http-server -g
-    npm start
+## Learn More
 
-### License
+To learn more about Next.js, take a look at the following resources:
 
-UIColor is licensed under the MIT Open Source license. For more information, see the LICENSE file in this repository.
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+
+You can check out [the Next.js GitHub repository](https://github.com/zeit/next.js/) - your feedback and contributions are welcome!
