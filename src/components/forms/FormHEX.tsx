@@ -3,9 +3,6 @@ import styled from 'styled-components';
 import Color from 'color';
 import { Box, Button, Flex, Link } from 'rebass/styled-components';
 
-import { CustomPicker } from 'react-color';
-import { BlockSwatches } from 'react-color/lib/components/block/BlockSwatches';
-
 import { Input } from './Input';
 
 const Container = styled.div`

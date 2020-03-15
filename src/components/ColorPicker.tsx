@@ -34,8 +34,6 @@ const RGBWrapper = styled.div`
 export interface IProps {}
 
 export const Picker: React.FC<any> = props => {
-  console.log(props);
-
   return (
     <Container>
       <BlockSwatches colors={props.colors} onClick={props.onChangeComplete} />

@@ -56,27 +56,28 @@ const Home = () => {
     const r = (rgbColor.r / 255).toFixed(2);
     const g = (rgbColor.g / 255).toFixed(2);
     const b = (rgbColor.b / 255).toFixed(2);
+    const alpha = color.alpha().toFixed(2);
 
     return (
       <Flex flexDirection="column">
         <Codeblock
           language="Swift"
-          colorString={`UIColor(red:${r}, green:${g}, blue:${b}, alpha:1.0);`}
+          colorString={`UIColor(red:${r}, green:${g}, blue:${b}, alpha:${alpha});`}
         />
         <Codeblock
           language="Objective-C"
-          colorString={`[UIColor colorWithRed:${r} green:${g} blue:${b} alpha:1.0];`}
+          colorString={`[UIColor colorWithRed:${r} green:${g} blue:${b} alpha:${alpha}];`}
         />
         <Codeblock
           language="Xamarin (C#)"
-          colorString={`new UIColor(red:${r}f, green:${g}f, blue:${b}f, alpha:1.0f)`}
+          colorString={`new UIColor(red:${r}f, green:${g}f, blue:${b}f, alpha:${alpha}f)`}
         />
       </Flex>
     );
   };
 
   return (
-    <Container bgColor={color && color.hex()}>
+    <Container bgColor={color && color.string()}>
       <Head>
         <title>UI Color | Convert HEX & RGB colors to UIColor</title>
         <link rel="icon" href="/favicon.ico" />
@@ -124,7 +125,7 @@ const Home = () => {
 
         <FormsWrapper width={[1, 1, 400]}>
           <FormHEX value={color} onColorChange={setColor} />
-          {/* <FormRGB value={color} onChange={setColor} /> */}
+          <FormRGB value={color} onColorChange={setColor} />
         </FormsWrapper>
 
         {renderCodeBlocks()}

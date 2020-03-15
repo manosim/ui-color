@@ -11,7 +11,6 @@ const InputField = styled.input`
   flex: 1;
   width: 100%;
   font-size: 20px;
-  color: #777;
   border: 0px;
   outline: none;
   box-shadow: inset 0 0 0 1px #ddd;
@@ -27,6 +26,10 @@ const Label = styled.div`
 `;
 
 interface IProps {
+  type?: string;
+  min?: string;
+  max?: string;
+  step?: string;
   value?: string;
   label: string;
   placeholder: string;
@@ -38,6 +41,10 @@ export const Input: React.FC<IProps> = props => {
     <Container>
       <Label>{props.label}</Label>
       <InputField
+        type={props.type}
+        min={props.min && props.min}
+        max={props.max && props.max}
+        step={props.step && props.step}
         value={props.value}
         onChange={({ target: { value } }) => props.onChange(value)}
         placeholder={props.placeholder}
@@ -45,4 +52,8 @@ export const Input: React.FC<IProps> = props => {
       />
     </Container>
   );
+};
+
+Input.defaultProps = {
+  type: 'text',
 };
