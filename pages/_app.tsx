@@ -2,6 +2,8 @@ import App from 'next/app';
 import React from 'react';
 import { createGlobalStyle, ThemeProvider } from 'styled-components';
 
+export const DEFAULT_COLOR = '#4A5899';
+
 const GlobalStyle = createGlobalStyle`
   html,
   body {
@@ -22,7 +24,7 @@ const GlobalStyle = createGlobalStyle`
 
 const theme = {
   colors: {
-    primary: '#4A5899',
+    primary: DEFAULT_COLOR,
     grayLight: '#F5F7F5',
   },
   fonts: {

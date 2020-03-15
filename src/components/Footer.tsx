@@ -53,7 +53,7 @@ export const Footer: React.FC<IProps> = props => {
 
           <Link
             variant="link"
-            href="https://github.com/manosim/gitify/"
+            href="https://github.com/manosim/uicolor/"
             aria-label="GitHub Repository"
           >
             <Icon icon={faGithub} />
@@ -62,8 +62,8 @@ export const Footer: React.FC<IProps> = props => {
 
         <Box my={[1, 0]}>
           Copyright ©{' '}
-          <Link variant="link" href="https://www.gitify.io/">
-            Gitify
+          <Link variant="link" href="https://www.uicolor.io/">
+            UIColor.io
           </Link>{' '}
           {new Date().getFullYear()}.<br />
           Developed by{' '}

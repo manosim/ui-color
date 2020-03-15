@@ -30,6 +30,8 @@
     "@fortawesome/free-solid-svg-icons": "^5.12.1",
     "@fortawesome/react-fontawesome": "^0.1.9",
     "@rebass/forms": "^4.0.6",
+    "@types/color": "^3.0.1",
+    "color": "^3.1.2",
     "copy-to-clipboard": "^3.3.1",
     "next": "9.3.0",
     "react": "16.13.0",

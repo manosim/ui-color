@@ -23,6 +23,12 @@ const RGBWrapper = styled.div`
   display: flex;
   flex-direction: row;
   margin-top: 0.5rem;
+
+  margin-right: 1rem;
+
+  :last-child {
+    margin-right: 0;
+  }
 `;
 
 export interface IProps {}
@@ -33,58 +39,6 @@ export const Picker: React.FC<any> = props => {
   return (
     <Container>
       <BlockSwatches colors={props.colors} onClick={props.onChangeComplete} />
-
-      <PickerInput
-        placeholder="eg. #ABC123"
-        label="HEX"
-        value={props.hex}
-        onChange={({ HEX, ...rest }) => {
-          console.log(rest);
-          props.onChangeComplete(HEX);
-        }}
-      />
-
-      <RGBWrapper>
-        <PickerInput
-          placeholder="eg. 123"
-          label="R"
-          value={props.rgb.r}
-          onChange={({ HEX, ...rest }) => {
-            console.log(rest);
-            props.onChangeComplete(HEX);
-          }}
-        />
-
-        <PickerInput
-          placeholder="eg. 123"
-          label="G"
-          value={props.rgb.g}
-          onChange={({ HEX, ...rest }) => {
-            console.log(rest);
-            props.onChangeComplete(HEX);
-          }}
-        />
-
-        <PickerInput
-          placeholder="eg. 123"
-          label="B"
-          value={props.rgb.b}
-          onChange={({ HEX, ...rest }) => {
-            console.log(rest);
-            props.onChangeComplete(HEX);
-          }}
-        />
-
-        <PickerInput
-          placeholder="eg. 123"
-          label="Alpha"
-          value={props.rgb.a}
-          onChange={({ HEX, ...rest }) => {
-            console.log({ rest });
-            props.onChangeComplete(HEX);
-          }}
-        />
-      </RGBWrapper>
     </Container>
   );
 };

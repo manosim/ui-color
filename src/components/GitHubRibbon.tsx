@@ -1,9 +1,11 @@
 import * as React from 'react';
 import styled from 'styled-components';
 
+import { DEFAULT_COLOR } from '../../pages/_app';
+
 const Svg = styled.svg`
-  fill: rgba(0, 0, 0, 0.5);
-  color: ${props => props.color};
+  fill: ${props => (props.color ? 'rgba(0, 0, 0, 0.5)' : DEFAULT_COLOR)};
+  color: ${props => (props.color ? props.color : 'white')};
   position: absolute;
   top: 0;
   border: 0;

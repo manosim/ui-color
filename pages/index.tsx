@@ -9,12 +9,13 @@ import { MaterialPicker } from 'react-color';
 
 import { Codeblock } from '../src/components/Codeblock';
 import { ColorPicker } from '../src/components/ColorPicker';
+import { DEFAULT_COLOR } from './_app';
 import { Footer } from '../src/components/Footer';
-import { getContrastingColor } from '../src/utils/helpers';
+import { FormHEX } from '../src/components/forms/FormHEX';
+import { FormRGB } from '../src/components/forms/FormRGB';
 import { GitHubRibbon } from '../src/components/GitHubRibbon';
 import { Logo } from '../src/components/Logo';
-
-const DEFAULT_COLOR = '#4A5899';
+import Color from 'color';
 
 const Container = styled.div`
   background-color: ${props => props.bgColor || '#FFF'};
@@ -29,6 +30,15 @@ const Main = styled(Box)`
   align-items: center;
 `;
 
+const FormsWrapper = styled(Box)`
+  display: flex;
+  flex-direction: column;
+  background-color: ${props => props.theme.colors.grayLight};
+  border-radius: 5px;
+  padding: 0.75rem;
+  margin: 1rem 0;
+`;
+
 const Icon = styled(FontAwesomeIcon)`
   width: 1.25rem;
   height: 1.25rem;
@@ -36,8 +46,35 @@ const Icon = styled(FontAwesomeIcon)`
 `;
 
 const Home = () => {
-  const [color, setColor] = React.useState(DEFAULT_COLOR);
-  const reversedColor = getContrastingColor(color);
+  const [color, setColor] = React.useState<Color | null>(null);
+  const reversedColor = null;
+
+  const renderCodeBlocks = () => {
+    if (!color) {
+      return null;
+    }
+    const rgbColor = color.rgb().object();
+    const r = (rgbColor.r / 255).toFixed(2);
+    const g = (rgbColor.g / 255).toFixed(2);
+    const b = (rgbColor.b / 255).toFixed(2);
+
+    return (
+      <Flex flexDirection="column">
+        <Codeblock
+          language="Swift"
+          colorString={`UIColor(red:${r}, green:${g}, blue:${b}, alpha:1.0);`}
+        />
+        <Codeblock
+          language="Objective-C"
+          colorString={`[UIColor colorWithRed:${r} green:${g} blue:${b} alpha:1.0];`}
+        />
+        <Codeblock
+          language="Xamarin (C#)"
+          colorString={`new UIColor(red:${r}f, green:${g}f, blue:${b}f, alpha:1.0f)`}
+        />
+      </Flex>
+    );
+  };
 
   return (
     <Container bgColor={color}>
@@ -72,11 +109,13 @@ const Home = () => {
       </Head>
 
       <Main>
-        <GitHubRibbon color={color} />
+        <GitHubRibbon color={color && color.hex()} />
 
         <Logo color={reversedColor} />
 
-        <Heading as="h3">Convert HEX & RGB colors to UIColor</Heading>
+        <Heading as="h3" textAlign="center">
+          Convert HEX & RGB colors to UIColor
+        </Heading>
 
         <Text maxWidth={475} my={2} textAlign="center">
           UIColor.io is a website that helps you convert HEX & RGB colors to
@@ -84,40 +123,12 @@ const Home = () => {
           copy to clipboard functionality to make things easier.
         </Text>
 
-        <Box display="flex" justifyContent="center" width={[1, 1, 400]}>
-          <ColorPicker
-            color={color}
-            onChangeComplete={thing => {
-              setColor(thing);
-            }}
-          />
-        </Box>
+        <FormsWrapper width={[1, 1, 400]}>
+          <FormHEX value={color} onChange={setColor} />
+          {/* <FormRGB value={color} onChange={setColor} /> */}
+        </FormsWrapper>
 
-        {color && (
-          <Flex flexDirection="column">
-            <Codeblock
-              hexColor={color}
-              language="Swift"
-              getUIColorString={(r, g, b) =>
-                `UIColor(red:${r}, green:${g}, blue:${b}, alpha:1.0);`
-              }
-            />
-            <Codeblock
-              hexColor={color}
-              language="Objective-C"
-              getUIColorString={(r, g, b) =>
-                `[UIColor colorWithRed:${r} green:${g} blue:${b} alpha:1.0];`
-              }
-            />
-            <Codeblock
-              hexColor={color}
-              language="Xamarin (C#)"
-              getUIColorString={(r, g, b) =>
-                `new UIColor(red:${r}f, green:${g}f, blue:${b}f, alpha:1.0f)`
-              }
-            />
-          </Flex>
-        )}
+        {renderCodeBlocks()}
       </Main>
 
       <Footer />
