@@ -1,58 +1,88 @@
 import * as React from 'react';
+import Color from 'color';
 import styled from 'styled-components';
-import { Box, Button, Flex, Link } from 'rebass/styled-components';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEyeDropper } from '@fortawesome/free-solid-svg-icons';
+import { GithubPicker } from 'react-color';
 
 import { CustomPicker } from 'react-color';
-import { BlockSwatches } from 'react-color/lib/components/block/BlockSwatches';
-
-import { PickerInput } from './PickerInput';
 
 const Container = styled.div`
-  background: ${props => props.theme.colors.grayLight};
-  box-shadow: 0 0.25rem rgba(0, 0, 0, 0.1);
-  border-radius: 6px;
-  margin: 0.75rem 0;
-  padding: 0.75rem;
-  max-width: 35rem;
-
-  display: flex;
-  flex-direction: column;
+  margin-left: 1rem;
+  align-self: flex-end;
 `;
 
-const RGBWrapper = styled.div`
-  display: flex;
-  flex-direction: row;
-  margin-top: 0.5rem;
-
-  margin-right: 1rem;
-
-  :last-child {
-    margin-right: 0;
-  }
+const PickerButton = styled.button`
+  border: 0;
+  outline: none;
+  padding: 0.5rem;
+  background: transparent;
 `;
 
-export interface IProps {}
+const Icon = styled(FontAwesomeIcon)`
+  width: 1.25rem;
+  height: 1.25rem;
+  color: ${props => props.theme.colors.primary};
+`;
 
-export const Picker: React.FC<any> = props => {
+const Popover = styled.div`
+  position: relative;
+  z-index: 2;
+`;
+
+const Cover = styled.div`
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+`;
+
+const PickerWrapper = styled.div`
+  position: absolute;
+  top: 5px;
+  right: 0;
+`;
+
+export interface IProps {
+  onSelectColor: (color: Color) => void;
+}
+
+export const Picker: React.FC<IProps> = props => {
+  const [showPicker, setShowPicker] = React.useState<boolean>(false);
+
+  const handleClick = () => {
+    setShowPicker(!showPicker);
+  };
+
+  const handleClose = () => {
+    setShowPicker(false);
+  };
+
   return (
     <Container>
-      <BlockSwatches colors={props.colors} onClick={props.onChangeComplete} />
+      <PickerButton onClick={handleClick}>
+        <Icon icon={faEyeDropper} />
+      </PickerButton>
+
+      {showPicker ? (
+        <Popover>
+          <Cover onClick={handleClose} />
+
+          <PickerWrapper>
+            <GithubPicker
+              triangle="top-right"
+              width={'212px'}
+              onChangeComplete={({ hex }) => {
+                const color: Color = Color(hex);
+                props.onSelectColor(color);
+              }}
+            />
+          </PickerWrapper>
+        </Popover>
+      ) : null}
     </Container>
   );
-};
-
-Picker.defaultProps = {
-  colors: [
-    '#D9E3F0',
-    '#F47373',
-    '#697689',
-    '#37D67A',
-    '#2CCCE4',
-    '#555555',
-    '#dce775',
-    '#ff8a65',
-    '#ba68c8',
-  ],
 };
 
 export const ColorPicker = CustomPicker(Picker);

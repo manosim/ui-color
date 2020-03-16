@@ -1,10 +1,9 @@
 import * as React from 'react';
 import Head from 'next/head';
+import Color from 'color';
 import styled from 'styled-components';
 import { Box, Flex, Heading, Text } from 'rebass/styled-components';
 import { Toggle } from 'react-toggle-component';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCopy } from '@fortawesome/free-solid-svg-icons';
 
 import { Codeblock } from '../src/components/Codeblock';
 import { Footer } from '../src/components/Footer';
@@ -12,7 +11,6 @@ import { FormHEX } from '../src/components/forms/FormHEX';
 import { FormRGB } from '../src/components/forms/FormRGB';
 import { GitHubRibbon } from '../src/components/GitHubRibbon';
 import { Logo } from '../src/components/Logo';
-import Color from 'color';
 import { DEFAULT_COLOR } from './_app';
 
 const Container = styled.div`
@@ -35,12 +33,6 @@ const FormsWrapper = styled(Box)`
   border-radius: 5px;
   padding: 0.75rem;
   margin: 1rem 0;
-`;
-
-const Icon = styled(FontAwesomeIcon)`
-  width: 1.25rem;
-  height: 1.25rem;
-  margin: 0.5rem 0.25rem;
 `;
 
 const Home = () => {
@@ -130,14 +122,14 @@ const Home = () => {
 
           <Toggle
             name="toggle-1a"
-            leftBackgroundColor="#F5F7F5"
-            rightBackgroundColor="#F5F7F5"
-            borderColor={DEFAULT_COLOR}
-            knobColor={DEFAULT_COLOR}
+            leftBackgroundColor={color ? color.string() : 'white'}
+            rightBackgroundColor={color ? color.string() : 'white'}
+            borderColor={color ? color.negate().hex() : DEFAULT_COLOR}
+            knobColor={color ? color.negate().hex() : DEFAULT_COLOR}
             radius="3px"
             radiusBackground="2px"
             knobRadius="2px"
-            width="5rem"
+            width="4rem"
             knobWidth="1.5rem"
             checked={!showHexForm}
             onToggle={() => {

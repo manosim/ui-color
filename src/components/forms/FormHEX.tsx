@@ -1,9 +1,9 @@
 import * as React from 'react';
 import styled from 'styled-components';
 import Color from 'color';
-import { Box, Button, Flex, Link } from 'rebass/styled-components';
 
 import { Input } from './Input';
+import { ColorPicker } from '../ColorPicker';
 
 const Container = styled.div`
   display: flex;
@@ -35,6 +35,8 @@ export const FormHEX: React.FC<IProps> = props => {
         value={inputValue}
         onChange={parseColor}
       />
+
+      <ColorPicker onSelectColor={(color: Color) => parseColor(color.hex())} />
     </Container>
   );
 };
