@@ -37,6 +37,7 @@
     "react": "16.13.0",
     "react-color": "^2.18.0",
     "react-dom": "16.13.0",
+    "react-toggle-component": "^3.0.8",
     "rebass": "^4.0.7",
     "styled-components": "^5.0.1"
   },

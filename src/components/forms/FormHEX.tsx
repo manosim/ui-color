@@ -9,7 +9,6 @@ const Container = styled.div`
   display: flex;
   flex: 1;
   flex-direction: row;
-  margin-top: 0.75rem;
 `;
 
 export interface IProps {

@@ -1,21 +1,19 @@
 import * as React from 'react';
 import Head from 'next/head';
 import styled from 'styled-components';
-import { Box, Button, Flex, Heading, Text } from 'rebass/styled-components';
-import { Label, Input } from '@rebass/forms';
+import { Box, Flex, Heading, Text } from 'rebass/styled-components';
+import { Toggle } from 'react-toggle-component';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCopy } from '@fortawesome/free-solid-svg-icons';
-import { MaterialPicker } from 'react-color';
 
 import { Codeblock } from '../src/components/Codeblock';
-import { ColorPicker } from '../src/components/ColorPicker';
-import { DEFAULT_COLOR } from './_app';
 import { Footer } from '../src/components/Footer';
 import { FormHEX } from '../src/components/forms/FormHEX';
 import { FormRGB } from '../src/components/forms/FormRGB';
 import { GitHubRibbon } from '../src/components/GitHubRibbon';
 import { Logo } from '../src/components/Logo';
 import Color from 'color';
+import { DEFAULT_COLOR } from './_app';
 
 const Container = styled.div`
   background-color: ${props => props.bgColor || '#FFF'};
@@ -47,6 +45,8 @@ const Icon = styled(FontAwesomeIcon)`
 
 const Home = () => {
   const [color, setColor] = React.useState<Color | null>(null);
+  const [showHexForm, setShowHexForm] = React.useState<boolean>(true);
+  const Form = showHexForm ? FormHEX : FormRGB;
 
   const renderCodeBlocks = () => {
     if (!color) {
@@ -123,9 +123,36 @@ const Home = () => {
           copy to clipboard functionality to make things easier.
         </Text>
 
+        <Box display="flex" flexDirection="row" alignItems="center" my={3}>
+          <Heading as="h3" mx={3}>
+            HEX
+          </Heading>
+
+          <Toggle
+            name="toggle-1a"
+            leftBackgroundColor="#F5F7F5"
+            rightBackgroundColor="#F5F7F5"
+            borderColor={DEFAULT_COLOR}
+            knobColor={DEFAULT_COLOR}
+            radius="3px"
+            radiusBackground="2px"
+            knobRadius="2px"
+            width="5rem"
+            knobWidth="1.5rem"
+            checked={!showHexForm}
+            onToggle={() => {
+              setShowHexForm(!showHexForm);
+              setColor(null);
+            }}
+          />
+
+          <Heading as="h3" mx={3}>
+            RGB
+          </Heading>
+        </Box>
+
         <FormsWrapper width={[1, 1, 400]}>
-          <FormHEX value={color} onColorChange={setColor} />
-          <FormRGB value={color} onColorChange={setColor} />
+          <Form value={color} onColorChange={setColor} />
         </FormsWrapper>
 
         {renderCodeBlocks()}

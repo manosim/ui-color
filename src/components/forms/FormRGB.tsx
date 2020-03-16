@@ -11,7 +11,6 @@ import { Input } from './Input';
 const Container = styled.div`
   display: flex;
   flex-direction: row;
-  margin-top: 0.75rem;
 
   > div {
     margin-right: 1rem;
