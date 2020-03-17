@@ -19,7 +19,7 @@ export interface IProps {
 export const GitHubRibbon: React.FC<IProps> = ({ color }) => {
   return (
     <a
-      href="https://github.com/manosim/uicolor"
+      href="https://github.com/manosim/ui-color"
       target="_blank"
       rel="noopener noreferrer"
       aria-label="GitHub Repository"
