@@ -1,5 +1,6 @@
-import App from 'next/app';
-import React from 'react';
+import * as React from 'react';
+import PropTypes from 'prop-types';
+import { useStaticQuery, graphql } from 'gatsby';
 import { createGlobalStyle, ThemeProvider } from 'styled-components';
 
 export const DEFAULT_COLOR = '#4A5899';
@@ -65,14 +66,25 @@ const theme = {
   },
 };
 
-export default class MyApp extends App {
-  render() {
-    const { Component, pageProps } = this.props;
-    return (
-      <ThemeProvider theme={theme}>
-        <GlobalStyle />
-        <Component {...pageProps} />
-      </ThemeProvider>
-    );
-  }
-}
+export const Layout = ({ children }) => {
+  const data = useStaticQuery(graphql`
+    query SiteTitleQuery {
+      site {
+        siteMetadata {
+          title
+        }
+      }
+    }
+  `);
+
+  return (
+    <ThemeProvider theme={theme}>
+      <GlobalStyle />
+      {children}
+    </ThemeProvider>
+  );
+};
+
+Layout.propTypes = {
+  children: PropTypes.node.isRequired,
+};

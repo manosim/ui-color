@@ -1,26 +1,21 @@
 # UIColor.io [![Build Status](https://travis-ci.org/manosim/ui-color.svg?branch=master)](https://travis-ci.org/manosim/ui-color)
 
-> This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/zeit/next.js/tree/canary/packages/create-next-app).
-
 ## Getting Started
 
 First, run the development server:
 
 ```bash
-npm run dev
-# or
-yarn dev
+yarn start
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:8000](http://localhost:8000) with your browser to see the result.
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+You can start editing the page by modifying `src/pages/index.js`. The page auto-updates as you edit the file.
 
-## Learn More
+## Learning Gatsby
 
-To learn more about Next.js, take a look at the following resources:
+Looking for more guidance? Full documentation for Gatsby lives [on the website](https://www.gatsbyjs.org/). Here are some places to start:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **For most developers, we recommend starting with our [in-depth tutorial for creating a site with Gatsby](https://www.gatsbyjs.org/tutorial/).** It starts with zero assumptions about your level of ability and walks through every step of the process.
 
-You can check out [the Next.js GitHub repository](https://github.com/zeit/next.js/) - your feedback and contributions are welcome!
+- **To dive straight into code samples, head [to our documentation](https://www.gatsbyjs.org/docs/).** In particular, check out the _Guides_, _API Reference_, and _Advanced Tutorials_ sections in the sidebar.

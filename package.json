@@ -4,9 +4,13 @@
   "description": "Convert HEX & RGB colors to UIColor for both Objective-C and Swift.",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start"
+    "build": "gatsby build",
+    "develop": "gatsby develop",
+    "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
+    "start": "npm run develop",
+    "serve": "gatsby serve",
+    "clean": "gatsby clean",
+    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
   },
   "repository": {
     "type": "git",
@@ -33,10 +37,20 @@
     "@types/color": "^3.0.1",
     "color": "^3.1.2",
     "copy-to-clipboard": "^3.3.1",
-    "next": "9.3.1",
-    "react": "16.13.0",
+    "gatsby": "^2.19.45",
+    "gatsby-image": "^2.2.44",
+    "gatsby-plugin-google-analytics": "^2.1.38",
+    "gatsby-plugin-manifest": "^2.2.48",
+    "gatsby-plugin-offline": "^3.0.41",
+    "gatsby-plugin-react-helmet": "^3.1.24",
+    "gatsby-plugin-styled-components": "^3.1.21",
+    "gatsby-plugin-typescript": "^2.2.5",
+    "gatsby-plugin-web-font-loader": "^1.0.4",
+    "prop-types": "^15.7.2",
+    "react": "^16.12.0",
     "react-color": "^2.18.0",
-    "react-dom": "16.13.0",
+    "react-dom": "^16.12.0",
+    "react-helmet": "^5.2.1",
     "react-toggle-component": "^3.0.8",
     "rebass": "^4.0.7",
     "styled-components": "^5.0.1"
@@ -44,6 +58,9 @@
   "devDependencies": {
     "@types/node": "^13.9.0",
     "@types/react": "^16.9.23",
+    "@types/react-helmet": "^5.0.15",
+    "@types/rebass": "^4.0.4",
+    "@types/styled-components": "^5.0.1",
     "prettier": "^1.19.1",
     "typescript": "^3.8.3"
   }

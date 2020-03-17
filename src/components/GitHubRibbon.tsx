@@ -1,7 +1,7 @@
 import * as React from 'react';
 import styled from 'styled-components';
 
-import { DEFAULT_COLOR } from '../../pages/_app';
+import { DEFAULT_COLOR } from './Layout';
 
 const Svg = styled.svg`
   fill: ${props => (props.color ? 'rgba(0, 0, 0, 0.5)' : DEFAULT_COLOR)};

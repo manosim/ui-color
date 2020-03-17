@@ -36,9 +36,7 @@ export const FormRGB: React.FC<IProps> = props => {
       const alpha = parseFloat(alphaValue);
       const parsed = Color(newColor).alpha(alpha);
       return props.onColorChange(parsed);
-    } catch (err) {
-      console.log('ERR:', err);
-    }
+    } catch (_) {}
   };
 
   const parseAlphaValue = () => {
@@ -49,9 +47,7 @@ export const FormRGB: React.FC<IProps> = props => {
       const alpha = parseFloat(alphaValue);
       const parsed = props.value.alpha(alpha);
       return props.onColorChange(parsed);
-    } catch (err) {
-      console.log('ERR:', err);
-    }
+    } catch (_) {}
   };
 
   React.useEffect(parseColor, [redValue, greenValue, blueValue, alphaValue]);
