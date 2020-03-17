@@ -4,14 +4,15 @@ import styled from 'styled-components';
 import { Box, Flex, Heading, Text } from 'rebass/styled-components';
 import { Toggle } from 'react-toggle-component';
 
-import { DEFAULT_COLOR } from '../components/Layout';
-import { Layout } from '../components/Layout';
 import { Codeblock } from '../components/Codeblock';
+import { DEFAULT_COLOR } from '../components/Layout';
 import { Footer } from '../components/Footer';
 import { FormHEX } from '../components/forms/FormHEX';
 import { FormRGB } from '../components/forms/FormRGB';
 import { GitHubRibbon } from '../components/GitHubRibbon';
+import { Layout } from '../components/Layout';
 import { Logo } from '../components/Logo';
+import { SEO } from '../components/Seo';
 
 const Container: any = styled.div`
   background-color: ${(props: any) => props.bgColor || '#FFF'};
@@ -73,14 +74,9 @@ const Home = () => {
 
   return (
     <Layout>
-      <Container bgColor={color && color.string()}>
-        {/* <Head>
-          <link
-            href="https://fonts.googleapis.com/css?family=Sen&display=swap"
-            rel="stylesheet"
-          />
-        </Head> */}
+      <SEO title="Convert HEX & RGB colors to UIColor" />
 
+      <Container bgColor={color && color.string()}>
         <Main>
           <GitHubRibbon color={color && color.hex()} />
 

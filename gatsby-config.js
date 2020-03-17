@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: `UIColor.io | Convert HEX & RGB colors to UIColor`,
+    title: `UIColor.io`,
     description: `UIColor.io is a website that helps you convert HEX & RGB colors to UIColor for Objective-C, Swift and Xamarin featuring a colorpicker and copy to clipboard functionality to make things easier.`,
     author: `@manosim_`,
     keywords: `uicolor,ui,color,colour,convert,converter,hex,rgb,rgba,swift,objective-c,objective,c,apple,ios`,
