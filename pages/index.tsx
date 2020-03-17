@@ -31,7 +31,7 @@ const FormsWrapper = styled(Box)`
   flex-direction: column;
   background-color: ${props => props.theme.colors.grayLight};
   border-radius: 5px;
-  padding: 0.75rem;
+  padding: 1rem 0.5rem;
   margin: 1rem 0;
 `;
 
@@ -109,7 +109,7 @@ const Home = () => {
           Convert HEX & RGB colors to UIColor
         </Heading>
 
-        <Text maxWidth={475} my={2} textAlign="center">
+        <Text maxWidth={485} my={2} textAlign="center">
           UIColor.io is a website that helps you convert HEX & RGB colors to
           UIColor for Objective-C, Swift and Xamarin featuring a colorpicker and
           copy to clipboard functionality to make things easier.
@@ -143,7 +143,7 @@ const Home = () => {
           </Heading>
         </Box>
 
-        <FormsWrapper width={[1, 1, 400]}>
+        <FormsWrapper width={[1, 1, 450]}>
           <Form value={color} onColorChange={setColor} />
         </FormsWrapper>
 

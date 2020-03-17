@@ -1,16 +1,12 @@
 import * as React from 'react';
 import Color from 'color';
 import styled from 'styled-components';
+import { Box } from 'rebass/styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEyeDropper } from '@fortawesome/free-solid-svg-icons';
 import { GithubPicker } from 'react-color';
 
 import { CustomPicker } from 'react-color';
-
-const Container = styled.div`
-  margin-left: 1rem;
-  align-self: flex-end;
-`;
 
 const PickerButton = styled.button`
   border: 0;
@@ -60,7 +56,11 @@ export const Picker: React.FC<IProps> = props => {
   };
 
   return (
-    <Container>
+    <Box
+      display={['none', 'none', 'block']}
+      alignSelf="flex-end"
+      mt={[3, 3, 0]}
+    >
       <PickerButton onClick={handleClick}>
         <Icon icon={faEyeDropper} />
       </PickerButton>
@@ -81,7 +81,7 @@ export const Picker: React.FC<IProps> = props => {
           </PickerWrapper>
         </Popover>
       ) : null}
-    </Container>
+    </Box>
   );
 };
 

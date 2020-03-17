@@ -1,21 +1,12 @@
 import * as React from 'react';
 import styled from 'styled-components';
 import Color from 'color';
+import { Flex } from 'rebass/styled-components';
 
+import { ColorPicker } from '../ColorPicker';
 import { Input } from './Input';
 
-const Container = styled.div`
-  display: flex;
-  flex-direction: row;
-
-  > div {
-    margin-right: 1rem;
-
-    :last-child {
-      margin-right: 0;
-    }
-  }
-`;
+const Container = styled(Flex)``;
 
 export interface IProps {
   value: any;
@@ -62,12 +53,12 @@ export const FormRGB: React.FC<IProps> = props => {
   React.useEffect(parseColor, [redValue, greenValue, blueValue, alphaValue]);
 
   return (
-    <Container>
+    <Container flexDirection={['column', 'column', 'row']}>
       <Input
         type="number"
         min="0"
         max="255"
-        placeholder="eg. 123"
+        placeholder="eg. 12"
         label="Red"
         value={redValue || ''}
         onChange={inputValue => setRedValue(inputValue)}
@@ -77,7 +68,7 @@ export const FormRGB: React.FC<IProps> = props => {
         type="number"
         min="0"
         max="255"
-        placeholder="eg. 123"
+        placeholder="eg. 34"
         label="Green"
         value={greenValue || ''}
         onChange={inputValue => {
@@ -89,7 +80,7 @@ export const FormRGB: React.FC<IProps> = props => {
         type="number"
         min="0"
         max="255"
-        placeholder="eg. 123"
+        placeholder="eg. 56"
         label="Blue"
         value={blueValue || ''}
         onChange={inputValue => {
@@ -107,6 +98,14 @@ export const FormRGB: React.FC<IProps> = props => {
         value={alphaValue || ''}
         onChange={inputValue => {
           setAlphaValue(`${inputValue}`);
+        }}
+      />
+
+      <ColorPicker
+        onSelectColor={(color: Color) => {
+          setRedValue(`${color.rgb().object().r}`);
+          setGreenValue(`${color.rgb().object().g}`);
+          setBlueValue(`${color.rgb().object().b}`);
         }}
       />
     </Container>

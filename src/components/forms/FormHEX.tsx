@@ -32,6 +32,7 @@ export const FormHEX: React.FC<IProps> = props => {
       <Input
         placeholder="eg. #ABC123"
         label="HEX"
+        maxLength="7"
         value={inputValue}
         onChange={parseColor}
       />

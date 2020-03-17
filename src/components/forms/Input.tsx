@@ -5,24 +5,32 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   flex: 1;
+  margin: 0 0.5rem;
 `;
 
 const InputField = styled.input`
   flex: 1;
   width: 100%;
   font-size: 20px;
+  font-weight: 600;
   border: 0px;
   outline: none;
   box-shadow: inset 0 0 0 1px #ddd;
   border-radius: 4px;
-  padding: 7px;
+  padding: 0.75rem;
+
+  ::placeholder {
+    color: #777;
+    font-size: 14px;
+    font-weight: normal;
+  }
 `;
 
 const Label = styled.div`
   font-size: 1.25rem;
   font-weight: 600;
   line-height: 1.75rem;
-  margin-right: 1rem;
+  margin: 0.75rem 1rem 0.25rem 0;
 `;
 
 interface IProps {
@@ -30,6 +38,7 @@ interface IProps {
   min?: string;
   max?: string;
   step?: string;
+  maxLength?: string;
   value?: string;
   label: string;
   placeholder: string;
@@ -45,6 +54,7 @@ export const Input: React.FC<IProps> = props => {
         min={props.min && props.min}
         max={props.max && props.max}
         step={props.step && props.step}
+        maxLength={props.maxLength && props.maxLength}
         value={props.value}
         onChange={({ target: { value } }) => props.onChange(value)}
         placeholder={props.placeholder}
