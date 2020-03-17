@@ -1,24 +1,21 @@
-# UIColor.xyz [![Build Status](https://travis-ci.org/manosim/ui-color.svg?branch=master)](https://travis-ci.org/manosim/ui-color)
+# UIColor.io [![Build Status](https://travis-ci.org/manosim/ui-color.svg?branch=master)](https://travis-ci.org/manosim/ui-color)
 
-Website: [http://www.uicolor.xyz/](http://www.uicolor.xyz/)
+## Getting Started
 
-UIColor is a website used to convert HEX & RGB colors to **UIColor** for both **Objective-C** and **Swift** featuring a **colorpicker** and **copy to clipboard** functionality making things easier.
+First, run the development server:
 
-### Prerequisites
+```bash
+yarn start
+```
 
-- AngularJS
-- NPM
-- Grunt
-- Http-Server
+Open [http://localhost:8000](http://localhost:8000) with your browser to see the result.
 
-### Development
+You can start editing the page by modifying `src/pages/index.js`. The page auto-updates as you edit the file.
 
-You have to install **http-server** globally and then just watch and serve the files.
+## Learning Gatsby
 
-    npm install
-    npm install http-server -g
-    npm start
+Looking for more guidance? Full documentation for Gatsby lives [on the website](https://www.gatsbyjs.org/). Here are some places to start:
 
-### License
+- **For most developers, we recommend starting with our [in-depth tutorial for creating a site with Gatsby](https://www.gatsbyjs.org/tutorial/).** It starts with zero assumptions about your level of ability and walks through every step of the process.
 
-UIColor is licensed under the MIT Open Source license. For more information, see the LICENSE file in this repository.
+- **To dive straight into code samples, head [to our documentation](https://www.gatsbyjs.org/docs/).** In particular, check out the _Guides_, _API Reference_, and _Advanced Tutorials_ sections in the sidebar.
