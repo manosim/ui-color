@@ -6,7 +6,11 @@ import { Flex } from 'rebass/styled-components';
 import { ColorPicker } from '../ColorPicker';
 import { Input } from './Input';
 
-const Container = styled(Flex)``;
+const Container = styled(Flex)`
+  div:first-of-type {
+    margin-top: 0;
+  }
+`;
 
 export interface IProps {
   value: any;

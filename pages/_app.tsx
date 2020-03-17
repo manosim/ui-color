@@ -39,6 +39,16 @@ const theme = {
     },
   },
   buttons: {
+    picker: {
+      variant: 'buttons.primary',
+      color: 'primary',
+      bg: 'transparent',
+      ':hover,:focus,:active': {
+        cursor: 'pointer',
+        outline: 'none',
+        color: '#000',
+      },
+    },
     transparent: {
       variant: 'buttons.primary',
       color: 'primary',

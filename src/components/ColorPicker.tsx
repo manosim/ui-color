@@ -1,14 +1,14 @@
 import * as React from 'react';
 import Color from 'color';
 import styled from 'styled-components';
-import { Box } from 'rebass/styled-components';
+import { Box, Button } from 'rebass/styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEyeDropper } from '@fortawesome/free-solid-svg-icons';
 import { GithubPicker } from 'react-color';
 
 import { CustomPicker } from 'react-color';
 
-const PickerButton = styled.button`
+const PickerButton = styled(Button)`
   border: 0;
   outline: none;
   padding: 0.5rem;
@@ -61,7 +61,7 @@ export const Picker: React.FC<IProps> = props => {
       alignSelf="flex-end"
       mt={[3, 3, 0]}
     >
-      <PickerButton onClick={handleClick}>
+      <PickerButton variant="picker" onClick={handleClick}>
         <Icon icon={faEyeDropper} />
       </PickerButton>
 

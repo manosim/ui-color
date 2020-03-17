@@ -15,6 +15,7 @@ import { DEFAULT_COLOR } from './_app';
 
 const Container = styled.div`
   background-color: ${props => props.bgColor || '#FFF'};
+  transition: background-color 500ms ease;
 `;
 
 const Main = styled(Box)`
@@ -31,13 +32,15 @@ const FormsWrapper = styled(Box)`
   flex-direction: column;
   background-color: ${props => props.theme.colors.grayLight};
   border-radius: 5px;
-  padding: 1rem 0.5rem;
+  padding: 1.25rem 0.75rem;
   margin: 1rem 0;
 `;
 
 const Home = () => {
   const [color, setColor] = React.useState<Color | null>(null);
   const [showHexForm, setShowHexForm] = React.useState<boolean>(true);
+  const hasDarkBg = color && color.isDark();
+  const textColor = hasDarkBg ? 'white' : 'inherit';
   const Form = showHexForm ? FormHEX : FormRGB;
 
   const renderCodeBlocks = () => {
@@ -105,18 +108,18 @@ const Home = () => {
 
         <Logo color={color && color.negate().hex()} />
 
-        <Heading as="h3" textAlign="center">
+        <Heading as="h3" textAlign="center" color={textColor}>
           Convert HEX & RGB colors to UIColor
         </Heading>
 
-        <Text maxWidth={485} my={2} textAlign="center">
+        <Text maxWidth={485} my={2} textAlign="center" color={textColor}>
           UIColor.io is a website that helps you convert HEX & RGB colors to
           UIColor for Objective-C, Swift and Xamarin featuring a colorpicker and
           copy to clipboard functionality to make things easier.
         </Text>
 
         <Box display="flex" flexDirection="row" alignItems="center" my={3}>
-          <Heading as="h3" mx={3}>
+          <Heading as="h3" mx={3} color={textColor}>
             HEX
           </Heading>
 
@@ -138,7 +141,7 @@ const Home = () => {
             }}
           />
 
-          <Heading as="h3" mx={3}>
+          <Heading as="h3" mx={3} color={textColor}>
             RGB
           </Heading>
         </Box>
