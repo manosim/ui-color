@@ -3,10 +3,6 @@ import { ServerStyleSheet } from 'styled-components';
 
 import { GA_ID } from '../src/utils/helpers';
 
-console.log('=========');
-console.log(GA_ID);
-console.log('=========');
-
 export default class MyDocument extends Document {
   static async getInitialProps(ctx) {
     const sheet = new ServerStyleSheet();
