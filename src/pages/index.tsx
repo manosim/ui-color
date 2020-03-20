@@ -58,7 +58,7 @@ const Home = () => {
       <Flex flexDirection="column">
         <Codeblock
           language="Swift"
-          colorString={`UIColor(red:${r}, green:${g}, blue:${b}, alpha:${alpha});`}
+          colorString={`UIColor(red:${r}, green:${g}, blue:${b}, alpha:${alpha})`}
         />
         <Codeblock
           language="Objective-C"
