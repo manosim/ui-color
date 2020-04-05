@@ -53,8 +53,8 @@ export const Footer: React.FC<IProps> = props => {
 
           <Link
             variant="link"
-            href="https://github.com/manosim/ui-color/"
-            aria-label="GitHub Repository"
+            href="https://github.com/manosim/"
+            aria-label="GitHub Profile"
           >
             <Icon icon={faGithub} />
           </Link>
