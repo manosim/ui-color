@@ -58,15 +58,15 @@ const Home = () => {
       <Flex flexDirection="column">
         <Codeblock
           language="Swift"
-          colorString={`UIColor(red:${r}, green:${g}, blue:${b}, alpha:${alpha})`}
+          colorString={`UIColor(red: ${r}, green: ${g}, blue: ${b}, alpha: ${alpha})`}
         />
         <Codeblock
           language="Objective-C"
-          colorString={`[UIColor colorWithRed:${r} green:${g} blue:${b} alpha:${alpha}];`}
+          colorString={`[UIColor colorWithRed: ${r} green: ${g} blue: ${b} alpha: ${alpha}];`}
         />
         <Codeblock
           language="Xamarin (C#)"
-          colorString={`new UIColor(red:${r}f, green:${g}f, blue:${b}f, alpha:${alpha}f)`}
+          colorString={`new UIColor(red: ${r}f, green: ${g}f, blue: ${b}f, alpha: ${alpha}f)`}
         />
       </Flex>
     );
